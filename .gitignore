@@ -1,0 +1,38 @@
+MonarchC/target/
+!MonarchC/.mvn/wrapper/maven-wrapper.jar
+!MonarchC/**/src/main/**/target/
+!MonarchC/**/src/test/**/target/
+
+### IntelliJ IDEA ###
+MonarchC/.idea/modules.xml
+MonarchC/.idea/jarRepositories.xml
+MonarchC/.idea/compiler.xml
+MonarchC/.idea/libraries/
+MonarchC/*.iws
+MonarchC/*.iml
+MonarchC/*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
