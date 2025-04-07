@@ -1,0 +1,76 @@
+sequence sequence {
+	matches literal sequence;
+}
+sequence Syntax {
+	matches sequence sequence,
+	sequence Identifier,
+	literal {,
+	sequence SyntaxStatementList,
+	literal };
+}
+sequence SyntaxStatement {
+	matches optionally any {
+		matches literal repeated, 
+			any {matches literal [; matches literal (;},
+			regex [0-9]+, 
+			literal \,, 
+			regex [0-9]*, 
+			any {matches literal [; matches literal (;},
+			optionally {
+				matches literal joined,
+				literal by,
+				literal literal,
+				regex .+;
+			};
+		matches literal optionally;
+	},
+	any {
+		matches literal literal,
+			regex .+;
+		matches literal sequence,
+			sequence Identifier;
+		matches literal any,
+			literal {,
+			repeated [0,) sequence SyntaxStatementList;
+			literal };
+		matches literal regex,
+		    sequence Regex;
+        matches literal anchor,
+            regex -?[0-9]+;
+	};
+}
+sequence SyntaxStatementList {
+	matches literal matches,
+	repeated [0,) joined by literal \, sequence SyntaxStatement,
+	literal \;;
+}
+sequence matches {
+	matches literal matches;
+}
+sequence Identifier {
+	matches any {
+		matches regex [a-zA-Z_][a-zA-Z0-9_]+;
+		matches regex [a-zA-Z];
+	};
+}
+sequence public {
+	matches literal public;
+}
+sequence class {
+	matches literal class;
+}
+sequence Unit {
+	matches sequence Class,
+	anchor -1;
+}
+sequence Class {
+	matches sequence class,
+	sequence Identifier,
+	literal {,
+	repeated [0,) any {
+		matches sequence Method;
+		matches sequence Field;
+	},
+	literal };
+}
+class Thing {}

@@ -1,0 +1,71 @@
+compile with compile_settings
+compile with function
+compile function with parameters (paren_params_decl)
+compile paren_params_decl with (var_param_decl)
+compile function with statements (comment, print, function_call, var_decl, var_set, return, if, while)
+compile return with (byte_lit, var_get)
+compile var_set with (function_call, boolean_lit, byte_lit, add, or, xor, lshift, rshift, multiply, time, scan)
+compile multiply with (byte_lit, var_get)
+compile lshift with (byte_lit, var_get)
+compile rshift with (byte_lit, var_get)
+compile xor with (byte_lit, lshift, rshift, var_get)
+compile function_call with (byte_lit, var_get)
+compile print with (scan, time, add, subtract, string_lit, byte_lit, char_lit, var_get)
+compile add with (byte_lit, subtract, time, var_get)
+compile or with (byte_lit, subtract, time, var_get)
+compile subtract with (byte_lit, char_lit, var_get)
+compile if with conditions (greater, lesser, boolean_lit, equals, var_get)
+compile if with statements (comment, var_set, print, break, if)
+compile equals with (char_lit, byte_lit, var_get)
+compile while with conditions (boolean_lit, lesser)
+compile while with statements (comment, var_decl, var_set, print, if, while)
+compile lesser with (byte_lit, var_get)
+compile greater with (byte_lit, var_get)
+
+function main(): void {
+	var secret: byte;
+	secret = time | 1b; // ensure that the seed is never 0
+	print "Can you guess the secret number? (0 - 255)\n";
+	while (true) {
+		secret = main.mnrc:random(secret);
+		while (true) {
+			var guess: byte;
+			guess = main.mnrc:scanNum();
+			if (guess == secret) {
+				print "Correct!\n";
+				break;
+			} else {
+                if (guess < secret) {
+                    print "Too low\n";
+                } else {
+                    if (guess > secret) {
+                        print "Too high\n";
+                    }
+                }
+			}
+		}
+        print "Let's play again!\n";
+	}
+}
+
+function random(num: byte): byte {
+	num = num << 3b ^ num;
+	num = num >> 5b ^ num;
+	num = num << 4b ^ num;
+	return num;
+}
+
+function scanNum(): byte {
+	var num: byte;
+	while (true) {
+		var c: byte;
+		c = scan;
+		if (c == '\n') {
+			break;
+		} else {
+			num = num * 10b;
+			num = num + c - '0';
+		}
+	}
+	return num;
+}
