@@ -1,0 +1,205 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\vm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\chunk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\vm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\debug.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\common.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\common.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\debug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\chunk.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\input.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\input.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\strutil.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|HelloWorld\\HelloWorld.vcxproj|solutionrelative:HelloWorld\\strutil.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\main.c",
+              "RelativeDocumentMoniker": "HelloWorld\\main.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\main.c",
+              "RelativeToolTip": "HelloWorld\\main.c",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-08-27T22:44:57.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "common.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\common.h",
+              "RelativeDocumentMoniker": "HelloWorld\\common.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\common.h",
+              "RelativeToolTip": "HelloWorld\\common.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-07T02:32:05.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "debug.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.h",
+              "RelativeDocumentMoniker": "HelloWorld\\debug.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.h",
+              "RelativeToolTip": "HelloWorld\\debug.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-07T02:31:54.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "vm.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.h",
+              "RelativeDocumentMoniker": "HelloWorld\\vm.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.h",
+              "RelativeToolTip": "HelloWorld\\vm.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-06T04:18:03.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "vm.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.c",
+              "RelativeDocumentMoniker": "HelloWorld\\vm.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\vm.c",
+              "RelativeToolTip": "HelloWorld\\vm.c",
+              "ViewState": "AQIAAPwAAAAAAAAAAAAqwAoBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-14T17:43:54.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "chunk.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.h",
+              "RelativeDocumentMoniker": "HelloWorld\\chunk.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.h",
+              "RelativeToolTip": "HelloWorld\\chunk.h",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABAAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-02T00:27:43.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "strutil.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.c",
+              "RelativeDocumentMoniker": "HelloWorld\\strutil.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.c",
+              "RelativeToolTip": "HelloWorld\\strutil.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-14T18:26:07.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "strutil.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.h",
+              "RelativeDocumentMoniker": "HelloWorld\\strutil.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\strutil.h",
+              "RelativeToolTip": "HelloWorld\\strutil.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-14T18:25:52.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "input.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\input.c",
+              "RelativeDocumentMoniker": "HelloWorld\\input.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\input.c",
+              "RelativeToolTip": "HelloWorld\\input.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-13T03:30:11.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "chunk.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.c",
+              "RelativeDocumentMoniker": "HelloWorld\\chunk.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\chunk.c",
+              "RelativeToolTip": "HelloWorld\\chunk.c",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACYAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-08-25T22:00:43.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "debug.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.c",
+              "RelativeDocumentMoniker": "HelloWorld\\debug.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\HelloWorld\\debug.c",
+              "RelativeToolTip": "HelloWorld\\debug.c",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-05-28T23:44:42.917Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
