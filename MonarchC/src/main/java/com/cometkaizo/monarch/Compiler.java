@@ -18,46 +18,55 @@ import java.util.Optional;
 
 public class Compiler {
     public static final String SOURCE_EXT = "mnrk", BYTECODE_EXT = "mnrc";
-    private final CompilationUnit.Parser unitStx = new CompilationUnit.Parser();
-    private final Map<String, Structure.Parser<?>> parsers = Map.ofEntries(
-            Map.entry("compile_with", new CompileWith.Parser(unitStx)),
-            Map.entry("compile_settings", new CompileSettings.Parser()),
-            Map.entry("comment", new Comment.Parser()),
-            Map.entry("debug", new Debug.Parser()),
-            Map.entry("function", new Func.Parser()),
-            Map.entry("function_call", new FuncCall.Parser()),
-            Map.entry("paren_params_decl", new ParenParamsDecl.Parser()),
-            Map.entry("var_param_decl", new VarParamDecl.Parser()),
-            Map.entry("return", new Return.Parser()),
-            Map.entry("var_decl", new VarDecl.Parser()),
-            Map.entry("var_set", new VarSet.Parser()),
-            Map.entry("var_get", new VarGet.Parser()),
-            Map.entry("byte_lit", new ByteLit.Parser()),
-            Map.entry("boolean_lit", new BooleanLit.Parser()),
-            Map.entry("char_lit", new CharLit.Parser()),
-            Map.entry("string_lit", new StringLit.Parser()),
-            Map.entry("print", new Print.Parser()),
-            Map.entry("if", new If.Parser()),
-            Map.entry("while", new While.Parser()),
-            Map.entry("break", new Break.Parser()),
-            Map.entry("add", new Add.Parser()),
-            Map.entry("subtract", new Subtract.Parser()),
-            Map.entry("multiply", new Multiply.Parser()),
-            Map.entry("or", new Or.Parser()),
-            Map.entry("and", new And.Parser()),
-            Map.entry("xor", new Xor.Parser()),
-            Map.entry("lshift", new LShift.Parser()),
-            Map.entry("rshift", new RShift.Parser()),
-            Map.entry("equals", new Equals.Parser()),
-            Map.entry("greater", new Greater.Parser()),
-            Map.entry("lesser", new Lesser.Parser()),
-            Map.entry("scan", new Scan.Parser()),
-            Map.entry("time", new Time.Parser())
-    );
+    private CompilationUnit.Parser unitStx;
+    private Map<String, Structure.Parser<?>> parsers;
     private final Map<String, Type> types = Map.ofEntries(
             Map.entry("byte", ByteLit.Analysis.TYPE),
             Map.entry("boolean", BooleanLit.Analysis.TYPE)
     );
+
+    public Compiler() {
+        resetParsers();
+    }
+
+    private void resetParsers() {
+        unitStx = new CompilationUnit.Parser();
+        parsers = Map.ofEntries(
+                Map.entry("compile_with", new CompileWith.Parser(unitStx)),
+                Map.entry("compile_settings", new CompileSettings.Parser()),
+                Map.entry("comment", new Comment.Parser()),
+                Map.entry("debug", new Debug.Parser()),
+                Map.entry("function", new Func.Parser()),
+                Map.entry("function_call", new FuncCall.Parser()),
+                Map.entry("paren_params_decl", new ParenParamsDecl.Parser()),
+                Map.entry("var_param_decl", new VarParamDecl.Parser()),
+                Map.entry("return", new Return.Parser()),
+                Map.entry("var_decl", new VarDecl.Parser()),
+                Map.entry("var_set", new VarSet.Parser()),
+                Map.entry("var_get", new VarGet.Parser()),
+                Map.entry("byte_lit", new ByteLit.Parser()),
+                Map.entry("boolean_lit", new BooleanLit.Parser()),
+                Map.entry("char_lit", new CharLit.Parser()),
+                Map.entry("string_lit", new StringLit.Parser()),
+                Map.entry("print", new Print.Parser()),
+                Map.entry("if", new If.Parser()),
+                Map.entry("while", new While.Parser()),
+                Map.entry("break", new Break.Parser()),
+                Map.entry("add", new Add.Parser()),
+                Map.entry("subtract", new Subtract.Parser()),
+                Map.entry("multiply", new Multiply.Parser()),
+                Map.entry("or", new Or.Parser()),
+                Map.entry("and", new And.Parser()),
+                Map.entry("xor", new Xor.Parser()),
+                Map.entry("lshift", new LShift.Parser()),
+                Map.entry("rshift", new RShift.Parser()),
+                Map.entry("equals", new Equals.Parser()),
+                Map.entry("greater", new Greater.Parser()),
+                Map.entry("lesser", new Lesser.Parser()),
+                Map.entry("scan", new Scan.Parser()),
+                Map.entry("time", new Time.Parser())
+        );
+    }
 
     public Result compile(File file) throws IOException {
         if (!file.exists()) return null;
@@ -88,6 +97,7 @@ public class Compiler {
     }
 
     protected Structure.Parser<? extends CompilationUnit.Raw>.Result parse(CharIterator chars, Result result) {
+        resetParsers();
         result.syntaxCxt = new ParseContext(chars, new DiagnosticList(), parsers);
         return unitStx.parse(result.syntaxCxt);
     }
