@@ -9,7 +9,7 @@ public class InvalidSyntaxErr implements Diagnostic {
     protected final String message;
     protected final int index;
 
-    public InvalidSyntaxErr(Structure.Parser<?> parser, CharIterator chars) {
+    public InvalidSyntaxErr(String message, CharIterator chars) {
         int index = chars.cursor() + 1;
         String prefix = "Invalid syntax ";
         String position = "(" + (chars.getLineAt(index) + 1) + ":" + (chars.getColAt(index) + 1) + ")";
@@ -21,7 +21,7 @@ public class InvalidSyntaxErr implements Diagnostic {
         int caretPos = chars.getColAt(index) - (trimAmt - indent.length());
 
         this.index = index;
-        this.message = StringUtils.nameNoPkg(parser.getClass()) + ":\n" +
+        this.message = message + ":\n" +
                 prefix + position + "\n" + indent + trimmedLine + "\n" +
                 " ".repeat(caretPos) + "^";
     }

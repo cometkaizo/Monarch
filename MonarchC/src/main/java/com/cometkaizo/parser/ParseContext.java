@@ -46,8 +46,8 @@ public class ParseContext extends Context {
         return Optional.ofNullable(parsers.get(name));
     }
 
-    public void reportInvalidSyntax(Structure.Parser<?> parser) {
-        syntaxProblems.add(new InvalidSyntaxErr(parser, chars));
+    public void reportInvalidSyntax(String message) {
+        syntaxProblems.add(new InvalidSyntaxErr(message, chars));
     }
     public Optional<InvalidSyntaxErr> syntaxProblem() {
         return findMax(syntaxProblems, InvalidSyntaxErr::index);
@@ -70,11 +70,11 @@ public class ParseContext extends Context {
     public void exitFrameSuccess() {
         frames.removeFirst();
     }
-    public void exitFrameFail(Structure.Parser<?> parser) {
+    public void exitFrameFail(String message) {
         var frame = frames.removeFirst();
         chars.jumpTo(frame.cursor);
         reverseStructuresTo(frame.rawCount);
-        reportInvalidSyntax(parser);
+        reportInvalidSyntax(message);
     }
     private void reverseStructuresTo(int count) {
         for (int i = 0; i < structures.size() - count; i++) popStructure();

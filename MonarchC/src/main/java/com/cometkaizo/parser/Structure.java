@@ -32,7 +32,7 @@ public final class Structure {
                 result.value().ifPresent(raw -> raw.parent = ctx.topStructure());
                 ctx.exitFrameSuccess();
             } else {
-                ctx.exitFrameFail(this);
+                ctx.exitFrameFail(result.failMessage());
             }
             return result;
         }
@@ -43,7 +43,7 @@ public final class Structure {
             ctx.enterFrame();
             boolean success = parseSettingsImpl(ctx);
             if (success) ctx.exitFrameSuccess();
-            else ctx.exitFrameFail(this);
+            else ctx.exitFrameFail(defaultFailMessage());
             return success;
         }
 
@@ -52,20 +52,29 @@ public final class Structure {
         }
 
         protected Result success(R value) {
-            return new Result(true, value);
+            return new Result(true, value, null);
         }
         protected Result success() {
-            return new Result(true, null);
+            return new Result(true, null, null);
         }
         protected Result fail() {
-            return new Result(false, null);
+            return fail(defaultFailMessage());
+        }
+        private String defaultFailMessage() {
+            return StringUtils.nameNoPkg(getClass());
+        }
+
+        protected Result fail(String message) {
+            return new Result(false, null, message);
         }
         public class Result {
             private final boolean success;
             private final R value;
-            private Result(boolean success, R value) {
+            private final String failMessage;
+            private Result(boolean success, R value, String failMessage) {
                 this.success = success;
                 this.value = value;
+                this.failMessage = failMessage;
             }
             public boolean success() {
                 return success;
@@ -77,11 +86,15 @@ public final class Structure {
                 return Optional.ofNullable(valueOrNull());
             }
             public R valueOrNull() {
-                if (!success) throw new IllegalStateException("Failed result");
+                if (!success) throw new IllegalStateException("Failed result has no value");
                 return value;
             }
             public R valueNonNull() {
                 return value().orElseThrow();
+            }
+            public String failMessage() {
+                if (success) throw new IllegalStateException("Successful result has not fail message");
+                return failMessage;
             }
         }
 
@@ -120,6 +133,10 @@ public final class Structure {
             }
             public int size() {
                 return parsers.size();
+            }
+
+            public void clear() {
+                parsers.clear();
             }
         }
         public static class One extends Parser<Raw<?>> {
