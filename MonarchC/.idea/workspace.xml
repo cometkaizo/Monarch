@@ -4,111 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Removed Visual Studio metadata">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/Monarch.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sample/NumSign.txt" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added NumSign program">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.mnrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/HelloWorld/FileContentIndex/1cafa89d-a095-4491-b772-a92165aadcec.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/HelloWorld/FileContentIndex/7577fc23-14fd-41f4-aaf0-a67bb660cd13.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/HelloWorld/FileContentIndex/9c2667cf-ea62-436f-8dc8-0a044afd75ca.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/HelloWorld/FileContentIndex/9fccd11f-df2b-4f3a-95f8-490aad591df8.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/HelloWorld/FileContentIndex/c635ee2b-47ba-4bff-a037-b33a5182bd26.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/Monarch/FileContentIndex/0fffaaad-6276-40b8-8864-360b01572efa.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/Monarch/FileContentIndex/4170674b-5f1f-4fa7-aa60-3c2a60f1243e.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/Monarch/FileContentIndex/7776666e-eabd-4d65-bd3e-d96092b9468b.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/Monarch/FileContentIndex/94bf4593-6e82-4819-833f-bcc0a546a9cf.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/Monarch/FileContentIndex/d29086bf-a4ed-447c-bc12-c2daffea4fd4.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/FileContentIndex/66e7d78a-7d87-4a96-86f4-a19617870169.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/Browse.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/DocumentLayout.backup.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/DocumentLayout.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/Solution.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/ipch/AutoPCH/3ae6fb6d870e31ac/CHUNK.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/ipch/AutoPCH/3ae7066d870e445d/CHUNK.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/ipch/AutoPCH/4d227c8f115735ae/CHUNK.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/ipch/AutoPCH/c8d59990b67f7e58/VM.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/.vs/MonarchVM/v17/ipch/AutoPCH/fd69b0dad6503870/MAIN.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/MonarchVM.filters" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/MonarchVM.user" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/MonarchVM.vcxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/chunk.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/chunk.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/common.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/debug.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/debug.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/input.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/input.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/memory.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/memory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/strutil.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/strutil.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/value.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/value.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/vm.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/vm.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.exe.recipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.ilk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/CL.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/CL.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/Cl.items.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/HelloWorld.lastbuildstate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/link.secondary.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/HelloWorld.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.exe.recipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.ilk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/CL.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/CL.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/Cl.items.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/Monarch.lastbuildstate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/link.secondary.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/Monarch.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.exe.recipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.ilk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/CL.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/CL.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/Cl.items.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/MonarchVM.lastbuildstate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/link.secondary.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/MonarchVM.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/chunk.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/debug.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/input.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/main.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/memory.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/strutil.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/value.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/vc143.idb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/vc143.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/MonarchVM/x64/Debug/vm.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/HelloWorld.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/HelloWorld.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/Monarch.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/Monarch.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/MonarchVM.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MonarchVM/x64/Debug/MonarchVM.pdb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,12 +159,48 @@
       <option name="project" value="LOCAL" />
       <updated>1746306718483</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Removed Visual Studio metadata from IntelliJ">
+      <option name="closed" value="true" />
+      <created>1746307592315</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746307592315</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed if statement without else run its body regardless if the condition is true or false">
+      <option name="closed" value="true" />
+      <created>1746307662003</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746307662003</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed if statements without elses running their bodies regardless of if the condition is true or false">
+      <option name="closed" value="true" />
+      <created>1746307703447</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746307703447</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added NumSign program">
+      <option name="closed" value="true" />
+      <created>1746307723850</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746307723850</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial compiler commit" />
     <MESSAGE value="Removed Visual Studio metadata" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Visual Studio metadata" />
+    <MESSAGE value="Removed Visual Studio metadata from IntelliJ" />
+    <MESSAGE value="Fixed if statement without else run its body regardless if the condition is true or false" />
+    <MESSAGE value="Fixed if statements without elses running their bodies regardless of if the condition is true or false" />
+    <MESSAGE value="Added NumSign program" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added NumSign program" />
   </component>
 </project>

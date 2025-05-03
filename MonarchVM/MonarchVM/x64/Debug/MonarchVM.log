@@ -1,0 +1,44 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (HelloWorld.vcxproj, Monarch.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  chunk.c
+  debug.c
+  input.c
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(21,10): warning C4013: 'simpleInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(25,10): warning C4013: 'sizeInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(31,10): warning C4013: 'byteInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(33,10): warning C4013: 'byteArrayInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(49,10): warning C4013: 'insnIndexInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(51,10): warning C4013: 'offsetAndSizeInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(55,10): warning C4013: 'sizeAndOffsetInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(57,10): warning C4013: 'sizeAndSizeInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(91,10): warning C4013: 'jumpArrSwitchInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(93,10): warning C4013: 'jumpSwitchInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(105,10): warning C4013: 'structEntryAccessInstruction' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(187,23): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c(194,23): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  main.c
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(32,6): warning C4013: 'shouldRun' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(33,19): warning C4013: 'shouldDebug' undefined; assuming extern returning int
+  memory.c
+  strutil.c
+  value.c
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\value.c(4,2): warning C4013: 'printf' undefined; assuming extern returning int
+  vm.c
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(49,18): warning C4047: 'return': 'char' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(88,8): warning C4013: 'arraysEqual' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(85,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(109,11): warning C4133: '<': incompatible types - from 'uint8_t *' to 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(140,10): warning C4047: 'function': 'Value *' differs in levels of indirection from 'void **'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(140,10): warning C4024: 'pushArr': different types for formal and actual parameter 1
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(162,31): warning C4047: 'return': 'Value' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(184,22): warning C4047: 'return': 'Value' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(198,9): warning C4013: 'run' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(210,32): warning C4047: 'return': 'uint8_t' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(337,13): warning C4133: '>': incompatible types - from 'uint8_t *' to 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(636,9): warning C4022: 'free': pointer mismatch for actual parameter 1
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(703,25): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(780,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(799,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(841,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(857,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+  Generating Code...
+  MonarchVM.vcxproj -> C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\x64\Debug\MonarchVM.exe

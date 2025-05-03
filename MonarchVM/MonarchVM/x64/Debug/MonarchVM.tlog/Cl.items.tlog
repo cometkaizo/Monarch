@@ -1,8 +1,8 @@
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\chunk.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\chunk.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\debug.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\debug.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\input.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\input.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\main.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\main.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\memory.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\memory.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\strutil.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\strutil.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\value.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\value.obj
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\vm.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\HelloWorld\x64\Debug\vm.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\chunk.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\chunk.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\debug.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\input.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\input.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\main.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\memory.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\memory.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\strutil.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\strutil.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\value.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\value.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Debug\vm.obj
