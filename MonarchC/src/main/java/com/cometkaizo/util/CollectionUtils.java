@@ -206,6 +206,20 @@ public class CollectionUtils {
 
         return Optional.ofNullable(largestElement);
     }
+    public static <T> Optional<T> findLastMax(List<T> collection, Function<T, Integer> valueFunction) {
+        T largestElement = null;
+        Integer largestValue = null;
+
+        for (T element : collection) {
+            int value = valueFunction.apply(element);
+            if (largestValue == null || largestValue <= value) {
+                largestValue = value;
+                largestElement = element;
+            }
+        }
+
+        return Optional.ofNullable(largestElement);
+    }
 
     public static <T> Optional<T> findMin(Collection<T> collection, Function<T, Integer> valueFunction) {
         T smallestElement = null;
@@ -214,6 +228,20 @@ public class CollectionUtils {
         for (T element : collection) {
             int value = valueFunction.apply(element);
             if (smallestValue == null || smallestValue > value) {
+                smallestValue = value;
+                smallestElement = element;
+            }
+        }
+
+        return Optional.ofNullable(smallestElement);
+    }
+    public static <T> Optional<T> findLastMin(List<T> collection, Function<T, Integer> valueFunction) {
+        T smallestElement = null;
+        Integer smallestValue = null;
+
+        for (T element : collection) {
+            int value = valueFunction.apply(element);
+            if (smallestValue == null || smallestValue >= value) {
                 smallestValue = value;
                 smallestElement = element;
             }

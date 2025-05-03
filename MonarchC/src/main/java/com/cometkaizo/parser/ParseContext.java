@@ -7,6 +7,7 @@ import com.cometkaizo.util.DiagnosticList;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static com.cometkaizo.util.CollectionUtils.findLastMax;
 import static com.cometkaizo.util.CollectionUtils.findMax;
 
 public class ParseContext extends Context {
@@ -16,7 +17,7 @@ public class ParseContext extends Context {
     public final CharIterator chars;
     private final Deque<Frame> frames = new ArrayDeque<>();
     private final Deque<Structure.Raw<?>> structures = new ArrayDeque<>();
-    private final Set<InvalidSyntaxErr> syntaxProblems = new HashSet<>();
+    private final List<InvalidSyntaxErr> syntaxProblems = new ArrayList<>();
     private final Map<String, Structure.Parser<?>> parsers;
 
     // TODO: 2024-09-05 right now no problems other than syntaxProblems show up
@@ -50,7 +51,7 @@ public class ParseContext extends Context {
         syntaxProblems.add(new InvalidSyntaxErr(message, chars));
     }
     public Optional<InvalidSyntaxErr> syntaxProblem() {
-        return findMax(syntaxProblems, InvalidSyntaxErr::index);
+        return findLastMax(syntaxProblems, InvalidSyntaxErr::index);
     }
 
     public <T extends Structure.Raw<?>> T pushStructure(T raw) {
@@ -71,10 +72,10 @@ public class ParseContext extends Context {
         frames.removeFirst();
     }
     public void exitFrameFail(String message) {
+        reportInvalidSyntax(message);
         var frame = frames.removeFirst();
         chars.jumpTo(frame.cursor);
         reverseStructuresTo(frame.rawCount);
-        reportInvalidSyntax(message);
     }
     private void reverseStructuresTo(int count) {
         for (int i = 0; i < structures.size() - count; i++) popStructure();

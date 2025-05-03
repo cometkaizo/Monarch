@@ -60,12 +60,14 @@ public final class Structure {
         protected Result fail() {
             return fail(defaultFailMessage());
         }
-        private String defaultFailMessage() {
-            return StringUtils.nameNoPkg(getClass());
+        protected Result failExpecting(String expected) {
+            return fail(expected + " expected here");
         }
-
         protected Result fail(String message) {
             return new Result(false, null, message);
+        }
+        private String defaultFailMessage() {
+            return StringUtils.nameNoPkg(getClass());
         }
         public class Result {
             private final boolean success;
