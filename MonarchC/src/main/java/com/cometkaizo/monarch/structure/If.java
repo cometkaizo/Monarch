@@ -156,26 +156,27 @@ public class If {
         public void assemble(AssembleContext ctx) {
             condition.assemble(ctx);
 
-            var startLabel = ctx.data().createLabel();
-            var elseLabel = ctx.data().createLabel();
-            var endLabel = ctx.data().createLabel();
+            var ifStartLabel = ctx.data().createLabel();
+            var ifEndLabel = ctx.data().createLabel();
+            var elseStartLabel = ctx.data().createLabel();
+            var elseEndLabel = ctx.data().createLabel();
             boolean hasElse = !elseStatements.isEmpty();
 
-            ctx.data().opJumpIf(startLabel);
+            ctx.data().opJumpIf(ifStartLabel);
             ctx.stackSize().subtract(condition.footprint());
-            if (hasElse) ctx.data().opJumpToIndex(elseLabel);
+            if (hasElse) ctx.data().opJumpToIndex(elseStartLabel);
+            else ctx.data().opJumpToIndex(ifEndLabel);
 
-            ctx.data().writeLabel(startLabel);
+            ctx.data().writeLabel(ifStartLabel);
             statements.forEach(s -> s.assemble(ctx));
+            ctx.data().writeLabel(ifEndLabel);
 
             if (hasElse) {
-                ctx.data().opJumpToIndex(endLabel);
-
-                ctx.data().writeLabel(elseLabel);
+                ctx.data().opJumpToIndex(elseEndLabel);
+                ctx.data().writeLabel(elseStartLabel);
                 elseStatements.forEach(s -> s.assemble(ctx));
-                ctx.data().writeLabel(endLabel);
+                ctx.data().writeLabel(elseEndLabel);
             }
-
         }
 
         @Override
