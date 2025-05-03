@@ -69,14 +69,14 @@ public class Return {
                 this.returnable = returnable.get();
             } else {
                 this.returnable = null;
-                ctx.report(new WrongEnvironmentErr("return statements", "returnable"));
+                ctx.report(new WrongEnvironmentErr("return statements", "returnable"), this);
             }
 
             if (raw.value != null) {
                 var value = raw.value.analyze(ctx);
                 if (value instanceof Expr expr) this.value = expr;
                 else {
-                    ctx.report(new WrongTypeErr("value", "expression"));
+                    ctx.report(new WrongTypeErr("value", "expression"), this);
                     this.value = null;
                 }
             } else this.value = null;

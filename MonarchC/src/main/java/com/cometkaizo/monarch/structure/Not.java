@@ -63,8 +63,8 @@ public class Not {
 
             if (raw.value.analyze(ctx) instanceof Expr expr) {
                 if (expr.type() == BooleanLit.Analysis.TYPE) value = expr;
-                else ctx.report(new WrongTypeErr("operand", "boolean expression"));
-            } else ctx.report(new WrongTypeErr("operand", "expression"));
+                else ctx.report(new WrongTypeErr("operand", "boolean expression"), this);
+            } else ctx.report(new WrongTypeErr("operand", "expression"), this);
             this.value = value;
 
             ctx.popStructure();

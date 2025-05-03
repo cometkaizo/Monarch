@@ -86,8 +86,8 @@ public class VarSet {
 
             if (raw.value.analyze(ctx) instanceof Expr expr) {
                 if (!expr.isVoid()) value = expr;
-                else ctx.report(new WrongTypeErr("value", "expression"));
-            } else ctx.report(new WrongTypeErr("value", "expression"));
+                else ctx.report(new WrongTypeErr("value", "expression"), this);
+            } else ctx.report(new WrongTypeErr("value", "expression"), this);
 
             var m = ancestors.ofType(StackResource.Manager.class);
             if (m.isPresent()) {
@@ -95,10 +95,10 @@ public class VarSet {
                 if (vars.has(name)) {
                     type = vars.get(name).type();
                     if (value != null && !type.equals(value.type())) {
-                        ctx.report(new DifferentTypesErr(value.type(), type));
+                        ctx.report(new DifferentTypesErr(value.type(), type), this);
                     }
-                } else ctx.report(new UnknownVarErr(name));
-            } else ctx.report(new NoResourcesErr("var_decl"));
+                } else ctx.report(new UnknownVarErr(name), this);
+            } else ctx.report(new NoResourcesErr("var_decl"), this);
 
             this.value = value;
             this.type = type;

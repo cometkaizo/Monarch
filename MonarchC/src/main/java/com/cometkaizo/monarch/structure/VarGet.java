@@ -46,8 +46,8 @@ public class VarGet {
             if (m.isPresent()) {
                 vars = m.get().getOrCreate(Vars.class, Vars::new);
                 if (vars.has(name)) type = vars.get(name).type();
-                else ctx.report(new UnknownVarErr(name));
-            } else ctx.report(new UnknownVarErr(name));
+                else ctx.report(new UnknownVarErr(name), this);
+            } else ctx.report(new UnknownVarErr(name), this);
             this.vars = vars;
             this.type = type;
         }

@@ -1,9 +1,12 @@
 package com.cometkaizo.analysis;
 
+import com.cometkaizo.analysis.diagnostic.InvalidSemanticsErr;
 import com.cometkaizo.monarch.structure.CompilationUnit;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.Context;
 import com.cometkaizo.parser.Structure;
+import com.cometkaizo.util.CharIterator;
+import com.cometkaizo.util.Diagnostic;
 
 import java.util.*;
 
@@ -11,10 +14,12 @@ public class AnalysisContext extends Context {
     private final Deque<Structure.Analysis> structures = new ArrayDeque<>();
 
     private final Map<String, Type> types;
+    private final CharIterator chars;
     private final Map<String, CompilationUnit.Raw> compilationUnits = new HashMap<>(1);
 
-    public AnalysisContext(Map<String, Type> types) {
+    public AnalysisContext(Map<String, Type> types, CharIterator chars) {
         this.types = types;
+        this.chars = chars;
     }
 
     public <A extends Structure.Analysis> A pushStructure(A structure) {
@@ -43,5 +48,9 @@ public class AnalysisContext extends Context {
         List<A> result = new ArrayList<>(raw.size());
         raw.stream().map(s -> s.analyze(this)).forEach(result::add);
         return result;
+    }
+
+    public void report(Diagnostic diagnostic, Structure.Analysis reportingStructure) {
+        super.report(new InvalidSemanticsErr(diagnostic, reportingStructure, chars));
     }
 }

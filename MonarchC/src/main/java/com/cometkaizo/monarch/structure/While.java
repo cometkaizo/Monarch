@@ -96,8 +96,8 @@ public class While {
             Expr condition = null;
             if (raw.condition.analyze(ctx) instanceof Expr expr) {
                 if (expr.type() == BooleanLit.Analysis.TYPE) condition = expr;
-                else ctx.report(new WrongTypeErr("condition", "boolean expression"));
-            } else ctx.report(new WrongTypeErr("condition", "expression"));
+                else ctx.report(new WrongTypeErr("condition", "boolean expression"), this);
+            } else ctx.report(new WrongTypeErr("condition", "expression"), this);
             this.condition = condition;
 
             this.statements = ctx.analyze(raw.statements);

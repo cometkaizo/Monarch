@@ -103,7 +103,7 @@ public class Compiler {
     }
 
     protected boolean analyze(CompilationUnit.Raw unitRaw, Result result) {
-        result.analysisCtx = new AnalysisContext(types);
+        result.analysisCtx = new AnalysisContext(types, result.syntaxCxt.chars);
         result.unit = unitRaw.analyze(result.analysisCtx);
         return result.analysisCtx.problems.isEmpty();
     }

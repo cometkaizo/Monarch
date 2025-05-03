@@ -3,6 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
+import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
 import com.cometkaizo.monarch.structure.diagnostic.NoResourcesErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
@@ -55,13 +56,15 @@ public class VarDecl {
             var type = ctx.getType(raw.type);
             if (type.isPresent()) this.type = type.get();
             else {
-                ctx.report(new UnknownTypeErr(raw.type));
+                ctx.report(new UnknownTypeErr(raw.type), this);
                 this.type = null;
             }
 
             var m = ancestors.ofType(StackResource.Manager.class);
-            if (m.isPresent()) m.get().getOrCreate(Vars.class, Vars::new).addVar(new Var(name, this.type), ctx);
-            else ctx.report(new NoResourcesErr("var_decl"));
+            if (m.isPresent()) {
+                boolean success = m.get().getOrCreate(Vars.class, Vars::new).addVar(new Var(name, this.type));
+                if (!success) ctx.report(new DuplicateVarErr(name), this);
+            } else ctx.report(new NoResourcesErr("var_decl"), this);
         }
 
         @Override

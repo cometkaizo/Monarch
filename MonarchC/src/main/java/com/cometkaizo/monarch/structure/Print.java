@@ -70,11 +70,11 @@ public class Print {
                 if (!expr.isVoid()) this.value = expr;
                 else {
                     this.value = null;
-                    ctx.report(new WrongTypeErr("value", "expression"));
+                    ctx.report(new WrongTypeErr("value", "expression"), this);
                 }
             } else {
                 this.value = null;
-                ctx.report(new WrongTypeErr("value", "expression"));
+                ctx.report(new WrongTypeErr("value", "expression"), this);
             }
 
             ctx.popStructure();

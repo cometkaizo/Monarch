@@ -26,10 +26,16 @@ public final class Structure {
         public Parser<? extends R>.Result parse(ParseContext ctx) {
             ctx.enterFrame();
 
+            int startIndex = ctx.chars.cursor();
             var result = parseImpl(ctx);
+            int endIndex = ctx.chars.cursor();
 
             if (result.success()) {
-                result.value().ifPresent(raw -> raw.parent = ctx.topStructure());
+                result.value().ifPresent(raw -> {
+                    raw.parent = ctx.topStructure();
+                    raw.startIndex = startIndex;
+                    raw.endIndex = endIndex;
+                });
                 ctx.exitFrameSuccess();
             } else {
                 ctx.exitFrameFail(result.failMessage());
@@ -166,6 +172,7 @@ public final class Structure {
     public abstract static class Raw<T extends Analysis> {
         public Raw<?> parent;
         private volatile T analysis;
+        public int startIndex, endIndex;
         public T analyze(AnalysisContext ctx) {
             if (analysis == null) {
                 synchronized (this) {
@@ -182,9 +189,13 @@ public final class Structure {
     public abstract static class Analysis {
         @NoPrint public final Analysis parent;
         @NoPrint public final AncestorList ancestors;
+        @NoPrint public final int startIndex;
+        @NoPrint public final int endIndex;
 
         protected Analysis(Raw<?> raw, AnalysisContext ctx) {
             this.parent = ctx.topStructure();
+            this.startIndex = raw.startIndex;
+            this.endIndex = raw.endIndex;
             if (this.parent != null) {
                 this.ancestors = new AncestorList(prepend(this.parent.ancestors, this.parent));
             } else {

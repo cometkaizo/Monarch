@@ -124,7 +124,7 @@ public class Func {
                 this.returnType = returnType.get();
             } else {
                 this.returnType = null;
-                ctx.report(new UnknownTypeErr(raw.returnType));
+                ctx.report(new UnknownTypeErr(raw.returnType), this);
             }
 
             resources.getOrCreate(Vars.Params.class, Vars.Params::new);
@@ -133,7 +133,7 @@ public class Func {
             if (params instanceof ParenParamsDecl.Analysis paramsDecl) this.params = paramsDecl;
             else {
                 this.params = null;
-                ctx.report(new WrongTypeErr("params list", "params declaration"));
+                ctx.report(new WrongTypeErr("params list", "params declaration"), this);
             }
 
             this.statements = ctx.analyze(raw.statements);
@@ -146,7 +146,7 @@ public class Func {
             for (var statement : block.statements()) {
                 if (statement instanceof Expr expr) {
                     if (this.returnType != expr.type()) {
-                        ctx.report(new DifferentTypesErr(expr.type(), this.returnType));
+                        ctx.report(new DifferentTypesErr(expr.type(), this.returnType), this);
                     }
                 } else if (statement instanceof Block deepBlock) {
                     checkReturnStatementTypes(deepBlock, ctx);

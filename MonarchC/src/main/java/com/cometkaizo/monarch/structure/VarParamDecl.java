@@ -3,6 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
+import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
 import com.cometkaizo.monarch.structure.diagnostic.NoResourcesErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
@@ -51,16 +52,17 @@ public class VarParamDecl {
             var type = ctx.getType(raw.type);
             if (type.isPresent()) this.type = type.get();
             else {
-                ctx.report(new UnknownTypeErr(raw.type));
+                ctx.report(new UnknownTypeErr(raw.type), this);
                 this.type = null;
             }
 
             var m = ancestors.ofType(StackResource.Manager.class);
             if (m.isPresent()) {
                 this.resources = m.get();
-                this.resources.getOrCreate(Vars.class, Vars::new).addParam(new Var(name, this.type), ctx);
+                boolean success = this.resources.getOrCreate(Vars.class, Vars::new).addParam(new Var(name, this.type));
+                if (!success) ctx.report(new DuplicateVarErr(name), this);
             } else {
-                ctx.report(new NoResourcesErr("var_param_decl"));
+                ctx.report(new NoResourcesErr("var_param_decl"), this);
                 this.resources = null;
             }
         }

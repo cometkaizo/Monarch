@@ -76,7 +76,7 @@ public class ParenParamsDecl {
 
             for (var rawParam : raw.params) {
                 if (rawParam.analyze(ctx) instanceof ParamDecl param) params.add(param);
-                else ctx.report(new WrongTypeErr("params element", "param"));
+                else ctx.report(new WrongTypeErr("params element", "param"), this);
             }
 
             this.params = Collections.unmodifiableList(params);

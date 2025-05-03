@@ -24,48 +24,5 @@ compile greater with (byte_lit, var_get)
 
 function main(): void {
 	var secret: byte;
-	secret = time | 1b; // ensure that the seed is never 0
-	print "Can you guess the secret number? (0 - 255)\n";
-	while (true) {
-		secret = main.mnrc:random(secret);
-		while (true) {
-			var guess: byte;
-			guess = main.mnrc:scanNum();
-			if (guess == secret) {
-				print "Correct!\n";
-				break;
-			} else {
-                if (guess < secret) {
-                    print "Too low\n";
-                } else {
-                    if (guess > secret) {
-                        print "Too high\n";
-                    }
-                }
-			}
-		}
-        print "Let's play again!\n";
-	}
-}
-
-function random(num: byte): byte {
-	num = num << 3b ^ num;
-	num = num >> 5b ^ num;
-	num = num << 4b ^ num;
-	return num;
-}
-
-function scanNum(): byte {
-	var num: byte;
-	while (true) {
-		var c: byte;
-		c = scan;
-		if (c == '\n') {
-			break;
-		} else {
-			num = num * 10b;
-			num = num + c - '0';
-		}
-	}
-	return num;
+	if (tru) {}
 }

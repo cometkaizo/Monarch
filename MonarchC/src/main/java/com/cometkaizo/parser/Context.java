@@ -13,6 +13,7 @@ public class Context {
         this.problems = problems;
     }
 
+    // move general to subclasses so they can auto-add the line numbers
     public void report(Diagnostic diagnostic) {
         problems.add(diagnostic);
     }

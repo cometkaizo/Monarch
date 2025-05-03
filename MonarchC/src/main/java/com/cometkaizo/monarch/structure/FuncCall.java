@@ -105,7 +105,7 @@ public class FuncCall {
             var args = new ArrayList<Expr>();
             for (var rawArg : raw.args) {
                 if (rawArg.analyze(ctx) instanceof Expr expr) args.add(expr);
-                else ctx.report(new WrongTypeErr("argument", "expression"));
+                else ctx.report(new WrongTypeErr("argument", "expression"), this);
             }
             this.args = Collections.unmodifiableList(args);
 
@@ -120,10 +120,10 @@ public class FuncCall {
                         var returnTypeOpt = ctx.getType(returnTypeName);
                         if (returnTypeOpt.isPresent()) {
                             returnType = returnTypeOpt.get();
-                        } else ctx.report(new UnknownTypeErr(returnTypeName));
+                        } else ctx.report(new UnknownTypeErr(returnTypeName), this);
                     }
-                } else ctx.report(new UnknownFuncErr(funcName, unitName));
-            } else ctx.report(new UnknownUnitErr(unitName));
+                } else ctx.report(new UnknownFuncErr(funcName, unitName), this);
+            } else ctx.report(new UnknownUnitErr(unitName), this);
             this.returnType = returnType;
         }
 

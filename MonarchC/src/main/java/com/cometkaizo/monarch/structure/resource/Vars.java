@@ -5,6 +5,7 @@ import com.cometkaizo.analysis.Size;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
+import com.cometkaizo.parser.Structure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,19 +18,21 @@ public class Vars implements StackResource {
         this.manager = manager;
     }
 
-    public void addVar(Var var, AnalysisContext ctx) {
+    public boolean addVar(Var var) {
         if (has(var.name())) {
-            ctx.report(new DuplicateVarErr(var.name()));
+            return false;
         } else {
             vars.add(var);
+            return true;
         }
     }
-    public void addParam(Var var, AnalysisContext ctx) {
+    public boolean addParam(Var var) {
         manager.getOrCreate(Params.class, Params::new).add(var.footprint());
         if (has(var.name())) {
-            ctx.report(new DuplicateVarErr(var.name()));
+            return false;
         } else {
             params.add(var);
+            return true;
         }
     }
     public Size offsetOf(String name, AssembleContext ctx) {

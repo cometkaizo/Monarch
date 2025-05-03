@@ -37,7 +37,7 @@ public class Break {
                 this.returnable = returnable.get();
             } else {
                 this.returnable = null;
-                ctx.report(new WrongEnvironmentErr("break statements", "breakable"));
+                ctx.report(new WrongEnvironmentErr("break statements", "breakable"), this);
             }
         }
 

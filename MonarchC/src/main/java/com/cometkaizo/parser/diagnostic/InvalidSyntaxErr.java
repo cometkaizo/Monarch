@@ -1,9 +1,7 @@
 package com.cometkaizo.parser.diagnostic;
 
-import com.cometkaizo.parser.Structure;
 import com.cometkaizo.util.CharIterator;
 import com.cometkaizo.util.Diagnostic;
-import com.cometkaizo.util.StringUtils;
 
 public class InvalidSyntaxErr implements Diagnostic {
     protected final String message;
@@ -15,10 +13,10 @@ public class InvalidSyntaxErr implements Diagnostic {
         String position = "(" + (chars.getLineAt(index) + 1) + ":" + (chars.getColAt(index) + 1) + ")";
         String indent = "    ";
 
-        String line = chars.getFullLineAt(index);
-        String trimmedLine = line.trim();
+        String line = chars.getFullLineAt(index).stripTrailing();
+        String trimmedLine = line.stripLeading();
         int trimAmt = line.length() - trimmedLine.length();
-        int caretPos = chars.getColAt(index) - (trimAmt - indent.length());
+        int caretPos = chars.getColAt(index) - trimAmt + indent.length();
 
         this.index = index;
         this.message = message + ":\n" +

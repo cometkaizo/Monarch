@@ -34,7 +34,7 @@ public class Subtract {
             super(raw, ctx);
 
             if (footprint().ptrAmt() != 0) {
-                ctx.report(new WrongSizeErr("operand cannot have pointer size"));
+                ctx.report(new WrongSizeErr("operand cannot have pointer size"), this);
             }
         }
 

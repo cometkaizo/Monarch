@@ -66,15 +66,15 @@ public class BiOperator {
             if (raw.left.analyze(ctx) instanceof Expr expr) {
                 var err = validateLeft(expr);
                 if (err == null) left = expr;
-                else ctx.report(err);
-            } else ctx.report(new WrongTypeErr("left operand", "expression"));
+                else ctx.report(err, this);
+            } else ctx.report(new WrongTypeErr("left operand", "expression"), this);
             this.left = left;
 
             if (raw.right.analyze(ctx) instanceof Expr expr) {
                 var err = validateRight(expr);
                 if (err == null) right = expr;
-                else ctx.report(err);
-            } else ctx.report(new WrongTypeErr("right operand", "expression"));
+                else ctx.report(err, this);
+            } else ctx.report(new WrongTypeErr("right operand", "expression"), this);
             this.right = right;
 
             ctx.popStructure();
