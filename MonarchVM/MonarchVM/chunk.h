@@ -24,6 +24,8 @@ typedef enum {
 	OP_SET,
 	OP_ADD,
 	OP_MULTIPLY,
+	OP_DIVIDE,
+	OP_MODULO,
 	OP_OR,
 	OP_AND,
 	OP_XOR,

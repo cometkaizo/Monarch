@@ -107,82 +107,94 @@ public class Chunk {
     public void opMultiply(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
         writeData(0x13, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
+    public void opDivide(Size a, Size b) {
+        opDivide(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
+    }
+    public void opDivide(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
+        writeData(0x14, aByteSize, aPtrSize, bByteSize, bPtrSize);
+    }
+    public void opModulo(Size a, Size b) {
+        opModulo(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
+    }
+    public void opModulo(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
+        writeData(0x15, aByteSize, aPtrSize, bByteSize, bPtrSize);
+    }
     public void opOr(Size a, Size b) {
         opOr(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
     }
     public void opOr(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
-        writeData(0x14, aByteSize, aPtrSize, bByteSize, bPtrSize);
+        writeData(0x16, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
     public void opAnd(Size a, Size b) {
         opAnd(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
     }
     public void opAnd(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
-        writeData(0x15, aByteSize, aPtrSize, bByteSize, bPtrSize);
+        writeData(0x17, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
     public void opXor(Size a, Size b) {
         opXor(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
     }
     public void opXor(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
-        writeData(0x16, aByteSize, aPtrSize, bByteSize, bPtrSize);
+        writeData(0x18, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
     public void opLShift(Size a) {
         opLShift(a.byteAmt(), a.ptrAmt());
     }
     public void opLShift(int aByteSize, int aPtrSize) {
-        writeData(0x17, aByteSize, aPtrSize);
+        writeData(0x19, aByteSize, aPtrSize);
     }
     public void opRShift(Size a) {
         opRShift(a.byteAmt(), a.ptrAmt());
     }
     public void opRShift(int aByteSize, int aPtrSize) {
-        writeData(0x18, aByteSize, aPtrSize);
+        writeData(0x1A, aByteSize, aPtrSize);
     }
 
     public void opEquals(Size a, Size b) {
         opEquals(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
     }
     public void opEquals(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
-        writeData(0x19, aByteSize, aPtrSize, bByteSize, bPtrSize);
+        writeData(0x1B, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
     public void opGreater(Size a, Size b) {
         opGreater(a.byteAmt(), a.ptrAmt(), b.byteAmt(), b.ptrAmt());
     }
     public void opGreater(int aByteSize, int aPtrSize, int bByteSize, int bPtrSize) {
-        writeData(0x1A, aByteSize, aPtrSize, bByteSize, bPtrSize);
+        writeData(0x1C, aByteSize, aPtrSize, bByteSize, bPtrSize);
     }
 
     public void opMalloc() {
-        writeData(0x1B);
-    }
-    public void opMSet() {
-        writeData(0x1C);
-    }
-    public void opMGet() {
         writeData(0x1D);
     }
-    public void opFree() {
+    public void opMSet() {
         writeData(0x1E);
+    }
+    public void opMGet() {
+        writeData(0x1F);
+    }
+    public void opFree() {
+        writeData(0x20);
     }
     public void opJumpToIndex(Info.Label dest) {
         opPushAll(dest);
-        writeData(0x1F);
+        writeData(0x21);
     }
     public void opJumpForward() {
-        writeData(0x20);
+        writeData(0x22);
     }
     public void opJumpBackward() {
-        writeData(0x21);
+        writeData(0x23);
     }
     public void opJumpIf(Info.Label dest) {
         opPushAll(dest);
-        writeData(0x22);
+        writeData(0x24);
     }
     public void opJumpArrSwitch(Collection<Info.Label> branches, Collection<byte[]> keys) {
         opJumpArrSwitch(branches.toArray(Info.Label[]::new), keys.toArray(byte[][]::new));
     }
     public void opJumpArrSwitch(Info.Label[] branches, byte[][] keys) {
         if (branches.length != keys.length) throw new IllegalArgumentException();
-        writeData(0x23, branches.length);
+        writeData(0x25, branches.length);
         for (var branch : branches) writeLabelRef(branch);
         for (var key : keys) {
             writeData(key.length);
@@ -193,42 +205,42 @@ public class Chunk {
         opJumpSwitch(branches.toArray(Info.Label[]::new));
     }
     public void opJumpSwitch(Info.Label... branches) {
-        writeData(0x24, branches.length);
+        writeData(0x26, branches.length);
         for (var branch : branches) writeLabelRef(branch);
     }
     public void opJumpToUnit() {
-        writeData(0x25);
+        writeData(0x27);
     }
     public void opJumpToPtr() {
-        writeData(0x26);
+        writeData(0x28);
     }
 
     public void opStructCreate() {
-        writeData(0x27);
+        writeData(0x29);
     }
     public void opStructEntry(int entryIndex) {
-        writeData(0x28, entryIndex);
-    }
-    public void opStructEntrySize(int entryIndex) {
-        writeData(0x29, entryIndex);
-    }
-    public void opStructSet(int entryIndex) {
         writeData(0x2A, entryIndex);
     }
-    public void opStructGet(int entryIndex) {
+    public void opStructEntrySize(int entryIndex) {
         writeData(0x2B, entryIndex);
     }
+    public void opStructSet(int entryIndex) {
+        writeData(0x2C, entryIndex);
+    }
+    public void opStructGet(int entryIndex) {
+        writeData(0x2D, entryIndex);
+    }
     public void opMapCreate() {
-        writeData(0x2C);
-    }
-    public void opMapEntry() {
-        writeData(0x2D);
-    }
-    public void opMapSet() {
         writeData(0x2E);
     }
-    public void opMapGet() {
+    public void opMapEntry() {
         writeData(0x2F);
+    }
+    public void opMapSet() {
+        writeData(0x30);
+    }
+    public void opMapGet() {
+        writeData(0x31);
     }
 
     public Info.Label createLabel() {

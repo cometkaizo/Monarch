@@ -4,7 +4,7 @@ compile function with parameters (paren_params_decl)
 compile paren_params_decl with (var_param_decl)
 compile function with statements (comment, print, function_call, var_decl, var_set, return, if, while)
 compile return with (byte_lit, var_get)
-compile var_set with (function_call, boolean_lit, byte_lit, add, or, xor, lshift, rshift, multiply, time, scan)
+compile var_set with (function_call, boolean_lit, add, subtract, or, xor, lshift, rshift, multiply, byte_lit, time, scan)
 compile multiply with (byte_lit, var_get)
 compile lshift with (byte_lit, var_get)
 compile rshift with (byte_lit, var_get)
@@ -15,38 +15,35 @@ compile add with (byte_lit, subtract, time, var_get)
 compile or with (byte_lit, subtract, time, var_get)
 compile subtract with (byte_lit, char_lit, var_get)
 compile if with conditions (greater, lesser, boolean_lit, equals, var_get)
-compile if with statements (comment, var_set, print, break, if)
+compile if with statements (comment, var_set, var_decl, print, break, if, while)
 compile equals with (char_lit, byte_lit, var_get)
-compile while with conditions (boolean_lit, lesser)
+compile while with conditions (boolean_lit, lesser, greater)
 compile while with statements (comment, var_decl, var_set, print, if, while)
 compile lesser with (byte_lit, var_get)
 compile greater with (byte_lit, var_get)
 
 function main(): void {
-    var num: byte;
-    var negative: boolean;
+    var age: byte;
     while (true) {
         var c: byte;
         c = scan;
         if (c == '\n') {
             break;
         }
-        if (c == '-') {
-            negative = true;
-        } else {
-            num = num * 10b;
-            num = num + c - '0';
-        }
+        age = age * 10b;
+        age = age + c - '0';
     }
 
-    if (num == 0b) {
-        print "Zero\n";
+    if (age > 17b) {
+        print "OLD ENOUGH TO VOTE\n";
     } else {
-        if (negative) {
-            print "Negative\n";
+        print "WAIT ";
+        var yearsToWait: byte;
+        yearsToWait = 18b - age;
+        while (yearsToWait > 0b) {
+            print yearsToWait % 10b + '0';
+            yearsToWait = yearsToWait / 10b;
         }
-        else {
-            print "Positive\n";
-        }
+        print " YEARS TO VOTE\n";
     }
 }

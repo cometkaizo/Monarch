@@ -43,8 +43,8 @@ public class Multiply {
 
         @Override
         public void assemble(AssembleContext ctx) {
-            left.assemble(ctx);
             right.assemble(ctx);
+            left.assemble(ctx);
 
             ctx.data().opMultiply(left.footprint(), right.footprint());
             ctx.stackSize().subtract(footprint());

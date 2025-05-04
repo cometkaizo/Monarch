@@ -222,8 +222,100 @@ static int arraysEqual(uint8_t* a, uint8_t* b, size_t len) {
 	return 1;
 }
 
+static int arrcmp(Value* a, size_t aLen, Value* b, size_t bLen) {
+	int inversion = 1;
+	if (aLen < bLen) {
+		size_t tempLen = aLen;
+		aLen = bLen;
+		bLen = tempLen;
+
+		Value* tempArr = a;
+		a = b;
+		b = tempArr;
+
+		inversion = -1;
+	}
+	for (size_t i = 0; i < aLen; i++) {
+		Value aByte = a[i];
+		Value bByte = i < (aLen - bLen) ? 0 : b[i - (aLen - bLen)];
+		if (aByte > bByte) return 1 * inversion;
+		if (bByte > aByte) return -1 * inversion;
+	}
+	return 0;
+}
+
 static size_t footprint(size_t byteAmt, size_t ptrAmt) {
 	return byteAmt + (ptrAmt * ptrSize);
+}
+
+static void calculateSubtraction(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (c != a) memcpy(c, a, aLen); // copy a to c if necessary
+	int borrow = 0; // borrowed from more significant bit, 1 = true, 0 = false
+	// subtract b from c
+	for (size_t i = 0; i < aLen && i < bLen; i++) {
+		Value* cByte = &c[aLen - i - 1];
+		Value* bByte = &b[bLen - i - 1];
+		if (borrow) (*cByte)--;
+
+		if (*cByte < *bByte) borrow = 1;
+		else borrow = 0;
+
+		*cByte -= *bByte;
+	}
+}
+
+static void calculateMultiplication(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	memset(c, 0, aLen);
+
+	for (size_t aIndex = 0; aIndex < aLen; aIndex++) {
+		uint16_t carry = 0;
+		for (size_t bIndex = 0; bIndex < bLen && bIndex + aIndex < aLen; bIndex++) {
+			size_t cIndex = aLen - 1 - aIndex - bIndex;
+
+			// product is 2 bytes to fit the carryover (even if it is 0xFF * 0xFF it will still fit in 2 bytes)
+			uint16_t product = a[aLen - 1 - aIndex] * b[bLen - 1 - bIndex] + carry;
+
+			uint16_t sum = c[cIndex] + product;
+			c[cIndex] = (Value)(sum & 0xFF);
+
+			carry = sum >> 8;
+		}
+		// one last carry
+		if (aLen >= aIndex + bLen + 1) { // do comparison like this because it is unsigned
+			c[aLen - 1 - aIndex - bLen] += (Value)(carry & 0xFF);
+		}
+	}
+}
+
+static InterpretResult calculateDivision(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	Value* offsetA = malloc(aLen);
+	if (!offsetA) return INTERPRET_ERROR;
+	size_t aLenBits = aLen * 8;
+
+	memset(c, 0, aLen);
+	memset(offsetA, 0, aLen);
+
+	// long division
+	for (size_t offset = 0; offset < aLenBits; offset++) {
+		size_t offsetByte = offset / 8;
+		size_t offsetWithinByte = 7 - offset % 8;
+
+		// shift offsetA left by 1 bit
+		for (size_t i = 0; i < aLen; i++) {
+			offsetA[i] <<= 1;
+			if (i < aLen - 1) offsetA[i] |= (offsetA[i + 1] & (1 << 7)) >> 7;
+		}
+		// add rightmost bit
+		offsetA[aLen - 1] |= (a[offsetByte] & (1 << offsetWithinByte)) >> offsetWithinByte;
+
+		// does b fit in offsetA?
+		if (arrcmp(b, bLen, offsetA, aLen) <= 0) {
+			c[offsetByte] |= 1 << offsetWithinByte;
+			calculateSubtraction(offsetA, aLen, b, bLen, offsetA);
+		}
+	}
+	free(offsetA);
+	return INTERPRET_OK;
 }
 
 static InterpretResult run() {
@@ -411,22 +503,70 @@ static InterpretResult run() {
 			Value* c = malloc(aLen);
 			if (!a || !b || !c) return INTERPRET_ERROR;
 
-			memset(c, 0, aLen);
-
-			for (uint8_t aIndex = 0; aIndex < aLen; aIndex++) {
-				uint16_t carry = 0; // carry is 2 bytes to fit the carryover (even if it is 0xFF * 0xFF it will still fit in 2 bytes)
-				for (uint8_t bIndex = 0; bIndex < aLen - aIndex; bIndex++) {
-					uint16_t product = a[aLen - 1 - aIndex] * b[bLen - 1 - bIndex] + carry;
-					c[aLen - 1 - aIndex - bIndex] += (Value)(product & 0xFF);
-					carry = product >> 8;
-				}
-			}
+			calculateMultiplication(a, aLen, b, bLen, c);
 
 			pushArr(c, aLen);
 
 			free(a);
 			free(b);
 			free(c);
+			break;
+		}
+		case OP_DIVIDE: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			InterpretResult status = calculateDivision(a, aLen, b, bLen, c);
+			if (status == INTERPRET_ERROR) return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
+			break;
+		}
+		case OP_MODULO: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* quotient = malloc(aLen);
+			Value* remultiplied = malloc(aLen);
+			Value* remainder = malloc(aLen);
+			if (!a || !b || !quotient || !remultiplied || !remainder) return INTERPRET_ERROR;
+
+			// q = a / b
+			InterpretResult status = calculateDivision(a, aLen, b, bLen, quotient);
+			if (status == INTERPRET_ERROR) return INTERPRET_ERROR;
+
+			// m = q * b
+			calculateMultiplication(quotient, aLen, b, bLen, remultiplied);
+
+			// rem = a - m
+			calculateSubtraction(a, aLen, remultiplied, aLen, remainder);
+
+			pushArr(remainder, aLen);
+
+			free(a);
+			free(b);
+			free(quotient);
 			break;
 		}
 		case OP_OR: {
