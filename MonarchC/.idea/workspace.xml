@@ -7,12 +7,7 @@
     <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added NumSign program">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/Chunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/Chunk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/test.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test.mnrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

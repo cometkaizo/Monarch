@@ -10,11 +10,11 @@ C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(162,31): warning C
 C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(184,22): warning C4047: 'return': 'Value' differs in levels of indirection from 'void *'
 C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(198,9): warning C4013: 'run' undefined; assuming extern returning int
 C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(210,32): warning C4047: 'return': 'uint8_t' differs in levels of indirection from 'void *'
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(429,13): warning C4133: '>': incompatible types - from 'uint8_t *' to 'void *'
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(773,9): warning C4022: 'free': pointer mismatch for actual parameter 1
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(840,25): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(917,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(936,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(978,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(994,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(447,13): warning C4133: '>': incompatible types - from 'uint8_t *' to 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(817,9): warning C4022: 'free': pointer mismatch for actual parameter 1
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(884,25): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(961,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(980,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(1022,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(1038,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
   MonarchVM.vcxproj -> C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\x64\Debug\MonarchVM.exe

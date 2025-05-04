@@ -55,6 +55,8 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 		return sizeAndOffsetInstruction("SET", chunk, offset);
 	case OP_ADD:
 		return sizeAndSizeInstruction("ADD", chunk, offset);
+	case OP_SUBTRACT:
+		return sizeAndSizeInstruction("SUBTRACT", chunk, offset);
 	case OP_MULTIPLY:
 		return sizeAndSizeInstruction("MULTIPLY", chunk, offset);
 	case OP_DIVIDE:

@@ -27,9 +27,9 @@ public class Test {
 //        c.writeLabel(after);
 //    }
     private static void writeOps(Chunk c) {
-        c.opPushAll(0xAB, 0xAB, 0xCD, 0xEF);
-        c.opPushAll(0, 0, 0xAB, 0xEF, 0xDC);
-        c.opModulo(5, 0, 4, 0);
+        c.opPushAll(0, 0, 0, 0, 2);
+        c.opPushAll(0, 0, 0, 3);
+        c.opDivide(4, 0, 5, 0);
         c.opPrint(4, 0);
     }
 }

@@ -250,17 +250,30 @@ static size_t footprint(size_t byteAmt, size_t ptrAmt) {
 
 static void calculateSubtraction(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
 	if (c != a) memcpy(c, a, aLen); // copy a to c if necessary
-	int borrow = 0; // borrowed from more significant bit, 1 = true, 0 = false
+	uint16_t borrow = 0; // amount borrowed from more significant bit; "negative carry"
 	// subtract b from c
-	for (size_t i = 0; i < aLen && i < bLen; i++) {
-		Value* cByte = &c[aLen - i - 1];
-		Value* bByte = &b[bLen - i - 1];
-		if (borrow) (*cByte)--;
+	for (size_t i = 0; i < aLen; i++) {
+		size_t cIndex = aLen - i - 1;
+		size_t bIndex = bLen - i - 1;
+		int bIndexPositive = bLen >= i + 1;
 
-		if (*cByte < *bByte) borrow = 1;
+		if (borrow) {
+			// keep borrowing to the left until we find a non-zero byte
+			// loop from cIndex->0, but since size_t is unsigned, loop like this
+			for (size_t i = cIndex; i <= cIndex; i --) {
+				uint8_t oldC = c[i];
+				c[i]--;
+				if (oldC > 0) break;
+			}
+		}
+
+		uint8_t cByte = c[cIndex];
+		uint16_t bByte = bIndexPositive ? b[bIndex] : 0;
+
+		if (cByte < bByte) borrow = 1;
 		else borrow = 0;
 
-		*cByte -= *bByte;
+		c[cIndex] -= (Value)(bByte & 0xFF);
 	}
 }
 
@@ -487,6 +500,29 @@ static InterpretResult run() {
 
 			free(a);
 			free(b);
+			break;
+		}
+		case OP_SUBTRACT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			calculateSubtraction(a, aLen, b, bLen, c);
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
 			break;
 		}
 		case OP_MULTIPLY: {
