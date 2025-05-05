@@ -55,6 +55,8 @@ public class Compiler {
                 Map.entry("add", new Add.Parser()),
                 Map.entry("subtract", new Subtract.Parser()),
                 Map.entry("multiply", new Multiply.Parser()),
+                Map.entry("divide", new Divide.Parser()),
+                Map.entry("modulo", new Modulo.Parser()),
                 Map.entry("or", new Or.Parser()),
                 Map.entry("and", new And.Parser()),
                 Map.entry("xor", new Xor.Parser()),
@@ -64,7 +66,8 @@ public class Compiler {
                 Map.entry("greater", new Greater.Parser()),
                 Map.entry("lesser", new Lesser.Parser()),
                 Map.entry("scan", new Scan.Parser()),
-                Map.entry("time", new Time.Parser())
+                Map.entry("time", new Time.Parser()),
+                Map.entry("debug_flag", new DebugFlag.Parser())
         );
     }
 

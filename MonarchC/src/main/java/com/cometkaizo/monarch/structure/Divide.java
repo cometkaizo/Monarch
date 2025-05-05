@@ -8,7 +8,7 @@ import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.util.Diagnostic;
 
-public class Modulo {
+public class Divide {
     public static class Parser extends BiOperator.Parser<Raw> {
         @Override
         protected Raw newRaw() {
@@ -16,7 +16,7 @@ public class Modulo {
         }
         @Override
         protected String operationSymbol() {
-            return "%";
+            return "/";
         }
     }
     public static class Raw extends BiOperator.Raw<Analysis> {
@@ -46,7 +46,7 @@ public class Modulo {
             right.assemble(ctx);
             left.assemble(ctx);
 
-            ctx.data().opModulo(left.footprint(), right.footprint());
+            ctx.data().opDivide(left.footprint(), right.footprint());
             ctx.stackSize().subtract(footprint());
         }
 
