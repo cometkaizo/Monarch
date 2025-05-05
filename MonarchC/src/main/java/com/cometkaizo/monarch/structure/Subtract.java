@@ -2,15 +2,12 @@ package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
-import com.cometkaizo.analysis.Size;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.DifferentTypesErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongSizeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.util.Diagnostic;
-
-import java.util.Arrays;
 
 public class Subtract {
     public static class Parser extends BiOperator.Parser<Raw> {
@@ -50,25 +47,32 @@ public class Subtract {
         }
         @Override
         public void assemble(AssembleContext ctx) {
-            // a - b
+            right.assemble(ctx);
+            left.assemble(ctx);
 
-            right.assemble(ctx); // a - _
-
-            // invert b (1's complement)
-            int[] ones = new int[footprint().byteAmt()];
-            Arrays.fill(ones, 0xFF);
-            ctx.data().opPushAll(ones);
-            ctx.data().opXor(footprint(), footprint());
-
-            left.assemble(ctx); // _ - b
-
-            // add together
-            ctx.data().opAdd(footprint(), footprint());
+            ctx.data().opSubtract(left.footprint(), right.footprint());
             ctx.stackSize().subtract(footprint());
 
-            // add 1
-            ctx.data().opPush(1);
-            ctx.data().opAdd(footprint(), new Size(1, 0));
+//            Old method, using add operation:
+//            // a - b
+//
+//            right.assemble(ctx); // a - _
+//
+//            // invert b (1's complement)
+//            int[] ones = new int[footprint().byteAmt()];
+//            Arrays.fill(ones, 0xFF);
+//            ctx.data().opPushAll(ones);
+//            ctx.data().opXor(footprint(), footprint());
+//
+//            left.assemble(ctx); // _ - b
+//
+//            // add together
+//            ctx.data().opAdd(footprint(), footprint());
+//            ctx.stackSize().subtract(footprint());
+//
+//            // add 1
+//            ctx.data().opPush(1);
+//            ctx.data().opAdd(footprint(), new Size(1, 0));
         }
 
         @Override
