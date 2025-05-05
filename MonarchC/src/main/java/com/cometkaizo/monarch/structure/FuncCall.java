@@ -3,6 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
+import com.cometkaizo.analysis.Size;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownFuncErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
@@ -141,6 +142,7 @@ public class FuncCall {
             ctx.data().opPushPtrArr(Func.Interpreter.NAME.getBytes());
             ctx.data().opPushPtrArr(unitName.getBytes());
             ctx.data().opJumpToUnit();
+            ctx.stackSize().subtract(argsFootprint());
 
             ctx.data().writeLabel(after);
             ctx.stackSize().subtract(0, 1);
@@ -152,6 +154,14 @@ public class FuncCall {
         @Override
         public Type type() {
             return returnType;
+        }
+
+        public Size argsFootprint() {
+            var sum = new Size.Mutable();
+            for (var arg : args) {
+                sum.add(arg.footprint());
+            }
+            return sum.capture();
         }
 
         private boolean returnValueUsed() {
