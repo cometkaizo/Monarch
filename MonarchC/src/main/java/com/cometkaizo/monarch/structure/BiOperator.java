@@ -2,6 +2,7 @@ package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
+import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
@@ -28,6 +29,7 @@ public class BiOperator {
             raw.right = right.valueNonNull();
             ctx.whitespace();
 
+            ctx.popStructure();
             return success(raw);
         }
 
@@ -53,10 +55,10 @@ public class BiOperator {
             return false;
         }
     }
-    public static abstract class Raw<A extends Structure.Analysis> extends Structure.Raw<A> {
+    public static abstract class Raw<A extends Structure.Analysis> extends Structure.Raw<A> implements ExprConsumer {
         public Structure.Raw<?> left, right;
     }
-    public static abstract class Analysis extends Structure.Analysis implements Expr {
+    public static abstract class Analysis extends Structure.Analysis implements Expr, ExprConsumer {
         public final Expr left, right;
         protected Analysis(Raw<?> raw, AnalysisContext ctx) {
             super(raw, ctx);
