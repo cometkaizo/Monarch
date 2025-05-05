@@ -1,11 +1,8 @@
 package com.cometkaizo.monarch.structure.resource;
 
-import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Size;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
-import com.cometkaizo.parser.Structure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +91,7 @@ public class Vars implements StackResource {
 
         @Override
         public void assembleSetup(AssembleContext ctx) {
-
+            ctx.stackSize().add(footprint);
         }
     }
 }
