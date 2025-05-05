@@ -111,8 +111,10 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 		return structEntryAccessInstruction("STRUCT_SET", chunk, offset);
 	case OP_STRUCT_GET:
 		return structEntryAccessInstruction("STRUCT_GET", chunk, offset);
+	case OP_DEBUG_FLAG:
+		return simpleInstruction("============ FLAG ============", offset);
 	default:
-		printf("Unknown opcode %d\n", instruction);
+		printf("?? Unknown opcode 0x%02x | %d ??\n", instruction, instruction);
 		return offset + 1;
 	}
 	return 0;

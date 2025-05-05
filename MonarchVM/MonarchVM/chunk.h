@@ -51,6 +51,7 @@ typedef enum {
 	OP_STRUCT_ENTRY_SIZE,
 	OP_STRUCT_SET,
 	OP_STRUCT_GET,
+	OP_DEBUG_FLAG,
 } Opcode;
 
 typedef struct {
