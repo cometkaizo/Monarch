@@ -236,6 +236,9 @@ public class Chunk {
     public void opStructGet(int entryIndex) {
         writeData(0x2E, entryIndex);
     }
+    public void opDebugFlag() {
+        writeData(0x2F);
+    }
     public void opMapCreate() {
         writeData(0x2F);
     }
