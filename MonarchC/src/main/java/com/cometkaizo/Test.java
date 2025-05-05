@@ -1,6 +1,7 @@
 package com.cometkaizo;
 
 import com.cometkaizo.bytecode.Chunk;
+import com.cometkaizo.monarch.structure.Func;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,20 +14,20 @@ public class Test {
         writeOps(c);
         c.writeTo(target);
     }
-//    private static void writeOps(Chunk c) {
-//        var after = c.createLabel();
-//        c.opPushPtr(after);
-//
-//        // no args
-//
-//        c.opPushPtrArr("main".getBytes());
-//        c.opPushPtrArr(Func.Interpreter.NAME.getBytes());
-//        c.opPushPtrArr("main.mnrc".getBytes());
-//        c.opJumpToUnit();
-//
-//        c.writeLabel(after);
-//    }
     private static void writeOps(Chunk c) {
+        var after = c.createLabel();
+        c.opPushPtr(after);
+
+        // no args
+
+        c.opPushPtrArr("main".getBytes());
+        c.opPushPtrArr(Func.Interpreter.NAME.getBytes());
+        c.opPushPtrArr("main.mnrc".getBytes());
+        c.opJumpToUnit();
+
+        c.writeLabel(after);
+    }
+    private static void writeTestOps(Chunk c) {
         c.opPushAll(0, 0, 0, 0, 2);
         c.opPushAll(0, 0, 0, 3);
         c.opDivide(4, 0, 5, 0);
