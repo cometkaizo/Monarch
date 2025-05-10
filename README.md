@@ -6,6 +6,25 @@ Currently, Monarch's compiler is written in Java. It will be rewritten in Monarc
 
 The Monarch Virtual Machine is written in C, and executes the bytecode instructions outputted by the compiler. Monarch defines its own bytecode instruction set. The VM is stack-based.
 
+## Installation
+1. Download the [Latest Release](https://www.github.com/cometkaizo/Monarch/releases/latest).
+2. Run `monarchc.jar` to run the compiler (this requires Java 21) to compile source code
+3. Or run `MonarchVM.exe` to run a compiled file
+
+## Usage
+### Compiler
+The compiler has two commands:
+- `compile <file-location>` - compiles the source code file at `file-location` to a bytecode file with the same name (`.mnrc`)
+- `exit` - exits the compiler
+
+The compiler will provide you with feedback if a command is entered incorrectly.
+### Virtual Machine (VM)
+After running the VM, a command prompt will open. You can enter the absolute file path to the compiled bytecode file (`.mnrc`) in order to run it. The VM will first display the instruction contents of the bytecode file.
+
+To run the file, you can type `run` and press enter. The file will run as normal.
+
+The VM also supports a debug mode, which can be activated by typing `debug` instead and pressing enter. The file will run, and each bytecode instruction will be printed as it runs, along with a snapshot of the stack above each. The top of the stack is on the left, the bottom is on the right.
+
 ## Key Features
 ### Custom Syntax
 A source code file specifies exactly what syntax structures it uses within it, kind of like importing classes in Java. Using the `compile with ...` and `compile without ...` syntaxes, which are the only syntaxes imported by default, a syntax can be added or removed by name.
@@ -53,15 +72,34 @@ The word `cw` in this case might be defined by `compile_with_shorthand` as equiv
 
 You can even make a macro that imports all the most commonly used syntaxes for you.
 
-## Current Features
+## Feature List
 
+- Comments
 - Functions
-- Local variables (stack)
-- Parameters (stack)
-- Return values
-- Operators `+, -, >, !, or, and, xor, *`
-- `if` statements
-- `while` loops
-- User input
-- Time tracking
-- Support for jumping execution between multiple bytecode files 
+- Local variables
+- Parameters
+- Return statements
+- If statements
+- Operators
+    - Equals
+    - Add
+    - Subtract
+    - Multiply
+    - Divide
+    - Greater than
+    - Lesser than
+    - And
+    - Or
+    - Xor
+    - Not
+    - Left shift
+    - Right shift
+- While loops
+    - Break
+- Console Input
+- Console Output
+- Time
+- Literals
+    - String
+    - Byte
+    - Char
