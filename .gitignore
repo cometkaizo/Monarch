@@ -11,6 +11,7 @@ MonarchC/.idea/libraries/
 MonarchC/*.iws
 MonarchC/*.iml
 MonarchC/*.ipr
+MonarchC/out/
 
 ### Eclipse ###
 .apt_generated
