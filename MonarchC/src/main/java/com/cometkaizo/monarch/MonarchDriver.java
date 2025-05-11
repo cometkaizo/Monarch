@@ -9,6 +9,18 @@ public class MonarchDriver extends Driver {
 
     private static final MonarchApp app = new MonarchApp();
 
+    @Override
+    protected void setup() {
+        super.setup();
+        app.setup();
+    }
+
+    @Override
+    protected void cleanup() {
+        super.cleanup();
+        app.cleanup();
+    }
+
     public MonarchDriver() {
         super(app);
         addLoop(new Runnable() {

@@ -25,7 +25,8 @@ public class MonarchApp extends App {
     @Override
     public void setup() {
         super.setup();
-        log("Fern");
+        log("Monarch compiler");
+        log("Working directory: " + System.getProperty("user.dir"));
     }
 
     public CompilationUnit.Analysis compile(String location) {
