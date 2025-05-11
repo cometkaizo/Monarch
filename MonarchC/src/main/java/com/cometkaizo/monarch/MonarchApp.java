@@ -26,7 +26,7 @@ public class MonarchApp extends App {
     public void setup() {
         super.setup();
         log("Monarch compiler");
-        log("Working directory: " + System.getProperty("user.dir"));
+        log("Working directory: {}", System.getProperty("user.dir"));
     }
 
     public CompilationUnit.Analysis compile(String location) {
