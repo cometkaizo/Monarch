@@ -33,6 +33,9 @@ To run the file, you can type `run` and press enter. The file will run as normal
 
 The VM also supports a debug mode, which can be activated by typing `debug` instead and pressing enter. The file will run, and each bytecode instruction will be printed as it runs, along with a snapshot of the stack above each. The top of the stack is on the left, the bottom is on the right.
 
+### Sample Source Codes
+Source codes for various example programs can be found in the `sample` folder in the root directory of the project.
+
 ## Key Features
 ### Custom Syntax
 A source code file specifies exactly what syntax structures it uses within it, kind of like importing classes in Java. Using the `compile with ...` and `compile without ...` syntaxes, which are the only syntaxes imported by default, a syntax can be added or removed by name.
