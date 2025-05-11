@@ -8,6 +8,7 @@
 #include "input.h"
 #include "strutil.h"
 
+int printWorkingDir(void);
 char* promptPath(void);
 char* pathDir(char* path);
 char* pathName(char* path);
@@ -15,6 +16,8 @@ char* prompt(void);
 
 int main(int argc, const char* argv[]) {
 	printf("Monarch VM\n");
+
+	if (!printWorkingDir()) return 1;
 
 	char* path = promptPath();
 	if (!path) return 1;
@@ -49,10 +52,21 @@ int main(int argc, const char* argv[]) {
 	return 0;
 }
 
+int printWorkingDir(void) {
+	char workingDir[1024];
+	if (getcwd(workingDir, sizeof(workingDir)) != NULL) {
+		printf("Working directory: %s\n", workingDir);
+		return 1;
+	} else {
+		perror("Error getting the working directory");
+		return 0;
+	}
+}
+
 char* promptPath(void) {
 	char* input = prompt();
 	if (strcmp(input, "test") == 0) {
-		return strDyn("C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/test.mnrc");
+		return strDyn("../../sample/mainentry.mnrc");
 	}
 	return input;
 }

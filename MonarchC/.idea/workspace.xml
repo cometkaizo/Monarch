@@ -9,25 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Renamed exit command method">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/command/EntrypointCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/NumGuess.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/NumSign.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/SyntaxProofOfConcept.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/VoteAgeTester.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added the logging of the working directory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/MonarchApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/MonarchApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/util/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.mnrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/NumGuess.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/NumSign.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/SyntaxProofOfConcept.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/VoteAgeTester.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/mainentry.mnrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,11 +341,50 @@
       <option name="project" value="LOCAL" />
       <updated>1746922655938</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added entrypoint command">
+      <option name="closed" value="true" />
+      <created>1746923734554</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1746923734554</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Moved sample codes to project root">
+      <option name="closed" value="true" />
+      <created>1746923780203</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1746923780203</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Changed to use the logger instead of System.out">
+      <option name="closed" value="true" />
+      <created>1746925285648</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1746925285648</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Changed path of main.txt">
+      <option name="closed" value="true" />
+      <created>1746925305328</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1746925305328</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added the logging of the working directory">
+      <option name="closed" value="true" />
+      <created>1746925328481</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1746925328481</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial compiler commit" />
     <MESSAGE value="Removed Visual Studio metadata" />
     <MESSAGE value="Removed Visual Studio metadata from IntelliJ" />
     <MESSAGE value="Fixed if statement without else run its body regardless if the condition is true or false" />
@@ -383,7 +405,12 @@
     <MESSAGE value="Fixed exit command not stopping JVM" />
     <MESSAGE value="Removed redundant Execute Command" />
     <MESSAGE value="Renamed exit command method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed exit command method" />
+    <MESSAGE value="Added entrypoint command" />
+    <MESSAGE value="Moved sample codes to project root" />
+    <MESSAGE value="Changed to use the logger instead of System.out" />
+    <MESSAGE value="Changed path of main.txt" />
+    <MESSAGE value="Added the logging of the working directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the logging of the working directory" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

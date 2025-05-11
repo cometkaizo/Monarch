@@ -1,0 +1,8 @@
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\chunk.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\chunk.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\debug.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\debug.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\input.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\input.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\main.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\memory.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\memory.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\strutil.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\strutil.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\value.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\value.obj
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c;C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\x64\Release\vm.obj
