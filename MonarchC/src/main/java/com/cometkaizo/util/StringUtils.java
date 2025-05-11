@@ -122,6 +122,17 @@ public class StringUtils {
         return START_WITH_VOWEL_FMT.matcher(str).matches();
     }
 
+    public static String nameNoExt(File entryFile) {
+        String name = entryFile.getName();
+        int lastDotIndex = name.lastIndexOf('.');
+        return lastDotIndex == -1 ? name : name.substring(0, lastDotIndex);
+    }
+    public static String extNoName(File entryFile) {
+        String name = entryFile.getName();
+        int lastDotIndex = name.lastIndexOf('.');
+        return lastDotIndex == -1 ? "" : name.substring(lastDotIndex + 1);
+    }
+
     public String findLongestCommonPrefix(String a, String b) {
         int minLength = Math.min(a.length(), b.length());
         for (int i = 0; i < minLength; i++) {

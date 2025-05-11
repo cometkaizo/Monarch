@@ -1,12 +1,12 @@
 package com.cometkaizo.monarch;
 
 import com.cometkaizo.command.CommandGroup;
+import com.cometkaizo.launcher.app.App;
 import com.cometkaizo.monarch.command.CompileCommand;
-import com.cometkaizo.monarch.command.ExecuteCommand;
+import com.cometkaizo.monarch.command.EntrypointCommand;
 import com.cometkaizo.monarch.command.ExitCommand;
 import com.cometkaizo.monarch.command.TestCommand;
 import com.cometkaizo.monarch.structure.CompilationUnit;
-import com.cometkaizo.launcher.app.App;
 import com.cometkaizo.util.Logger;
 
 import java.io.File;
@@ -17,8 +17,8 @@ public class MonarchApp extends App {
 
     private final CommandGroup commandGroup = new CommandGroup(
             CompileCommand.create(this),
+            EntrypointCommand.create(this),
             TestCommand.create(this),
-            ExecuteCommand.create(this),
             ExitCommand.create(this)
     );
 
