@@ -12,5 +12,6 @@ public class Main {
 
     public static void stop() {
         DRIVER.stop();
+        System.exit(0);
     }
 }
