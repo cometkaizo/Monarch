@@ -23,7 +23,7 @@ public class EntrypointCommand {
     private static void compile(CommandContext context, MonarchApp app) {
         try {
             var entryFile = new File(context.argStr("location"));
-            if (validateFile(entryFile)) return;
+            if (validateFile(entryFile, app)) return;
             var entryFunctionName = context.argStr("function_name");
 
             writeOps(entryFile, entryFunctionName);
@@ -32,9 +32,9 @@ public class EntrypointCommand {
         }
     }
 
-    private static boolean validateFile(File entryFile) {
+    private static boolean validateFile(File entryFile, MonarchApp app) {
         if (!entryFile.exists() || entryFile.isDirectory()) {
-            System.out.println("'" + entryFile + "' is not a file");
+            app.log("'" + entryFile + "' is not a file");
             return true;
         }
         return false;
