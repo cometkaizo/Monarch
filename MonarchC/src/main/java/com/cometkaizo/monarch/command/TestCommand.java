@@ -18,7 +18,7 @@ public class TestCommand {
 
     private static void compile(CommandContext context, MonarchApp app) {
         configure(context);
-        app.compile("src/main/resources/main.txt");
+        app.compile("../sample/main.txt");
     }
 
 
