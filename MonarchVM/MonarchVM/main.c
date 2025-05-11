@@ -19,6 +19,7 @@ int main(int argc, const char* argv[]) {
 
 	if (!printWorkingDir()) return 1;
 
+	printf("Enter bytecode file location: ");
 	char* path = promptPath();
 	if (!path) return 1;
 	char* dir = pathDir(path);
@@ -31,6 +32,7 @@ int main(int argc, const char* argv[]) {
 	Chunk* c = getChunkByName(name);
 	disassembleChunk(c, name);
 
+	printf("Run or debug? ");
 	char* input = prompt();
 	if (shouldRun(input)) {
 		setVMDebugTrace(shouldDebug(input));
