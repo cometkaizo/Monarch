@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="monarchc:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Fixed FuncCall not subtracting its parameter footprints from the stack size">
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Renamed exit command method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/command/EntrypointCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/NumGuess.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/NumSign.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/SyntaxProofOfConcept.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/VoteAgeTester.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/MonarchApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/MonarchApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main.mnrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/NumGuess.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/NumSign.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/SyntaxProofOfConcept.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sample/VoteAgeTester.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/mainentry.mnrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +62,9 @@
     &quot;accountId&quot;: &quot;d45fb084-c3bd-4d36-af15-5954979ab03d&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -50,31 +74,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.Test2.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last.edited.regexp": "pression",
-    "last_opened_file_path": "C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;pression&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.38850576&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="me.cometkaizo.monarch.bytecode" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\andyw\Documents\Dev\Monarch\MonarchC\src\main\resources\sample" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\andyw\Documents\Dev\Monarch\MonarchC\src\main\resources\sample" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
@@ -84,6 +111,7 @@
       <recent name="com.cometkaizo.analysis" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cometkaizo.monarch.command" />
       <recent name="com.cometkaizo.monarch.structure" />
       <recent name="com.cometkaizo.monarch.structure.diagnostic" />
       <recent name="com.cometkaizo.analysis" />
@@ -258,7 +286,79 @@
       <option name="project" value="LOCAL" />
       <updated>1746415020028</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Workspace change">
+      <option name="closed" value="true" />
+      <created>1746415070505</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746415070505</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Split manual operation writing method to one default and one for testing">
+      <option name="closed" value="true" />
+      <created>1746415126573</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746415126573</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added exit command">
+      <option name="closed" value="true" />
+      <created>1746833336602</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1746833336602</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added artifact">
+      <option name="closed" value="true" />
+      <created>1746837066313</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746837066313</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added artifact">
+      <option name="closed" value="true" />
+      <created>1746837195766</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1746837195766</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added installation info and updated feature list">
+      <option name="closed" value="true" />
+      <created>1746847762163</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1746847762163</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed exit command not stopping JVM">
+      <option name="closed" value="true" />
+      <created>1746921719815</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1746921719815</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Removed redundant Execute Command">
+      <option name="closed" value="true" />
+      <created>1746921780593</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1746921780593</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Renamed exit command method">
+      <option name="closed" value="true" />
+      <created>1746922655938</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1746922655938</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -275,7 +375,15 @@
     <MESSAGE value="Changed Subtract parser to use new subtract bytecode instruction" />
     <MESSAGE value="Fixed Vars not adding to the stack size" />
     <MESSAGE value="Fixed FuncCall not subtracting its parameter footprints from the stack size" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed FuncCall not subtracting its parameter footprints from the stack size" />
+    <MESSAGE value="Workspace change" />
+    <MESSAGE value="Split manual operation writing method to one default and one for testing" />
+    <MESSAGE value="Added exit command" />
+    <MESSAGE value="Added artifact" />
+    <MESSAGE value="Added installation info and updated feature list" />
+    <MESSAGE value="Fixed exit command not stopping JVM" />
+    <MESSAGE value="Removed redundant Execute Command" />
+    <MESSAGE value="Renamed exit command method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed exit command method" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
