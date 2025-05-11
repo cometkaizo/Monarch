@@ -10,10 +10,10 @@ public class ExitCommand {
     public static CommandNode create(MonarchApp app) {
             return CommandNode.build(root -> root
                     .literal("exit")
-                    .executes(ctx -> compile(ctx, app)));
+                    .executes(ctx -> exit(ctx, app)));
     }
 
-    private static void compile(CommandContext context, MonarchApp app) {
+    private static void exit(CommandContext context, MonarchApp app) {
         Main.stop();
     }
 }
