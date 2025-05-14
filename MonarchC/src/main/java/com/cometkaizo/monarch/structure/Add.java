@@ -37,7 +37,11 @@ public class Add {
         @Override
         protected Diagnostic validateRight(Expr expr) {
             if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
-            if (left != null && expr.type() != left.type()) return new DifferentTypesErr(expr.type(), left.type());
+            if (left != null) {
+                if (expr.type().equals(left.type())) return null;
+                if (expr.type() instanceof Type.Ref || left.type() instanceof Type.Ref) return null;
+                return new IncompatibleTypesErr(expr.type(), left.type());
+            }
             return null;
         }
 
