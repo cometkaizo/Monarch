@@ -13,6 +13,9 @@ public interface Expr {
     default Size footprint() {
         return isVoid() ? Size.INVALID : type().footprint();
     }
+    default String typeName() {
+        return isVoid() ? "void" : type().name();
+    }
 
     default boolean isVoid() {
         return type() == null;
