@@ -22,7 +22,7 @@ import static com.cometkaizo.util.CollectionUtils.only;
 
 public class FuncCall {
     public static class Parser extends Structure.Parser<Raw> {
-        private static final Pattern UNIT_NAME_FMT = Pattern.compile("[^: ]+");
+        private static final Pattern UNIT_NAME_FMT = Pattern.compile("[A-Za-z0-9._-]+");
         private final Any argsParsers = new Any();
 
         @Override
