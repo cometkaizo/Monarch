@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Renamed parser field">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace.xml change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,22 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fixed Vars not adding to the stack size">
-      <option name="closed" value="true" />
-      <created>1746415001657</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1746415001657</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Fixed FuncCall not subtracting its parameter footprints from the stack size">
-      <option name="closed" value="true" />
-      <created>1746415020028</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1746415020028</updated>
     </task>
     <task id="LOCAL-00015" summary="Workspace change">
       <option name="closed" value="true" />
@@ -551,12 +531,26 @@
       <option name="project" value="LOCAL" />
       <updated>1747195449971</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Added CapitalOfCanada program that showcases tentative version of pointer manipulation">
+      <option name="closed" value="true" />
+      <created>1747195525758</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1747195525758</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Workspace.xml change">
+      <option name="closed" value="true" />
+      <created>1747195545296</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1747195545296</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renamed DifferentTypesErr -&gt; IncompatibleTypesErr" />
-    <MESSAGE value="Fixed arithmetic operators not modifying stack size correctly (leaving the right footprint on the stack size instead of the left)" />
     <MESSAGE value="Changed to use new Size constants" />
     <MESSAGE value="Added Cast operation" />
     <MESSAGE value="Added Deref operation" />
@@ -580,7 +574,9 @@
     <MESSAGE value="Fixed empty parameter or variable list causing a pointer-sized variable to be pushed onto the stack" />
     <MESSAGE value="Fixed pointer-sized variables only pushing one byte onto the stack, instead of a pointer-sized block" />
     <MESSAGE value="Renamed parser field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed parser field" />
+    <MESSAGE value="Added CapitalOfCanada program that showcases tentative version of pointer manipulation" />
+    <MESSAGE value="Workspace.xml change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace.xml change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

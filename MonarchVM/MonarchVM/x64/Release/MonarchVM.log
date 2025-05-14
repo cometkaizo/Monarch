@@ -1,11 +1,23 @@
-﻿  main.c
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(37,6): warning C4013: 'shouldRun' undefined; assuming extern returning int
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(38,19): warning C4013: 'shouldDebug' undefined; assuming extern returning int
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(59,6): warning C4013: 'getcwd' undefined; assuming extern returning int
-C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\main.c(59,45): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+﻿  vm.c
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(57,18): warning C4047: 'return': 'char' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(96,8): warning C4013: 'arraysEqual' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(93,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(117,11): warning C4133: '<': incompatible types - from 'uint8_t *' to 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(154,28): warning C4047: 'function': 'uint8_t *' differs in levels of indirection from 'void **'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(154,28): warning C4024: 'memcpyWithOS': different types for formal and actual parameter 2
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(177,31): warning C4047: 'return': 'Value' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(203,22): warning C4047: 'return': 'Value' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(217,9): warning C4013: 'run' undefined; assuming extern returning int
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(229,32): warning C4047: 'return': 'uint8_t' differs in levels of indirection from 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(474,13): warning C4133: '>': incompatible types - from 'uint8_t *' to 'void *'
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(911,25): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(988,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(1007,37): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(1049,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\MonarchVM\vm.c(1065,36): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
   Generating code
-  1 of 69 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+  1 of 72 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    17 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   MonarchVM.vcxproj -> C:\Users\andyw\Documents\Dev\Monarch\MonarchVM\x64\Release\MonarchVM.exe

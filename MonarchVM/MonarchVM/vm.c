@@ -8,9 +8,16 @@
 
 VM vm;
 size_t ptrSize = sizeof(void*);
+int bigEndian;
 
-static void resetStack() {
+static void resetStack(void) {
 	vm.stackTop = vm.stack;
+}
+
+static int isBigEndian(void) {
+	int num = 1;
+	uint8_t* ptr = (uint8_t*) & num;
+	return *ptr == 0;
 }
 
 void initVM(char* basePath) {
@@ -25,6 +32,7 @@ void initVM(char* basePath) {
 	vm.inputCursor = NULL;
 	resetStack();
 	setVMDebugTrace(0);
+	bigEndian = isBigEndian();
 }
 
 void setVMDebugTrace(int debugTrace) {
@@ -124,6 +132,11 @@ static void reverseMemcpy(uint8_t* dst, uint8_t* src, size_t len) {
 		dst[len - 1 - i] = src[i];
 	}
 }
+static void memcpyWithSystem(uint8_t* dst, uint8_t* src, size_t len) {
+	// Monarch does arithmetic etc. in Big-Endian, but OS might be Little-Endian
+	if (bigEndian) memcpy(dst, src, len);
+	else reverseMemcpy(dst, src, len);
+}
 static void* bytesToPointer(uint8_t* bytes);
 
 void push(Value value) {
@@ -133,11 +146,13 @@ void push(Value value) {
 }
 void pushArr(Value* values, size_t len) {
 	if (vm.stackTop + len > vm.stack + STACK_MAX) return;
-	reverseMemcpy(vm.stackTop, values, len);
+	memcpy(vm.stackTop, values, len);
 	vm.stackTop += len;
 }
 void pushPtr(void* ptr) {
-	pushArr(&ptr, ptrSize);
+	if (vm.stackTop + ptrSize > vm.stack + STACK_MAX) return;
+	memcpyWithSystem(vm.stackTop, &ptr, ptrSize);
+	vm.stackTop += ptrSize;
 }
 static void copy(size_t index, size_t len) {
 	if (len == 0) return;
@@ -166,18 +181,22 @@ Value pop(void) {
 Value* popArr(size_t len) {
 	if (vm.stackTop - len < vm.stack) return NULL;
 	Value* arr = malloc(len);
-	reverseMemcpy(arr, vm.stackTop - len, len);
+	memcpy(arr, vm.stackTop - len, len);
 	vm.stackTop -= len;
 	return arr;
 }
 void* popPtr(void) {
-	uint8_t* locationBytes = (uint8_t*)popArr(ptrSize);
+	if (vm.stackTop - ptrSize < vm.stack) return NULL;
+	Value* locationBytes = malloc(ptrSize);
+	memcpyWithSystem(locationBytes, vm.stackTop - ptrSize, ptrSize);
+	vm.stackTop -= ptrSize;
+
 	void* location = bytesToPointer(locationBytes);
 	free(locationBytes);
 	return location;
 }
 uint32_t popInsnIndex(void) {
-	return ((uint32_t)pop() << 8 * 3) | ((uint32_t)pop() << 8 * 2) | ((uint32_t)pop() << 8 * 1) | ((uint32_t)pop() << 8 * 0);
+	return ((uint32_t)pop() << 8 * 0) | ((uint32_t)pop() << 8 * 1) | ((uint32_t)pop() << 8 * 2) | ((uint32_t)pop() << 8 * 3);
 }
 Value get(size_t index) {
 	Value* loc = vm.stackTop - index - 1;
@@ -189,7 +208,7 @@ Value* getArr(size_t index, size_t len) {
 	Value* arr = malloc(len);
 	Value* loc = vm.stackTop - index - len;
 	if (loc < vm.stack) return NULL;
-	reverseMemcpy(arr, loc, len);
+	memcpy(arr, loc, len);
 	return arr;
 }
 
@@ -246,6 +265,22 @@ static int arrcmp(Value* a, size_t aLen, Value* b, size_t bLen) {
 
 static size_t footprint(size_t byteAmt, size_t ptrAmt) {
 	return byteAmt + (ptrAmt * ptrSize);
+}
+
+static void calculateAddition(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (c != a) memcpy(c, a, aLen);
+	uint16_t buffer = 0; // buffer is 2 bytes to fit the carry bit when adding byte-by-byte right to left
+	for (size_t i = 0; i < aLen; i++) {
+		size_t cIndex = aLen - i - 1;
+		size_t bIndex = bLen - i - 1;
+
+		buffer += (uint16_t)c[cIndex];
+		if (i < bLen) buffer += (uint16_t)b[bIndex];
+		
+		c[cIndex] = (uint8_t)(buffer & 0xFF);
+
+		buffer >>= 8;
+	}
 }
 
 static void calculateSubtraction(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
@@ -339,11 +374,11 @@ static InterpretResult run() {
 	while (vm.ip < instructionEnd) {
 		if (vm.debugTrace) {
 			printf("   v [ ");
-			for (Value* slot = vm.stackTop - 1; slot >= vm.stack; slot--) {
-				printValue(*slot);
+			for (Value* slot = vm.stack; slot < vm.stackTop; slot++) {
 				if (slot != vm.stack) printf(" ");
+				printValue(*slot);
 			}
-			printf(" ] bottom\n");
+			printf(" ] top\n");
 			disassembleInstruction(chunk, (int)(vm.ip - chunk->code));
 		}
 
@@ -389,15 +424,12 @@ static InterpretResult run() {
 				break;
 			}
 
-			// reverse bytes before pushing
 			uint8_t* bytes = malloc(length);
 			if (!bytes) return INTERPRET_ERROR;
 			for (int count = 0; count < length; count++) {
 				bytes[count] = READ_BYTE();
 			}
-			for (int count = length - 1; count >= 0; count--) {
-				push((Value)bytes[count]);
-			}
+			pushArr(bytes, length);
 
 			free(bytes);
 			break;
@@ -488,18 +520,16 @@ static InterpretResult run() {
 
 			Value* a = popArr(aLen);
 			Value* b = popArr(bLen);
-			if (!a || !b) return INTERPRET_ERROR;
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
 
-			uint16_t buffer = 0; // buffer is 2 bytes to fit the carry bit when adding byte-by-byte right to left
-			for (uint8_t index = 0; index < aLen; index++) {
-				buffer += (uint16_t)a[aLen - 1 - index];
-				if (index < bLen) buffer += (uint16_t)b[bLen - 1 - index];
-				push((Value)(buffer & 0xFF));
-				buffer = buffer >> 8;
-			}
+			calculateAddition(a, aLen, b, bLen, c);
+
+			pushArr(c, aLen);
 
 			free(a);
 			free(b);
+			free(c);
 			break;
 		}
 		case OP_SUBTRACT: {
@@ -784,32 +814,34 @@ static InterpretResult run() {
 			break;
 		}
 		case OP_MALLOC: {
-			uint8_t len = (uint8_t)pop();
+			uint8_t byteLen = (uint8_t)pop();
+			uint8_t ptrLen = (uint8_t)pop();
+
+			size_t len = footprint(byteLen, ptrLen);
 
 			pushPtr(malloc(len)); // rely on Monarch program to not lose this
 
 			break;
 		}
 		case OP_MSET: {
-			uint8_t len = (uint8_t)pop();
+			uint8_t byteLen = (uint8_t)pop();
+			uint8_t ptrLen = (uint8_t)pop();
+
+			size_t len = footprint(byteLen, ptrLen);
 			uint8_t* value = (uint8_t*)popArr(len);
-			void* location = popPtr();
+			uint8_t* location = (uint8_t*)popPtr();
 
 			memcpy(location, value, len);
-
-			free(value);
+			
 			break;
 		}
 		case OP_MGET: {
-			uint8_t len = (uint8_t)pop();
-			uint8_t* value = malloc(len);
-			if (!value) return INTERPRET_ERROR;
-			void* location = popPtr();
+			uint8_t byteLen = (uint8_t)pop();
+			uint8_t ptrLen = (uint8_t)pop();
 
-			memcpy(value, location, len);
-			pushArr(value, len);
+			size_t len = footprint(byteLen, ptrLen);
+			pushArr(popPtr(), len);
 
-			free(len);
 			break;
 		}
 		case OP_FREE: {
