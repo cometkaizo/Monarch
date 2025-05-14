@@ -7,6 +7,7 @@ import com.cometkaizo.bytecode.AssembleContext;
 import java.util.ArrayList;
 import java.util.List;
 
+// Make an equivalent to this for types
 public class Vars implements StackResource {
     private final List<Var> vars = new ArrayList<>(), params = new ArrayList<>();
     private final Manager manager;
@@ -66,7 +67,7 @@ public class Vars implements StackResource {
         var c = ctx.data();
         for (var var : vars.reversed()) {
             var footprint = var.footprint();
-            c.opPushAll(new int[footprint.byteAmt()]);
+            if (footprint.byteAmt() != 0) c.opPushAll(new int[footprint.byteAmt()]); // byteAmt == 0 => 1 ptrAmt
             for (int i = 0; i < footprint.ptrAmt(); i++) {
                 c.opPushAll(0);
             }
