@@ -59,6 +59,8 @@ public class CompilationUnit {
         @Override
         public void assemble(AssembleContext ctx) {
             members.forEach(m -> m.assemble(ctx));
+            if (!ctx.stackSize().capture().isZero())
+                throw new IllegalStateException("Internal exception: lingering stack elements");
         }
 
     }
