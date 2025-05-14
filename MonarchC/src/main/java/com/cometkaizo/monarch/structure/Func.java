@@ -144,9 +144,9 @@ public class Func {
 
         private void checkReturnStatementTypes(Block block, AnalysisContext ctx) {
             for (var statement : block.statements()) {
-                if (statement instanceof Expr expr) {
-                    if (this.returnType != expr.type()) {
-                        ctx.report(new DifferentTypesErr(expr.type(), this.returnType), this);
+                if (statement instanceof Return.Analysis returnStatement) {
+                    if (this.returnType != returnStatement.value.type()) {
+                        ctx.report(new IncompatibleTypesErr(returnStatement.value.type(), this.returnType), statement);
                     }
                 } else if (statement instanceof Block deepBlock) {
                     checkReturnStatementTypes(deepBlock, ctx);
@@ -165,7 +165,7 @@ public class Func {
             resources.assembleSetup(ctx);
             params.assemble(ctx);
             statements.forEach(s -> s.assemble(ctx));
-            assembleReturn(null, ctx); // failsafe return
+            if (statements.isEmpty() || !(statements.getLast() instanceof Return.Analysis)) assembleReturn(null, ctx); // temp failsafe return
         }
 
         @Override
@@ -178,7 +178,8 @@ public class Func {
             }
 
             if (value != null) value.assemble(ctx);
-            ctx.data().opMove(resources.offset(ctx), resources.footprint().plus(0, 1));
+            ctx.data().opMove(resources.offset(ctx), resources.footprint().plus(Size.ONE_PTR));
+            if (value != null) ctx.stackSize().subtract(value.footprint());
 
             resources.assembleCleanup(ctx);
             ctx.data().opJumpToPtr();
