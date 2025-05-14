@@ -36,6 +36,7 @@ public class StringLit {
                 if (!ctx.chars.hasNext()) return fail();
             }
 
+            ctx.whitespace();
             return success(raw);
         }
     }
