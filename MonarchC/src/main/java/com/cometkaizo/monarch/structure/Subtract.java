@@ -3,7 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.monarch.structure.diagnostic.DifferentTypesErr;
+import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongSizeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;

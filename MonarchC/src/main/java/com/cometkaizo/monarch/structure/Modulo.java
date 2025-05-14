@@ -3,7 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.monarch.structure.diagnostic.DifferentTypesErr;
+import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.util.Diagnostic;
@@ -37,7 +37,7 @@ public class Modulo {
         @Override
         protected Diagnostic validateRight(Expr expr) {
             if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
-            if (left != null && expr.type() != left.type()) return new DifferentTypesErr(expr.type(), left.type());
+            if (left != null && expr.type() != left.type()) return new IncompatibleTypesErr(expr.type(), left.type());
             return null;
         }
 

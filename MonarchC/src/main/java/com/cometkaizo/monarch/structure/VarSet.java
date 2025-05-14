@@ -5,7 +5,7 @@ import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.monarch.structure.diagnostic.DifferentTypesErr;
+import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
 import com.cometkaizo.monarch.structure.diagnostic.NoResourcesErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownVarErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
@@ -95,7 +95,7 @@ public class VarSet {
                 if (vars.has(name)) {
                     type = vars.get(name).type();
                     if (value != null && !type.equals(value.type())) {
-                        ctx.report(new DifferentTypesErr(value.type(), type), this);
+                        ctx.report(new IncompatibleTypesErr(value.type(), type), this);
                     }
                 } else ctx.report(new UnknownVarErr(name), this);
             } else ctx.report(new NoResourcesErr("var_decl"), this);
