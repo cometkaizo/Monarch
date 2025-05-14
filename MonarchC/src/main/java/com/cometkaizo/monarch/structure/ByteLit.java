@@ -40,7 +40,7 @@ public class ByteLit {
         }
     }
     public static class Analysis extends Structure.Analysis implements Expr {
-        public static final Type TYPE = new Type.Static("byte", new Size(1, 0));
+        public static final Type TYPE = new Type.Static("byte", Size.ONE_BYTE);
         public final byte value;
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);

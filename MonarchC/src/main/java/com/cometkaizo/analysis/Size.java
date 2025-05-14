@@ -2,7 +2,9 @@ package com.cometkaizo.analysis;
 
 public record Size(int byteAmt, int ptrAmt) {
     public static final Size ZERO = new Size(0, 0);
-    public static final Size INVALID = new Size(0, 0);
+    public static final Size INVALID = new Size(Integer.MIN_VALUE, Integer.MIN_VALUE);
+    public static final Size ONE_BYTE = new Size(1, 0);
+    public static final Size ONE_PTR = new Size(0, 1);
 
     public Size plus(Size other) {
         return new Size(this.byteAmt + other.byteAmt, this.ptrAmt + other.ptrAmt);

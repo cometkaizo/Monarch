@@ -32,7 +32,7 @@ public class BooleanLit {
         }
     }
     public static class Analysis extends Structure.Analysis implements Expr {
-        public static final Type TYPE = new Type.Static("boolean", new Size(1, 0));
+        public static final Type TYPE = new Type.Static("boolean", Size.ONE_BYTE);
         public final boolean value;
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);

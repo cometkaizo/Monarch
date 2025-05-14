@@ -74,7 +74,7 @@ public class Not {
             value.assemble(ctx);
 
             ctx.data().opPush(0x01);
-            ctx.data().opXor(value.footprint(), new Size(1, 0));
+            ctx.data().opXor(value.footprint(), Size.ONE_BYTE);
             ctx.stackSize().subtract(value.footprint());
             ctx.stackSize().add(footprint());
         }
