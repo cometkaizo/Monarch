@@ -69,7 +69,7 @@ public class Vars implements StackResource {
             var footprint = var.footprint();
             if (footprint.byteAmt() != 0) c.opPushAll(new int[footprint.byteAmt()]); // byteAmt == 0 => 1 ptrAmt
             for (int i = 0; i < footprint.ptrAmt(); i++) {
-                c.opPushAll(0);
+                c.opPushAll(new int[0]);
             }
         }
         ctx.stackSize().add(footprint());
