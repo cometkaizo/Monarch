@@ -9,6 +9,7 @@ import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
 import com.cometkaizo.util.CharIterator;
 import com.cometkaizo.util.DiagnosticList;
+import com.cometkaizo.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class Compiler {
                 Map.entry("var_decl", new VarDecl.Parser()),
                 Map.entry("var_set", new VarSet.Parser()),
                 Map.entry("var_get", new VarGet.Parser()),
+                Map.entry("static_type_get", new StaticTypeGet.Parser()),
+                Map.entry("ref_type_get", new RefTypeGet.Parser()),
                 Map.entry("byte_lit", new ByteLit.Parser()),
                 Map.entry("boolean_lit", new BooleanLit.Parser()),
                 Map.entry("char_lit", new CharLit.Parser()),
@@ -67,7 +70,13 @@ public class Compiler {
                 Map.entry("lesser", new Lesser.Parser()),
                 Map.entry("scan", new Scan.Parser()),
                 Map.entry("time", new Time.Parser()),
-                Map.entry("debug_flag", new DebugFlag.Parser())
+                Map.entry("debug_flag", new DebugFlag.Parser()),
+                Map.entry("malloc", new Malloc.Parser()),
+                Map.entry("free", new Free.Parser()),
+                Map.entry("ref", new Ref.Parser()),
+                Map.entry("deref", new Deref.Parser()),
+                Map.entry("ref_set", new RefSet.Parser()),
+                Map.entry("cast", new Cast.Parser())
         );
     }
 
@@ -80,7 +89,7 @@ public class Compiler {
     }
 
     private static String bytecodeName(File file) {
-        return nameNoExt(file) + "." + Compiler.BYTECODE_EXT;
+        return StringUtils.nameNoExt(file) + "." + Compiler.BYTECODE_EXT;
     }
 
     public Result compile(String name, CharIterator chars, Path target) throws IOException {
@@ -130,21 +139,9 @@ public class Compiler {
     }
 
     private static Path bytecodeTarget(File file) {
-        return file.toPath().resolveSibling(nameNoExt(file) + '.' + BYTECODE_EXT);
+        return file.toPath().resolveSibling(StringUtils.nameNoExt(file) + '.' + BYTECODE_EXT);
     }
     private static boolean isSourceFile(File file) {
-        return SOURCE_EXT.equals(ext(file));
-    }
-    private static String nameNoExt(File file) {
-        String name = file.getName();
-        int extDot = name.lastIndexOf('.');
-        if (extDot != -1) return name.substring(0, extDot);
-        return name;
-    }
-    private static String ext(File file) {
-        String name = file.getName();
-        int extDot = name.lastIndexOf('.');
-        if (extDot != -1) return name.substring(extDot + 1);
-        return name;
+        return SOURCE_EXT.equals(StringUtils.extNoName(file));
     }
 }
