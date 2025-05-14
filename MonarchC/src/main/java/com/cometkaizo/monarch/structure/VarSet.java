@@ -48,9 +48,9 @@ public class VarSet {
             do {
                 ctx.whitespace();
 
-                var statementParserName = ctx.word();
-                if (statementParserName == null) return false;
-                valueParsers.add(statementParserName, ctx);
+                var valueParserName = ctx.word();
+                if (valueParserName == null) return false;
+                valueParsers.add(valueParserName, ctx);
 
                 ctx.whitespace();
             } while (ctx.literal(","));
