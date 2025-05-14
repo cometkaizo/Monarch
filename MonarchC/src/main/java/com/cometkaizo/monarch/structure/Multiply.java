@@ -47,7 +47,7 @@ public class Multiply {
             left.assemble(ctx);
 
             ctx.data().opMultiply(left.footprint(), right.footprint());
-            ctx.stackSize().subtract(footprint());
+            ctx.stackSize().subtract(right.footprint());
         }
 
         @Override

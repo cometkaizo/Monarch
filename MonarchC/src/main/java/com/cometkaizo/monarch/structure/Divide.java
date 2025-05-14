@@ -47,7 +47,7 @@ public class Divide {
             left.assemble(ctx);
 
             ctx.data().opDivide(left.footprint(), right.footprint());
-            ctx.stackSize().subtract(footprint());
+            ctx.stackSize().subtract(right.footprint());
         }
 
         @Override

@@ -51,7 +51,7 @@ public class Add {
             left.assemble(ctx);
 
             ctx.data().opAdd(left.footprint(), right.footprint());
-            ctx.stackSize().subtract(footprint());
+            ctx.stackSize().subtract(right.footprint());
         }
 
         @Override

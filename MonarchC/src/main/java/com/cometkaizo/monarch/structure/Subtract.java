@@ -55,7 +55,7 @@ public class Subtract {
             left.assemble(ctx);
 
             ctx.data().opSubtract(left.footprint(), right.footprint());
-            ctx.stackSize().subtract(footprint());
+            ctx.stackSize().subtract(right.footprint());
 
 //            Old method, using add operation:
 //            // a - b
