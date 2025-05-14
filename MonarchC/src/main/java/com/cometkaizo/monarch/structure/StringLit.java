@@ -59,6 +59,18 @@ public class StringLit {
 
         @Override
         public void assemble(AssembleContext ctx) {
+//            Chunk c = ctx.data();
+//
+//            Size targetFootprint = type.targetType().footprint();
+//            c.opPush(targetFootprint.ptrAmt());
+//            c.opPush(targetFootprint.byteAmt());
+//            c.opMalloc();
+//
+//            c.opCopy(Size.ZERO, Size.ONE_PTR);
+//            c.opPushAll(value.getBytes());
+//            c.opPush(targetFootprint.ptrAmt());
+//            c.opPush(targetFootprint.byteAmt());
+//            c.opMSet();
             ctx.data().opPushAll(value.getBytes());
             ctx.stackSize().add(footprint());
         }
