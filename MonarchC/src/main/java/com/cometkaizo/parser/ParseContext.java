@@ -8,7 +8,6 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.cometkaizo.util.CollectionUtils.findLastMax;
-import static com.cometkaizo.util.CollectionUtils.findMax;
 
 public class ParseContext extends Context {
     private static final Pattern WORD_FMT = Pattern.compile("\\w+"),
@@ -47,8 +46,8 @@ public class ParseContext extends Context {
         return Optional.ofNullable(parsers.get(name));
     }
 
-    public void reportInvalidSyntax(String message) {
-        syntaxProblems.add(new InvalidSyntaxErr(message, chars));
+    public void reportInvalidSyntax(int startIndex, String message) {
+        syntaxProblems.add(new InvalidSyntaxErr(message, startIndex, chars));
     }
     public Optional<InvalidSyntaxErr> syntaxProblem() {
         return findLastMax(syntaxProblems, InvalidSyntaxErr::index);
@@ -72,8 +71,8 @@ public class ParseContext extends Context {
         frames.removeFirst();
     }
     public void exitFrameFail(String message) {
-        reportInvalidSyntax(message);
         var frame = frames.removeFirst();
+        reportInvalidSyntax(frame.cursor, message);
         chars.jumpTo(frame.cursor);
         reverseStructuresTo(frame.rawCount);
     }

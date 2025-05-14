@@ -36,12 +36,12 @@ public class MonarchApp extends App {
 
         try {
             var result = compiler.compile(sourceFile);
+            if (result.syntaxCxt.problems.logIfNotEmpty(logger)) return null;
             if (result.unit == null) {
                 logger.red().log("Incorrect syntax");
                 logger.red().log(result.syntaxCxt.syntaxProblem().orElseThrow().getString());
                 return null;
             }
-            // if (result.syntaxCxt.problems.logIfNotEmpty(logger)) return null;
             logger.green().log("No syntax problems found\n" + result.unit);
 
             if (result.analysisCtx.problems.logIfNotEmpty(logger)) return null;
