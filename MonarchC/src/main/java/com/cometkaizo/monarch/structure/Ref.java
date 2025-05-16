@@ -3,9 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
-import com.cometkaizo.analysis.Size;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.ParseContext;
@@ -56,20 +54,18 @@ public class Ref {
         }
     }
     public static class Analysis extends Structure.Analysis implements Expr, ExprConsumer {
-        public final Expr value;
+        public final Locatable value;
         public final Type.Ref type;
 
         protected Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
-            Expr value = null;
+            Locatable value = null;
             Type.Ref type = null;
 
-            if (raw.value.analyze(ctx) instanceof Expr expr) {
-                if (!expr.isVoid()) {
-                    value = expr;
-                    type = new Type.Ref(value.type());
-                } else ctx.report(new WrongTypeErr("reference parameter", "expression"), this);
-            } else ctx.report(new WrongTypeErr("reference parameter", "expression"), this);
+            if (raw.value.analyze(ctx) instanceof Locatable expr) {
+                value = expr;
+                type = new Type.Ref(value.typeAtLocation());
+            } else ctx.report(new WrongTypeErr("reference parameter", "locatable value"), this);
 
             this.value = value;
             this.type = type;
@@ -77,28 +73,7 @@ public class Ref {
 
         @Override
         public void assemble(AssembleContext ctx) {
-            Chunk c = ctx.data();
-
-            // malloc a new ptr
-            c.opPush(value.footprint().ptrAmt());
-            c.opPush(value.footprint().byteAmt());
-            c.opMalloc();
-
-            // p:location
-            c.opCopy(Size.ZERO, Size.ONE_PTR);
-
-            // ?:value
-            value.assemble(ctx);
-
-            // 1:byte_size,1:ptr_size
-            c.opPush(value.footprint().ptrAmt());
-            c.opPush(value.footprint().byteAmt());
-
-            // set the value to the ptr
-            c.opMSet();
-
-            ctx.stackSize().subtract(value.footprint());
-            ctx.stackSize().add(Size.ONE_PTR);
+            value.assembleLocation(ctx);
         }
 
         @Override
