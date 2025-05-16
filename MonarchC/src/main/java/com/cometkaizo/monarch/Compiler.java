@@ -71,6 +71,7 @@ public class Compiler {
                 Map.entry("time", new Time.Parser()),
                 Map.entry("debug_flag", new DebugFlag.Parser()),
                 Map.entry("malloc", new Malloc.Parser()),
+                Map.entry("malloc_set", new MallocSet.Parser()),
                 Map.entry("free", new Free.Parser()),
                 Map.entry("ref", new Ref.Parser()),
                 Map.entry("deref", new Deref.Parser()),
