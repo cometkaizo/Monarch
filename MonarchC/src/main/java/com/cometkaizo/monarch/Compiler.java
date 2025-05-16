@@ -43,7 +43,6 @@ public class Compiler {
                 Map.entry("var_param_decl", new VarParamDecl.Parser()),
                 Map.entry("return", new Return.Parser()),
                 Map.entry("var_decl", new VarDecl.Parser()),
-                Map.entry("var_set", new VarSet.Parser()),
                 Map.entry("var_get", new VarGet.Parser()),
                 Map.entry("static_type_get", new StaticTypeGet.Parser()),
                 Map.entry("ref_type_get", new RefTypeGet.Parser()),
@@ -75,7 +74,7 @@ public class Compiler {
                 Map.entry("free", new Free.Parser()),
                 Map.entry("ref", new Ref.Parser()),
                 Map.entry("deref", new Deref.Parser()),
-                Map.entry("ref_set", new RefSet.Parser()),
+                Map.entry("set", new Set.Parser()),
                 Map.entry("cast", new Cast.Parser())
         );
     }
