@@ -56,7 +56,7 @@ public class Add {
 
         @Override
         public Type type() {
-            return left.type();
+            return left == null ? null : left.type();
         }
     }
 }
