@@ -32,6 +32,10 @@ public class InvalidSyntaxErr implements Diagnostic {
                 " ".repeat(caretPos) + "^";
     }
 
+    public InvalidSyntaxErr(Diagnostic diagnostic, int startIndex, CharIterator chars) {
+        this(diagnostic.getString(), startIndex, chars);
+    }
+
     @Override
     public String getString() {
         return message;

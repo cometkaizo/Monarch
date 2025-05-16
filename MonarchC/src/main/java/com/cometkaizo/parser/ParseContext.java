@@ -2,6 +2,7 @@ package com.cometkaizo.parser;
 
 import com.cometkaizo.parser.diagnostic.InvalidSyntaxErr;
 import com.cometkaizo.util.CharIterator;
+import com.cometkaizo.util.Diagnostic;
 import com.cometkaizo.util.DiagnosticList;
 
 import java.util.*;
@@ -48,6 +49,9 @@ public class ParseContext extends Context {
 
     public void reportInvalidSyntax(int startIndex, String message) {
         syntaxProblems.add(new InvalidSyntaxErr(message, startIndex, chars));
+    }
+    public void report(Diagnostic diagnostic) {
+        super.report(new InvalidSyntaxErr(diagnostic, frames.getFirst().cursor, chars));
     }
     public Optional<InvalidSyntaxErr> syntaxProblem() {
         return findLastMax(syntaxProblems, InvalidSyntaxErr::index);
