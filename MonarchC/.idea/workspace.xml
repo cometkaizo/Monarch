@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Changed Capital Of Canada sample program to use updated pointer syntax">
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Updated README to include pointers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
@@ -157,14 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added entrypoint command">
-      <option name="closed" value="true" />
-      <created>1746923734554</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1746923734554</updated>
     </task>
     <task id="LOCAL-00025" summary="Moved sample codes to project root">
       <option name="closed" value="true" />
@@ -550,11 +542,18 @@
       <option name="project" value="LOCAL" />
       <updated>1747358411822</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Updated README to include pointers">
+      <option name="closed" value="true" />
+      <created>1747361224169</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1747361224169</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added internal check to ensure stack size balances back to zero" />
     <MESSAGE value="Added typeName convenience method" />
     <MESSAGE value="Fixed Func not subtracting return value from stack size at the correct time" />
     <MESSAGE value="Limited unit names to alphanumeric characters and the characters . _ -" />
@@ -579,7 +578,8 @@
     <MESSAGE value="Changed &quot;lingering stack elements in func&quot; error message to print the name of the function" />
     <MESSAGE value="Added success feedback message for EntrypointCommand" />
     <MESSAGE value="Changed Capital Of Canada sample program to use updated pointer syntax" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Capital Of Canada sample program to use updated pointer syntax" />
+    <MESSAGE value="Updated README to include pointers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README to include pointers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

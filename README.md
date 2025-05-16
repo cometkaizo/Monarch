@@ -21,9 +21,11 @@ Currently, Monarch's compiler is written in Java. It will be rewritten in Monarc
 The Monarch Virtual Machine is written in C, and executes the bytecode instructions outputted by the compiler. Monarch defines its own bytecode instruction set. The VM is stack-based.
 
 ## Installation
-1. Download the [Latest Release](https://www.github.com/cometkaizo/Monarch/releases/latest).
+1. Go to the [Latest Release](https://www.github.com/cometkaizo/Monarch/releases/latest) and **download the 3 files: `monarchc.jar`, `MonarchVM.exe`, and `MonarchVM.bat`**.
 2. Run `monarchc.jar` to run the compiler (this requires Java 21) to compile source code
 3. Or run `MonarchVM.bat` to run a compiled file
+
+See below for usage instructions for the compiler and virtual machine.
 
 ## Usage
 ### Compiler
