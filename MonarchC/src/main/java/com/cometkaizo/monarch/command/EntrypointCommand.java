@@ -27,6 +27,7 @@ public class EntrypointCommand {
             var entryFunctionName = context.argStr("function_name");
 
             writeOps(entryFile, entryFunctionName);
+            app.log("Created entrypoint file to function '" + entryFunctionName + "' in '" + entryFile + "'");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
