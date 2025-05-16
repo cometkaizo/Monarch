@@ -45,6 +45,8 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 		return simpleInstruction("PUSH_PTR_NEXT", offset);
 	case OP_PUSH_PTR_ARR:
 		return byteArrayInstruction("PUSH_PTR_ARR", chunk, offset);
+	case OP_PUSH_PTR_STACK:
+		return offsetInstruction("PUSH_PTR_STACK", chunk, offset);
 	case OP_PUSH_PTR:
 		return insnIndexInstruction("PUSH_PTR", chunk, offset);
 	case OP_COPY:
@@ -143,6 +145,13 @@ static int sizeInstruction(const char* name, Chunk* chunk, int offset) {
 	uint8_t ptrAmt = chunk->code[offset + 2];
 
 	printf("%s (len: %db + %dp)\n", name, byteAmt, ptrAmt);
+	return offset + 1 + 2;
+}
+static int offsetInstruction(const char* name, Chunk* chunk, int offset) {
+	uint8_t byteAmt = chunk->code[offset + 1];
+	uint8_t ptrAmt = chunk->code[offset + 2];
+
+	printf("%s (offset: %db + %dp)\n", name, byteAmt, ptrAmt);
 	return offset + 1 + 2;
 }
 static int byteArrayInstruction(const char* name, Chunk* chunk, int offset) {

@@ -464,6 +464,15 @@ static InterpretResult run() {
 			vm.ip += length;
 			if (vm.ip >= instructionEnd) return INTERPRET_ERROR;
 			break;
+		case OP_PUSH_PTR_STACK: {
+			uint8_t byteOff = READ_BYTE();
+			uint8_t ptrOff = READ_BYTE();
+
+			size_t offset = footprint(byteOff, ptrOff);
+
+			pushPtr(vm.stackTop - offset);
+			break;
+		}
 		case OP_PUSH_PTR: {
 			uint32_t index = 0;
 			index = (index + READ_BYTE()) << 8 * 3;
@@ -496,10 +505,10 @@ static InterpretResult run() {
 		case OP_SET: {
 			uint8_t byteLen = READ_BYTE();
 			uint8_t ptrLen = READ_BYTE();
-			uint8_t byteOffset = READ_BYTE();
-			uint8_t ptrOffset = READ_BYTE();
+			uint8_t byteOff = READ_BYTE();
+			uint8_t ptrOff = READ_BYTE();
 
-			size_t offset = footprint(byteOffset, ptrOffset);
+			size_t offset = footprint(byteOff, ptrOff);
 			size_t len = footprint(byteLen, ptrLen);
 			Value* src = vm.stackTop - len;
 			Value* dest = src - offset;
