@@ -55,7 +55,7 @@ public class Deref {
             return new Analysis(this, ctx);
         }
     }
-    public static class Analysis extends Structure.Analysis implements Expr, ExprConsumer {
+    public static class Analysis extends Structure.Analysis implements Expr, ExprConsumer, Locatable {
         public final Expr ref;
         public final Type type;
         protected Analysis(Raw raw, AnalysisContext ctx) {
@@ -99,6 +99,16 @@ public class Deref {
                     ref.type() instanceof Type.Ref refType ?
                             refType.targetType() :
                             ByteLit.Analysis.TYPE;
+        }
+
+        @Override
+        public void assembleLocation(AssembleContext ctx) {
+            ref.assemble(ctx);
+        }
+
+        @Override
+        public Type typeAtLocation() {
+            return type;
         }
     }
 }

@@ -2,6 +2,7 @@ package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
+import com.cometkaizo.analysis.Size;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownVarErr;
@@ -31,7 +32,7 @@ public class VarGet {
             return new Analysis(this, ctx);
         }
     }
-    public static class Analysis extends Structure.Analysis implements Expr {
+    public static class Analysis extends Structure.Analysis implements Expr, Locatable {
         @NoPrint public final Vars vars;
         public final String name;
         public final Type type;
@@ -59,6 +60,17 @@ public class VarGet {
 
         @Override
         public Type type() {
+            return type;
+        }
+
+        @Override
+        public void assembleLocation(AssembleContext ctx) {
+            ctx.data().opPushPtrStack(vars.offsetOf(name, ctx).plus(footprint()));
+            ctx.stackSize().add(Size.ONE_PTR);
+        }
+
+        @Override
+        public Type typeAtLocation() {
             return type;
         }
     }
