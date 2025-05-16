@@ -174,7 +174,7 @@ public class Func {
             if (!junk.isZero()) {
                 ctx.data().opPopAll(junk);
                 ctx.stackSize().subtract(junk);
-                throw new IllegalStateException("Internal exception: lingering stack elements in func");
+                throw new IllegalStateException("Internal exception: lingering stack elements in func '" + name + "'");
             }
 
             if (value != null) value.assemble(ctx);
