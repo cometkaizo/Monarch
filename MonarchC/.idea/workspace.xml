@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added success feedback message for EntrypointCommand">
-      <change afterPath="$PROJECT_DIR$/../sample/CapitalOfCanadaV2.txt" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Changed Capital Of Canada sample program to use updated pointer syntax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/mainentry.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/mainentry.mnrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,14 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Renamed exit command method">
-      <option name="closed" value="true" />
-      <created>1746922655938</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746922655938</updated>
     </task>
     <task id="LOCAL-00024" summary="Added entrypoint command">
       <option name="closed" value="true" />
@@ -553,11 +542,18 @@
       <option name="project" value="LOCAL" />
       <updated>1747358224584</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Changed Capital Of Canada sample program to use updated pointer syntax">
+      <option name="closed" value="true" />
+      <created>1747358411822</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1747358411822</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Ref Type" />
     <MESSAGE value="Added internal check to ensure stack size balances back to zero" />
     <MESSAGE value="Added typeName convenience method" />
     <MESSAGE value="Fixed Func not subtracting return value from stack size at the correct time" />
@@ -582,7 +578,8 @@
     <MESSAGE value="Fixed some syntax errors not showing the line or the line number" />
     <MESSAGE value="Changed &quot;lingering stack elements in func&quot; error message to print the name of the function" />
     <MESSAGE value="Added success feedback message for EntrypointCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added success feedback message for EntrypointCommand" />
+    <MESSAGE value="Changed Capital Of Canada sample program to use updated pointer syntax" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Capital Of Canada sample program to use updated pointer syntax" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
