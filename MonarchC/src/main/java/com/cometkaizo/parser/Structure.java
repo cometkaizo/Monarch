@@ -67,7 +67,7 @@ public final class Structure {
             return fail(defaultFailMessage());
         }
         protected Result failExpecting(String expected) {
-            return fail(expected + " expected here");
+            return fail(defaultFailMessage() + ": " + expected + " expected here");
         }
         protected Result fail(String message) {
             return new Result(false, null, message);
