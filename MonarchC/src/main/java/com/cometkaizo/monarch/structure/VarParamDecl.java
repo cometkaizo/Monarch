@@ -5,7 +5,6 @@ import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
 import com.cometkaizo.monarch.structure.diagnostic.NoResourcesErr;
-import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.monarch.structure.resource.Var;
@@ -75,7 +74,6 @@ public class VarParamDecl {
             Type type = null;
             if (raw.type.analyze(ctx) instanceof TypeGet.Analysis typeGet) {
                 if (typeGet.type() != null) type = typeGet.type();
-                else ctx.report(new UnknownTypeErr(typeGet.name()), this);
             } else ctx.report(new WrongTypeErr("variable type", "valid type"), this);
             this.type = type;
 
