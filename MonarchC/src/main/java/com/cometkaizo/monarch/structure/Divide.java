@@ -37,7 +37,7 @@ public class Divide {
         @Override
         protected Diagnostic validateRight(Expr expr) {
             if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
-            if (left != null && expr.type() != left.type()) return new IncompatibleTypesErr(expr.type(), left.type());
+            if (left != null && !expr.type().equals(left.type())) return new IncompatibleTypesErr(expr.type(), left.type());
             return null;
         }
 
