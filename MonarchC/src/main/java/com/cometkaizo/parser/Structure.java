@@ -174,6 +174,8 @@ public final class Structure {
         private volatile T analysis;
         public int startIndex, endIndex;
         public T analyze(AnalysisContext ctx) {
+            if (parent != null && parent.analysis == null) parent.analyze(ctx);
+
             if (analysis == null) {
                 synchronized (this) {
                     if (analysis == null) {
@@ -192,8 +194,9 @@ public final class Structure {
         @NoPrint public final int startIndex;
         @NoPrint public final int endIndex;
 
-        protected Analysis(Raw<?> raw, AnalysisContext ctx) {
-            this.parent = ctx.topStructure();
+        protected <T extends Analysis> Analysis(Raw<T> raw, AnalysisContext ctx) {
+            raw.analysis = (T)this;
+            this.parent = findParent(raw, ctx);//ctx.topStructure();
             this.startIndex = raw.startIndex;
             this.endIndex = raw.endIndex;
             if (this.parent != null) {
@@ -201,6 +204,13 @@ public final class Structure {
             } else {
                 this.ancestors = new AncestorList(List.of());
             }
+        }
+
+        private <T extends Analysis> Analysis findParent(Raw<T> raw, AnalysisContext ctx) {
+            if (raw.parent == null) return null;
+            var parent = raw.parent.analyze(ctx);
+            if (parent == null) return findParent(raw.parent, ctx);
+            return parent;
         }
 
         public abstract void assemble(AssembleContext ctx);
