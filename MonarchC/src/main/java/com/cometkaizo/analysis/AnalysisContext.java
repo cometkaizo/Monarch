@@ -2,7 +2,6 @@ package com.cometkaizo.analysis;
 
 import com.cometkaizo.analysis.diagnostic.InvalidSemanticsErr;
 import com.cometkaizo.monarch.structure.CompilationUnit;
-import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.Context;
 import com.cometkaizo.parser.Structure;
 import com.cometkaizo.util.CharIterator;
@@ -13,7 +12,6 @@ import java.util.*;
 public class AnalysisContext extends Context {
     private final Deque<Structure.Analysis> structures = new ArrayDeque<>();
 
-    private final Map<String, Type> types;
     private final CharIterator chars;
     private final Map<String, CompilationUnit.Raw> compilationUnits = new HashMap<>(1);
 
@@ -31,10 +29,6 @@ public class AnalysisContext extends Context {
     }
     public Structure.Analysis topStructure() {
         return structures.peekFirst();
-    }
-
-    public Optional<Type> getType(String name) {
-        return Optional.ofNullable(types.get(name));
     }
 
     public void addCompilationUnit(CompilationUnit.Raw unit) {
