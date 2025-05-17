@@ -1,9 +1,11 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
-import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
+import com.cometkaizo.monarch.structure.diagnostic.UnknownUnitErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.ParseContext;
+
+import static com.cometkaizo.monarch.structure.CompilationUnit.Parser.UNIT_NAME_FMT;
 
 public class StaticTypeGet {
     public static class Parser extends TypeGet.Parser<Raw> {
@@ -11,38 +13,54 @@ public class StaticTypeGet {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            raw.name = ctx.word();
-            if (raw.name == null) return fail();
+            var unitOrTypeName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);
+            if (unitOrTypeName == null) return fail();
             ctx.whitespace();
+
+            // unit name may or may not be specified
+            if (ctx.literal(":")) {
+                ctx.whitespace();
+
+                raw.unitName = unitOrTypeName;
+
+                raw.typeName = ctx.word();
+                if (raw.typeName == null) return fail();
+                ctx.whitespace();
+            } else {
+                raw.unitName = ctx.getCurrentCompilationUnit().name;
+                raw.typeName = unitOrTypeName;
+            }
 
             return success(raw);
         }
     }
     public static class Raw extends TypeGet.Raw<Analysis> {
-        public String name;
+        public String unitName, typeName;
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
             return new Analysis(this, ctx);
         }
     }
     public static class Analysis extends TypeGet.Analysis {
-        private final String name;
+        public final String unitName, typeName;
         public final Type.Static type;
         protected Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
-            this.name = raw.name;
+            this.unitName = raw.unitName;
+            this.typeName = raw.typeName;
 
             Type.Static type = null;
-            var typeOpt = ctx.getType(name);
-            if (typeOpt.isPresent()) {
-                if (typeOpt.get() instanceof Type.Static typeStatic) type = typeStatic;
-            } else ctx.report(new UnknownTypeErr(name), this);
+            var unitOpt = ctx.getCompilationUnit(unitName);
+            if (unitOpt.isPresent()) {
+                var typeOpt = unitOpt.get().findMember(TypeDecl.Raw.class, t -> t.name.equals(typeName));
+                if (typeOpt.isPresent()) type = typeOpt.get().analyze(ctx).toType();
+            } else ctx.report(new UnknownUnitErr(unitName), this);
             this.type = type;
         }
 
         @Override
         public String name() {
-            return name;
+            return typeName;
         }
 
         @Override

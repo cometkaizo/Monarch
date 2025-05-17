@@ -3,8 +3,6 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.*;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.bytecode.Chunk;
-import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
-import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.monarch.structure.resource.Vars;
@@ -19,49 +17,48 @@ import java.util.function.Predicate;
 
 public class Func {
     public static class Parser extends Structure.Parser<Raw> {
-        private final Any statementParsers;
-        private final Any paramsParsers;
-
-        public Parser() {
-            this.statementParsers = new Any();
-            this.paramsParsers = new Any();
-        }
+        private final Any statementParsers = new Any();
+        private final Any paramsParsers = new Any();
+        private final Any returnTypeParsers = new Any();
 
         @Override
         protected Result parseImpl(ParseContext ctx) {
-            if (!ctx.literal("function")) return fail();
+            if (!ctx.literal("function")) return failExpecting("'function'");
             var raw = ctx.pushStructure(new Raw());
-            if (!ctx.whitespace()) return fail();
+            if (!ctx.whitespace()) return failExpecting("whitespace");
 
             // name
             raw.name = ctx.word();
-            if (raw.name == null) return fail();
+            if (raw.name == null) return failExpecting("name");
             ctx.whitespace();
 
             // params
             var params = paramsParsers.parse(ctx);
-            if (params.success()) raw.params = params.valueNonNull();
-            else return fail();
+            if (!params.hasValue()) return failExpecting("parameters");
+            raw.params = params.valueNonNull();
             ctx.whitespace();
 
             // return type
-            if (!ctx.literal(":")) return fail();
+            if (!ctx.literal(":")) return failExpecting("':'");
             ctx.whitespace();
-            raw.returnType = ctx.word();
-            if (raw.returnType == null) return fail();
+            if (!ctx.literal("void")) {
+                var returnType = returnTypeParsers.parse(ctx);
+                if (!returnType.hasValue()) return failExpecting("return type");
+                raw.returnType = returnType.valueNonNull();
+            }
             ctx.whitespace();
 
             // body
-            if (!ctx.literal("{")) return fail();
+            if (!ctx.literal("{")) return failExpecting("'{'");
             ctx.whitespace();
 
             while (!ctx.literal("}")) {
                 var statement = statementParsers.parse(ctx);
-                if (!statement.success()) return fail();
+                if (!statement.hasValue()) return failExpecting("statement");
                 statement.value().ifPresent(raw.statements::add);
 
                 ctx.whitespace();
-                if (!ctx.chars.hasNext()) return fail();
+                if (!ctx.chars.hasNext()) return failExpecting("'}'");
             }
 
             ctx.whitespace();
@@ -73,6 +70,7 @@ public class Func {
             Any parser;
             if (ctx.literal("statements")) parser = statementParsers;
             else if (ctx.literal("parameters")) parser = paramsParsers;
+            else if (ctx.literal("return") && ctx.whitespace() && ctx.literal("types")) parser = returnTypeParsers;
             else return false;
 
             ctx.whitespace();
@@ -96,9 +94,9 @@ public class Func {
 
     }
     public static class Raw extends Structure.Raw<Analysis> {
-        public String name, returnType;
+        public String name;
         public List<Structure.Raw<?>> statements = new ArrayList<>();
-        public Structure.Raw<?> params;
+        public Structure.Raw<?> params, returnType; // null returnType = void
 
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
@@ -110,7 +108,7 @@ public class Func {
         public final StackResource.Manager.Simple resources = new StackResource.Manager.Simple();
         public final List<Structure.Analysis> statements;
         public final ParenParamsDecl.Analysis params;
-        public final Type returnType;
+        public final Type returnType; // null = void
 
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
@@ -118,14 +116,13 @@ public class Func {
 
             this.name = raw.name;
 
-            var returnType = ctx.getType(raw.returnType);
-            if ("void".equals(raw.returnType)) this.returnType = null;
-            else if (returnType.isPresent()) {
-                this.returnType = returnType.get();
-            } else {
-                this.returnType = null;
-                ctx.report(new UnknownTypeErr(raw.returnType), this);
+            Type returnType = null;
+            if (raw.returnType != null) {
+                if (raw.returnType.analyze(ctx) instanceof TypeGet.Analysis typeGet) {
+                    if (typeGet.type() != null) returnType = typeGet.type();
+                } else ctx.report(new WrongTypeErr("function return type", "valid return type"), this);
             }
+            this.returnType = returnType;
 
             resources.getOrCreate(Vars.Params.class, Vars.Params::new);
 
@@ -137,21 +134,8 @@ public class Func {
             }
 
             this.statements = ctx.analyze(raw.statements);
-            checkReturnStatementTypes(this, ctx);
 
             ctx.popStructure();
-        }
-
-        private void checkReturnStatementTypes(Block block, AnalysisContext ctx) {
-            for (var statement : block.statements()) {
-                if (statement instanceof Return.Analysis returnStatement) {
-                    if (this.returnType != returnStatement.value.type()) {
-                        ctx.report(new IncompatibleTypesErr(returnStatement.value.type(), this.returnType), statement);
-                    }
-                } else if (statement instanceof Block deepBlock) {
-                    checkReturnStatementTypes(deepBlock, ctx);
-                }
-            }
         }
 
         @Override
@@ -166,6 +150,11 @@ public class Func {
             params.assemble(ctx);
             statements.forEach(s -> s.assemble(ctx));
             if (statements.isEmpty() || !(statements.getLast() instanceof Return.Analysis)) assembleReturn(null, ctx); // temp failsafe return
+        }
+
+        @Override
+        public Type returnType() {
+            return returnType;
         }
 
         @Override
