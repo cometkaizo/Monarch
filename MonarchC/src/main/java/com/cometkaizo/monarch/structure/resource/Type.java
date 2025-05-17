@@ -5,7 +5,11 @@ import com.cometkaizo.analysis.Size;
 public interface Type {
     String name();
     Size footprint();
-    record Static(String name, Size footprint) implements Type { }
+    record Static(String name, Size footprint) implements Type {
+        public Static {
+            if (footprint == null) footprint = Size.ZERO;
+        }
+    }
     record Ref(boolean targetTypeKnown, Type targetType) implements Type {
         public Ref(Type targetType) {
             this(true, targetType);

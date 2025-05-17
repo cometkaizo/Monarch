@@ -4,6 +4,6 @@ import com.cometkaizo.analysis.Size;
 
 public record Var(String name, Type type) {
     public Size footprint() {
-        return type.footprint();
+        return type == null ? Size.ZERO : type.footprint();
     }
 }

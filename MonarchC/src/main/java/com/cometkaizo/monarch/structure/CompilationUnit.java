@@ -7,16 +7,27 @@ import com.cometkaizo.parser.Structure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+
+import static com.cometkaizo.util.CollectionUtils.only;
 
 public class CompilationUnit {
     public static class Parser extends Structure.Parser<Raw> {
+        public static final Pattern UNIT_NAME_FMT = Pattern.compile("[A-Za-z0-9._-]+");
         private final Any parsers = new Any();
+        private final String name;
+
+        public Parser(String name) {
+            this.name = name;
+        }
 
         @Override
         protected Result parseImpl(ParseContext ctx) {
             if (parsers.isEmpty()) parsers.add("compile_with", ctx);
 
-            var raw = ctx.pushStructure(new Raw());
+            var raw = ctx.pushStructure(new Raw(name));
             ctx.whitespace();
 
             while (ctx.chars.hasNext()) {
@@ -38,10 +49,18 @@ public class CompilationUnit {
         public String name;
         public List<Structure.Raw<?>> members = new ArrayList<>();
 
+        public Raw(String name) {
+            this.name = name;
+        }
+
         @Override
         public Analysis analyzeImpl(AnalysisContext ctx) {
-            ctx.addCompilationUnit(this);
             return new Analysis(this, ctx);
+        }
+
+        // todo: change to hierarchy similar to Vars
+        public <T> Optional<T> findMember(Class<T> type, Predicate<? super T> filter) {
+            return only(members, type).stream().filter(filter).findAny();
         }
     }
 

@@ -111,7 +111,7 @@ public class Set {
         private boolean isCompatible(Locatable ref, Expr value) {
             Type left = ref.typeAtLocation();
             Type right = value.type();
-            return left.equals(right) ||
+            return left != null && left.equals(right) ||
                     left instanceof Type.Ref(boolean targetTypeKnown, Type targetType) &&
                             (!targetTypeKnown || targetType.equals(right));
         }

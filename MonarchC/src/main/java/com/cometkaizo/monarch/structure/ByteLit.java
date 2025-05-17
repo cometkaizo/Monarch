@@ -1,11 +1,11 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
+import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.Size;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.NumberFormatErr;
 import com.cometkaizo.monarch.structure.resource.Type;
-import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
 
@@ -39,7 +39,7 @@ public class ByteLit {
             return new Analysis(this, ctx);
         }
     }
-    public static class Analysis extends Structure.Analysis implements Expr {
+    public static class Analysis extends Structure.Analysis implements Expr, StaticExpr<Byte> {
         public static final Type TYPE = new Type.Static("byte", Size.ONE_BYTE);
         public final byte value;
         public Analysis(Raw raw, AnalysisContext ctx) {
@@ -56,6 +56,11 @@ public class ByteLit {
         @Override
         public Type type() {
             return TYPE;
+        }
+
+        @Override
+        public Byte staticEvaluate() {
+            return value;
         }
     }
 }
