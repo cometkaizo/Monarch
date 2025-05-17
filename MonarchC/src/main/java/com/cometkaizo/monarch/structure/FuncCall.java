@@ -6,7 +6,6 @@ import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.analysis.Size;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownFuncErr;
-import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownUnitErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
@@ -16,13 +15,11 @@ import com.cometkaizo.parser.Structure;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
 
-import static com.cometkaizo.util.CollectionUtils.only;
+import static com.cometkaizo.monarch.structure.CompilationUnit.Parser.UNIT_NAME_FMT;
 
 public class FuncCall {
     public static class Parser extends Structure.Parser<Raw> {
-        private static final Pattern UNIT_NAME_FMT = Pattern.compile("[A-Za-z0-9._-]+");
         private final Any argsParsers = new Any();
 
         @Override
@@ -30,18 +27,23 @@ public class FuncCall {
             var parent = ctx.topStructure();
             var raw = ctx.pushStructure(new Raw());
 
-            // unit/namespace
-            raw.unitName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);
-            if (raw.unitName == null) return fail();
+            var unitOrFuncName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);
+            if (unitOrFuncName == null) return fail();
             ctx.whitespace();
 
-            if (!ctx.literal(":")) return fail();
-            ctx.whitespace();
+            // unit name may or may not be specified
+            if (ctx.literal(":")) {
+                ctx.whitespace();
 
-            // name
-            raw.funcName = ctx.word();
-            if (raw.funcName == null) return fail();
-            ctx.whitespace();
+                raw.unitName = unitOrFuncName;
+
+                raw.funcName = ctx.word();
+                if (raw.funcName == null) return fail();
+                ctx.whitespace();
+            } else {
+                raw.unitName = ctx.getCurrentCompilationUnit().name;
+                raw.funcName = unitOrFuncName;
+            }
 
             // params
             if (!ctx.literal("(")) return fail();
@@ -74,9 +76,9 @@ public class FuncCall {
             do {
                 ctx.whitespace();
 
-                var statementParserName = ctx.word();
-                if (statementParserName == null) return false;
-                argsParsers.add(statementParserName, ctx);
+                var argParserName = ctx.word();
+                if (argParserName == null) return false;
+                argsParsers.add(argParserName, ctx);
 
                 ctx.whitespace();
             } while (ctx.literal(","));
@@ -103,29 +105,43 @@ public class FuncCall {
             super(raw, ctx);
             this.unitName = raw.unitName;
             this.funcName = raw.funcName;
+
             var args = new ArrayList<Expr>();
             for (var rawArg : raw.args) {
                 if (rawArg.analyze(ctx) instanceof Expr expr) args.add(expr);
-                else ctx.report(new WrongTypeErr("argument", "expression"), this);
+                else {
+                    ctx.report(new WrongTypeErr("argument", "expression"), this);
+                    args.add(null);
+                }
             }
             this.args = Collections.unmodifiableList(args);
 
             // find return type
-            var unit = ctx.getCompilationUnit(unitName);
+            var unitOpt = ctx.getCompilationUnit(unitName);
             Type returnType = null;
-            if (unit.isPresent()) {
-                var func = only(unit.get().members, Func.Raw.class).stream().filter(f -> funcName.equals(f.name)).findAny();
-                if (func.isPresent()) {
-                    String returnTypeName = func.get().returnType;
-                    if (!"void".equals(returnTypeName)) {
-                        var returnTypeOpt = ctx.getType(returnTypeName);
-                        if (returnTypeOpt.isPresent()) {
-                            returnType = returnTypeOpt.get();
-                        } else ctx.report(new UnknownTypeErr(returnTypeName), this);
-                    }
+            if (unitOpt.isPresent()) {
+                var funcOpt = unitOpt.get().findMember(Func.Raw.class, f -> funcName.equals(f.name));
+                if (funcOpt.isPresent()) {
+                    var func = funcOpt.get().analyze(ctx);
+                    returnType = func.returnType;
+                    validateArgTypes(ctx, func);
                 } else ctx.report(new UnknownFuncErr(funcName, unitName), this);
             } else ctx.report(new UnknownUnitErr(unitName), this);
             this.returnType = returnType;
+        }
+
+        private void validateArgTypes(AnalysisContext ctx, Func.Analysis func) {
+            var params = func.params.params;
+            if (params.size() == args.size()) for (int i = 0; i < params.size(); i++) {
+                if (!params.get(i).type().equals(args.get(i).type())) {
+                    ctx.report(new UnknownFuncErr(funcName, unitName, argTypes()), this);
+                    break;
+                }
+            } else ctx.report(new UnknownFuncErr(funcName, unitName, argTypes()), this);
+        }
+
+        private Type[] argTypes() {
+            return args.stream().map(e -> e == null ? null : e.type()).toArray(Type[]::new);
         }
 
         @Override
