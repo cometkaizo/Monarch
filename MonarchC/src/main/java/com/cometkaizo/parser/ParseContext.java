@@ -1,5 +1,6 @@
 package com.cometkaizo.parser;
 
+import com.cometkaizo.monarch.structure.CompilationUnit;
 import com.cometkaizo.parser.diagnostic.InvalidSyntaxErr;
 import com.cometkaizo.util.CharIterator;
 import com.cometkaizo.util.Diagnostic;
@@ -9,6 +10,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.cometkaizo.util.CollectionUtils.findLastMax;
+import static com.cometkaizo.util.CollectionUtils.only;
 
 public class ParseContext extends Context {
     private static final Pattern WORD_FMT = Pattern.compile("\\w+"),
@@ -16,11 +18,10 @@ public class ParseContext extends Context {
             INTEGER_FMT = Pattern.compile("-?\\d+");
     public final CharIterator chars;
     private final Deque<Frame> frames = new ArrayDeque<>();
+    public final Map<String, CompilationUnit.Raw> compilationUnits = new HashMap<>(1);
     private final Deque<Structure.Raw<?>> structures = new ArrayDeque<>();
     private final List<InvalidSyntaxErr> syntaxProblems = new ArrayList<>();
     private final Map<String, Structure.Parser<?>> parsers;
-
-    // TODO: 2024-09-05 right now no problems other than syntaxProblems show up
 
     public ParseContext(CharIterator chars, DiagnosticList problems, Map<String, Structure.Parser<?>> parsers) {
         super(problems);
@@ -41,6 +42,16 @@ public class ParseContext extends Context {
         String intStr = chars.checkAndAdvance(INTEGER_FMT);
         if (intStr == null) return null;
         return Integer.parseInt(intStr);
+    }
+
+    public void addCompilationUnit(CompilationUnit.Raw unit) {
+        this.compilationUnits.put(unit.name, unit);
+    }
+    public Optional<CompilationUnit.Raw> getCompilationUnit(String name) {
+        return Optional.ofNullable(compilationUnits.get(name));
+    }
+    public CompilationUnit.Raw getCurrentCompilationUnit() {
+        return only(structures, CompilationUnit.Raw.class).getLast();
     }
 
     public Optional<Structure.Parser<?>> getParser(String name) {

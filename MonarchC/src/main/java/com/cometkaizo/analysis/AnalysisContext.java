@@ -13,10 +13,10 @@ public class AnalysisContext extends Context {
     private final Deque<Structure.Analysis> structures = new ArrayDeque<>();
 
     private final CharIterator chars;
-    private final Map<String, CompilationUnit.Raw> compilationUnits = new HashMap<>(1);
+    private final Map<String, CompilationUnit.Raw> compilationUnits;
 
-    public AnalysisContext(Map<String, Type> types, CharIterator chars) {
-        this.types = types;
+    public AnalysisContext(Map<String, CompilationUnit.Raw> compilationUnits, CharIterator chars) {
+        this.compilationUnits = compilationUnits;
         this.chars = chars;
     }
 
@@ -31,9 +31,6 @@ public class AnalysisContext extends Context {
         return structures.peekFirst();
     }
 
-    public void addCompilationUnit(CompilationUnit.Raw unit) {
-        this.compilationUnits.put(unit.name, unit);
-    }
     public Optional<CompilationUnit.Raw> getCompilationUnit(String name) {
         return Optional.ofNullable(compilationUnits.get(name));
     }
