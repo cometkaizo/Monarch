@@ -40,6 +40,7 @@ public class Compiler {
                 Map.entry("return", new Return.Parser()),
                 Map.entry("var_decl", new VarDecl.Parser()),
                 Map.entry("var_get", new VarGet.Parser()),
+                Map.entry("type_decl", new TypeDecl.Parser()),
                 Map.entry("static_type_get", new StaticTypeGet.Parser()),
                 Map.entry("ref_type_get", new RefTypeGet.Parser()),
                 Map.entry("byte_lit", new ByteLit.Parser()),
