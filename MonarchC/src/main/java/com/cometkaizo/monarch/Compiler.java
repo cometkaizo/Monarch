@@ -26,12 +26,8 @@ public class Compiler {
             Map.entry("boolean", BooleanLit.Analysis.TYPE)
     );
 
-    public Compiler() {
-        resetParsers();
-    }
-
-    private void resetParsers() {
-        unitStx = new CompilationUnit.Parser();
+    private void resetParsers(String name) {
+        unitStx = new CompilationUnit.Parser(name);
         parsers = Map.ofEntries(
                 Map.entry("compile_with", new CompileWith.Parser(unitStx)),
                 Map.entry("compile_settings", new CompileSettings.Parser()),
@@ -94,11 +90,10 @@ public class Compiler {
 
     public Result compile(String name, CharIterator chars, Path target) throws IOException {
         Result result = new Result();
-        var unitRawRes = parse(chars, result);
+        var unitRawRes = parse(name, chars, result);
 
         if (unitRawRes.success()) {
             var unitRaw = unitRawRes.valueNonNull();
-            unitRaw.name = name;
             if (analyze(unitRaw, result)) {
                 assemble(result.unit, result);
                 result.chunk.writeTo(target);
@@ -108,14 +103,16 @@ public class Compiler {
         return result; 
     }
 
-    protected Structure.Parser<? extends CompilationUnit.Raw>.Result parse(CharIterator chars, Result result) {
-        resetParsers();
+    protected Structure.Parser<? extends CompilationUnit.Raw>.Result parse(String name, CharIterator chars, Result result) {
+        resetParsers(name);
         result.syntaxCxt = new ParseContext(chars, new DiagnosticList(), parsers);
-        return unitStx.parse(result.syntaxCxt);
+        var unitRes = unitStx.parse(result.syntaxCxt);
+        if (unitRes.hasValue()) result.syntaxCxt.addCompilationUnit(unitRes.valueNonNull());
+        return unitRes;
     }
 
     protected boolean analyze(CompilationUnit.Raw unitRaw, Result result) {
-        result.analysisCtx = new AnalysisContext(types, result.syntaxCxt.chars);
+        result.analysisCtx = new AnalysisContext(result.syntaxCxt.compilationUnits, result.syntaxCxt.chars);
         result.unit = unitRaw.analyze(result.analysisCtx);
         return result.analysisCtx.problems.isEmpty();
     }
