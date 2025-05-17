@@ -4,6 +4,7 @@ import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.bytecode.AssembleContext;
+import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongEnvironmentErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.parser.ParseContext;
@@ -64,22 +65,24 @@ public class Return {
         public final Expr value;
         protected Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
-            var returnable = ancestors.ofType(Returnable.class);
-            if (returnable.isPresent()) {
-                this.returnable = returnable.get();
-            } else {
-                this.returnable = null;
-                ctx.report(new WrongEnvironmentErr("return statements", "returnable"), this);
-            }
+            Returnable returnable = null;
+            var returnableOpt = ancestors.ofType(Returnable.class);
+            if (returnableOpt.isPresent()) {
+                returnable = returnableOpt.get();
+            } else ctx.report(new WrongEnvironmentErr("return statements", "returnable"), this);
+            this.returnable = returnable;
 
+            Expr value = null;
             if (raw.value != null) {
-                var value = raw.value.analyze(ctx);
-                if (value instanceof Expr expr) this.value = expr;
-                else {
-                    ctx.report(new WrongTypeErr("value", "expression"), this);
-                    this.value = null;
-                }
-            } else this.value = null;
+                if (raw.value.analyze(ctx) instanceof Expr expr) value = expr;
+                else ctx.report(new WrongTypeErr("value", "expression"), this);
+            }
+            this.value = value;
+
+            if (returnable != null && value != null) {
+                if (!returnable.returnType().equals(value.type()))
+                    ctx.report(new IncompatibleTypesErr(value.type(), returnable.returnType()));
+            }
         }
 
         @Override
