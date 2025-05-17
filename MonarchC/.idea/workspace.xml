@@ -9,9 +9,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Updated README to include pointers">
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Clarified what files to download from the latest release">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticExpr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/analysis/AnalysisContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/analysis/AnalysisContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Equals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Equals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Greater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Greater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Lesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Lesser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Returnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Returnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Var.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/MonarchVM.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../out/MonarchVM.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/monarchc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../out/monarchc.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/CapitalOfCanadaV3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/CapitalOfCanadaV3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +60,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -70,7 +104,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last.edited.regexp": "pression",
+    "last.edited.regexp": "-",
     "last_opened_file_path": "C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -157,14 +191,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Moved sample codes to project root">
-      <option name="closed" value="true" />
-      <created>1746923780203</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1746923780203</updated>
     </task>
     <task id="LOCAL-00026" summary="Changed to use the logger instead of System.out">
       <option name="closed" value="true" />
@@ -550,11 +576,18 @@
       <option name="project" value="LOCAL" />
       <updated>1747361224169</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Clarified what files to download from the latest release">
+      <option name="closed" value="true" />
+      <created>1747361807943</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1747361807943</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added typeName convenience method" />
     <MESSAGE value="Fixed Func not subtracting return value from stack size at the correct time" />
     <MESSAGE value="Limited unit names to alphanumeric characters and the characters . _ -" />
     <MESSAGE value="Changed to use StringUtils" />
@@ -579,37 +612,22 @@
     <MESSAGE value="Added success feedback message for EntrypointCommand" />
     <MESSAGE value="Changed Capital Of Canada sample program to use updated pointer syntax" />
     <MESSAGE value="Updated README to include pointers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README to include pointers" />
+    <MESSAGE value="Clarified what files to download from the latest release" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clarified what files to download from the latest release" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <condition expression="message.contains(&quot;FuncCall&quot;)" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="15" />
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="name.equals(&quot;isCorrect&quot;)" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarGet.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="funcName.equals(&quot;countDigits&quot;)" language="JAVA" />
           <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java</url>
-          <line>158</line>
-          <option name="timeStamp" value="27" />
+          <line>136</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
