@@ -1,10 +1,20 @@
 package com.cometkaizo.monarch.structure.diagnostic;
 
+import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.util.Diagnostic;
 
-public record UnknownFuncErr(String funcName, String unitName) implements Diagnostic {
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public record UnknownFuncErr(String funcName, String unitName, Type... paramTypes) implements Diagnostic {
+    public UnknownFuncErr(String funcName, String unitName) {
+        this(funcName, unitName, (Type[]) null);
+    }
+
     @Override
     public String getString() {
-        return "Unknown function '" + funcName + "' in unit '" + unitName + "'";
+        String paramTypesStr = paramTypes == null ? "" :
+                "(" + Arrays.stream(paramTypes).map(Type::name).collect(Collectors.joining(", ")) + ")";
+        return "Unknown function '" + funcName + paramTypesStr + "' in unit '" + unitName + "'";
     }
 }
