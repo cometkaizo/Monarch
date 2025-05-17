@@ -64,8 +64,8 @@ public class MallocSet {
             if (raw.value.analyze(ctx) instanceof Expr expr) {
                 if (!expr.isVoid()) {
                     value = expr;
-                } else ctx.report(new WrongTypeErr("allocation initializer", "expression"));
-            } else ctx.report(new WrongTypeErr("allocation initializer", "expression"));
+                } else ctx.report(new WrongTypeErr("allocation initializer", "expression"), this);
+            } else ctx.report(new WrongTypeErr("allocation initializer", "expression"), this);
             this.value = value;
         }
 
