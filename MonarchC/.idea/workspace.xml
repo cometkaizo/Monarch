@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/MonarchVM.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../out/MonarchVM.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/monarchc.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,22 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added typeName convenience method">
-      <option name="closed" value="true" />
-      <created>1747194888013</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194888013</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Fixed Func not subtracting return value from stack size at the correct time">
-      <option name="closed" value="true" />
-      <created>1747194957928</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194957928</updated>
     </task>
     <task id="LOCAL-00050" summary="Limited unit names to alphanumeric characters and the characters . _ -">
       <option name="closed" value="true" />
@@ -550,11 +534,26 @@
       <option name="project" value="LOCAL" />
       <updated>1747526039678</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="General README update, including type declarations">
+      <option name="closed" value="true" />
+      <created>1747536404388</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1747536404388</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Workspace update">
+      <option name="closed" value="true" />
+      <created>1747536412043</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1747536412043</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a convenience Malloc operation with an initializer" />
     <MESSAGE value="Made reference and assignment operations use Locatable values" />
     <MESSAGE value="Fixed some syntax errors not showing the line or the line number" />
     <MESSAGE value="Changed &quot;lingering stack elements in func&quot; error message to print the name of the function" />
@@ -578,6 +577,7 @@
     <MESSAGE value="Fixed error message not printing line and line number" />
     <MESSAGE value="Previous build" />
     <MESSAGE value="Added sample program showcasing type declaration" />
+    <MESSAGE value="General README update, including type declarations" />
     <MESSAGE value="Workspace update" />
     <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
   </component>
