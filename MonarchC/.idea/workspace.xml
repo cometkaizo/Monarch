@@ -9,43 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Clarified what files to download from the latest release">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/analysis/AnalysisContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/analysis/AnalysisContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Equals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Equals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Greater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Greater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Lesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Lesser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Returnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Returnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/resource/Var.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/MonarchVM.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../out/MonarchVM.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/monarchc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../out/monarchc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/CapitalOfCanadaV3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/CapitalOfCanadaV3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,182 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Changed to use the logger instead of System.out">
-      <option name="closed" value="true" />
-      <created>1746925285648</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1746925285648</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Changed path of main.txt">
-      <option name="closed" value="true" />
-      <created>1746925305328</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1746925305328</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Added the logging of the working directory">
-      <option name="closed" value="true" />
-      <created>1746925328481</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1746925328481</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Changed log usage">
-      <option name="closed" value="true" />
-      <created>1746925824539</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1746925824539</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Added more usage instructions">
-      <option name="closed" value="true" />
-      <created>1746932003485</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1746932003485</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Added clarification for opening compiler and entrypoint file">
-      <option name="closed" value="true" />
-      <created>1746935379104</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1746935379104</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Added sample source codes note">
-      <option name="closed" value="true" />
-      <created>1746936076705</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1746936076705</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Added bat to README">
-      <option name="closed" value="true" />
-      <created>1746937576111</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1746937576111</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Allowed Add/Subtract to work with pointers">
-      <option name="closed" value="true" />
-      <created>1747194287158</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194287158</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Renamed DifferentTypesErr -&gt; IncompatibleTypesErr">
-      <option name="closed" value="true" />
-      <created>1747194512335</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194512335</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Fixed arithmetic operators not modifying stack size correctly (leaving the right footprint on the stack size instead of the left)">
-      <option name="closed" value="true" />
-      <created>1747194613360</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194613360</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Changed to use new Size constants">
-      <option name="closed" value="true" />
-      <created>1747194721769</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194721769</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Added Cast operation">
-      <option name="closed" value="true" />
-      <created>1747194730852</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194730852</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Added Deref operation">
-      <option name="closed" value="true" />
-      <created>1747194738850</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194738850</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Added Free operation">
-      <option name="closed" value="true" />
-      <created>1747194744761</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194744761</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Added Malloc operation">
-      <option name="closed" value="true" />
-      <created>1747194755455</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194755455</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Added Ref operation">
-      <option name="closed" value="true" />
-      <created>1747194760482</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194760482</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Added Ref Set operation">
-      <option name="closed" value="true" />
-      <created>1747194767860</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194767860</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Added Syntaxes for getting types operation">
-      <option name="closed" value="true" />
-      <created>1747194783041</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194783041</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added Ref Type">
-      <option name="closed" value="true" />
-      <created>1747194790934</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194790934</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Added internal check to ensure stack size balances back to zero">
-      <option name="closed" value="true" />
-      <created>1747194855998</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194855998</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Changed to use StringUtils">
-      <option name="closed" value="true" />
-      <created>1747194869715</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194869715</updated>
     </task>
     <task id="LOCAL-00048" summary="Added typeName convenience method">
       <option name="closed" value="true" />
@@ -584,27 +374,186 @@
       <option name="project" value="LOCAL" />
       <updated>1747361807943</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Fixed equivalent types being reported as incompatible">
+      <option name="closed" value="true" />
+      <created>1747524800582</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1747524800583</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Removed extra type existence check">
+      <option name="closed" value="true" />
+      <created>1747524940335</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1747524940335</updated>
+    </task>
+    <task id="LOCAL-00077" summary="AnalysisContext no longer keeps track of a list of types">
+      <option name="closed" value="true" />
+      <created>1747525094808</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525094808</updated>
+    </task>
+    <task id="LOCAL-00078" summary="AnalysisContext no longer keeps track of a list of types">
+      <option name="closed" value="true" />
+      <created>1747525159374</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525159374</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Moved the adding of compilations units to ParseContext">
+      <option name="closed" value="true" />
+      <created>1747525233748</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525233748</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Fixed compilation unit name being set too late">
+      <option name="closed" value="true" />
+      <created>1747525255580</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525255580</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Added type declaration syntax">
+      <option name="closed" value="true" />
+      <created>1747525320264</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525320264</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Fixed crash sometimes when certain expressions' types cannot be resolved">
+      <option name="closed" value="true" />
+      <created>1747525437413</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525437413</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Added type declaration syntax">
+      <option name="closed" value="true" />
+      <created>1747525457106</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525457106</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Added type declaration syntax">
+      <option name="closed" value="true" />
+      <created>1747525469620</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525469620</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Added type declaration syntax">
+      <option name="closed" value="true" />
+      <created>1747525479323</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525479323</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Fixed compilation unit name being set too late">
+      <option name="closed" value="true" />
+      <created>1747525504033</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525504033</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Changed to use type declaration syntax">
+      <option name="closed" value="true" />
+      <created>1747525624034</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525624034</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Added ability to print parameter types in the error message">
+      <option name="closed" value="true" />
+      <created>1747525685659</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525685659</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Added ability to call analyze() on any nested structure. It will first analyze its parents">
+      <option name="closed" value="true" />
+      <created>1747525758621</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525758621</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Added structure information to semantic errors with specific messages">
+      <option name="closed" value="true" />
+      <created>1747525808129</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525808129</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Moved return type validation to Return">
+      <option name="closed" value="true" />
+      <created>1747525826119</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525826119</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Made unit name optional. If not specified, it implies the current unit">
+      <option name="closed" value="true" />
+      <created>1747525920291</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525920291</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Fixed error message not printing line and line number">
+      <option name="closed" value="true" />
+      <created>1747525943144</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525943144</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Previous build">
+      <option name="closed" value="true" />
+      <created>1747525991942</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1747525991942</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Added sample program showcasing type declaration">
+      <option name="closed" value="true" />
+      <created>1747526020205</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1747526020205</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Workspace update">
+      <option name="closed" value="true" />
+      <created>1747526039678</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1747526039678</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Func not subtracting return value from stack size at the correct time" />
-    <MESSAGE value="Limited unit names to alphanumeric characters and the characters . _ -" />
-    <MESSAGE value="Changed to use StringUtils" />
-    <MESSAGE value="Fixed certain syntax error messages not displaying, such as &quot;unknown parser&quot;" />
-    <MESSAGE value="Fixed syntax error messages displaying the line after the line with the error if the error occurred on the last character of a line" />
-    <MESSAGE value="Fixed StringLit not consuming whitespace after itself" />
-    <MESSAGE value="Noted alternative pointer-based string literal approach" />
-    <MESSAGE value="Changed to use TypeGet structures to support all types of type names, including reference types" />
-    <MESSAGE value="Fixed empty parameter list causing a pointer-sized variable to be pushed onto the stack" />
-    <MESSAGE value="Fixed empty parameter or variable list causing a pointer-sized variable to be pushed onto the stack" />
-    <MESSAGE value="Fixed pointer-sized variables only pushing one byte onto the stack, instead of a pointer-sized block" />
-    <MESSAGE value="Renamed parser field" />
-    <MESSAGE value="Added CapitalOfCanada program that showcases tentative version of pointer manipulation" />
-    <MESSAGE value="Workspace.xml change" />
-    <MESSAGE value="Made VarGet and Deref Locatable values (values that can appear on the left side of an assignment). Added the ability to push a pointer to an element in the stack." />
-    <MESSAGE value="Fixed crash if the left side of an arithmetic operation does not have a resolvable type" />
-    <MESSAGE value="Removed RefSset and VarSet" />
     <MESSAGE value="Added a convenience Malloc operation with an initializer" />
     <MESSAGE value="Made reference and assignment operations use Locatable values" />
     <MESSAGE value="Fixed some syntax errors not showing the line or the line number" />
@@ -613,7 +562,24 @@
     <MESSAGE value="Changed Capital Of Canada sample program to use updated pointer syntax" />
     <MESSAGE value="Updated README to include pointers" />
     <MESSAGE value="Clarified what files to download from the latest release" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clarified what files to download from the latest release" />
+    <MESSAGE value="Fixed equivalent types being reported as incompatible" />
+    <MESSAGE value="Removed extra type existence check" />
+    <MESSAGE value="AnalysisContext no longer keeps track of a list of types" />
+    <MESSAGE value="Moved the adding of compilations units to ParseContext" />
+    <MESSAGE value="Fixed crash sometimes when certain expressions' types cannot be resolved" />
+    <MESSAGE value="Added type declaration syntax" />
+    <MESSAGE value="Fixed compilation unit name being set too late" />
+    <MESSAGE value="Changed to use type declaration syntax" />
+    <MESSAGE value="Added ability to print parameter types in the error message" />
+    <MESSAGE value="Added ability to call analyze() on any nested structure. It will first analyze its parents" />
+    <MESSAGE value="Added structure information to semantic errors with specific messages" />
+    <MESSAGE value="Moved return type validation to Return" />
+    <MESSAGE value="Made unit name optional. If not specified, it implies the current unit" />
+    <MESSAGE value="Fixed error message not printing line and line number" />
+    <MESSAGE value="Previous build" />
+    <MESSAGE value="Added sample program showcasing type declaration" />
+    <MESSAGE value="Workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
