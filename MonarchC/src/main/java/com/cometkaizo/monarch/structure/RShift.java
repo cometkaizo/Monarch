@@ -30,12 +30,12 @@ public class RShift {
         }
 
         @Override
-        protected Diagnostic validateLeft(Expr expr) {
-            return expr.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
+        protected Diagnostic validateLeft(Expr left) {
+            return left.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
         }
         @Override
-        protected Diagnostic validateRight(Expr expr) {
-            if (expr.type() != ByteLit.Analysis.TYPE) return new WrongTypeErr("right operand", "byte expression");
+        protected Diagnostic validateRight(Expr right) {
+            if (right.type() != ByteLit.Analysis.TYPE) return new WrongTypeErr("right operand", "byte expression");
             return null;
         }
 

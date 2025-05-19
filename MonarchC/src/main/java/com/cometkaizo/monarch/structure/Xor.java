@@ -31,13 +31,13 @@ public class Xor {
         }
 
         @Override
-        protected Diagnostic validateLeft(Expr expr) {
-            return expr.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
+        protected Diagnostic validateLeft(Expr left) {
+            return left.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
         }
         @Override
-        protected Diagnostic validateRight(Expr expr) {
-            if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
-            if (left != null && !expr.type().equals(left.type())) return new IncompatibleTypesErr(expr.type(), left.type());
+        protected Diagnostic validateRight(Expr right) {
+            if (right.isVoid()) return new WrongTypeErr("right operand", "expression");
+            if (left != null && !right.type().equals(left.type())) return new IncompatibleTypesErr(right.type(), left.type());
             return null;
         }
 

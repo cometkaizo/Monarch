@@ -82,7 +82,7 @@ public class BiOperator {
             ctx.popStructure();
         }
 
-        protected abstract Diagnostic validateLeft(Expr expr);
-        protected abstract Diagnostic validateRight(Expr expr);
+        protected abstract Diagnostic validateLeft(Expr left);
+        protected abstract Diagnostic validateRight(Expr right);
     }
 }
