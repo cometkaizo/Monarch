@@ -3,7 +3,7 @@ package com.cometkaizo.monarch.structure;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.bytecode.AssembleContext;
-import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
+import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownTypeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
@@ -82,21 +82,26 @@ public class Cast {
             if (raw.type.analyze(ctx) instanceof TypeGet.Analysis typeGet) {
                 if (typeGet.type() != null) type = typeGet.type();
                 else ctx.report(new UnknownTypeErr(typeGet.name()), this);
-            } else ctx.report(new WrongTypeErr("cast target type", "valid type"), this);
-
-            if (value != null && type != null) {
-                if (!value.footprint().equals(type.footprint())) {
-                    ctx.report(new IncompatibleTypesErr(value.type(), type), this);
-                }
-            }
+            } else ctx.report(new WrongTypeErr("target type", "valid type"), this);
 
             this.value = value;
             this.type = type;
         }
 
+        private boolean changeSize() {
+            return !type.footprint().equals(value.footprint());
+        }
+
         @Override
         public void assemble(AssembleContext ctx) {
+            Chunk c = ctx.data();
             value.assemble(ctx);
+            if (changeSize()) {
+                c.opPushZeros(type.footprint());
+                c.opOr(type.footprint(), value.footprint());
+            }
+            ctx.stackSize().subtract(value.footprint());
+            ctx.stackSize().add(type.footprint());
         }
 
         @Override
