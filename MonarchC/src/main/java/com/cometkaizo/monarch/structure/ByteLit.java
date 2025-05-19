@@ -10,6 +10,9 @@ import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
 
 public class ByteLit {
+    public static boolean isTypeOf(Expr expr) {
+        return expr != null && Analysis.TYPE.equals(expr.type());
+    }
     public static class Parser extends Structure.Parser<Raw> {
         @Override
         protected Result parseImpl(ParseContext ctx) {
