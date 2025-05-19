@@ -27,6 +27,10 @@ public record Size(int byteAmt, int ptrAmt) {
         return byteAmt == 0 && ptrAmt == 0;
     }
 
+    public String toPrettyString() {
+        return "(" + byteAmt + "b, " + ptrAmt + "p)";
+    }
+
     public static class Mutable {
         public int byteAmt, ptrAmt;
         public void add(Size other) {
