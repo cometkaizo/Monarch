@@ -1,0 +1,164 @@
+compile with compile_settings
+compile with function
+compile with type_decl
+compile type_decl with (byte_lit)
+compile function with parameters (paren_params_decl)
+compile function with return types (ref_type_get, static_type_get)
+compile paren_params_decl with (var_param_decl)
+compile var_param_decl with (ref_type_get, static_type_get)
+compile function with statements (debug, debug_flag, comment, free, print, function_call, var_decl, set, return, if, while)
+compile return with (modulo, byte_lit, boolean_lit, var_get)
+compile free with (var_get)
+compile set with targets (var_get, deref)
+compile set with values (modulo, toInt, cast, function_call, boolean_lit, float64_lit, divide, add, subtract, or, xor, lshift, rshift, multiply, byte_lit, time, scan, var_get)
+compile cast with values (byte_lit, malloc, malloc_set, ref, var_get)
+compile cast with types (ref_type_get, static_type_get)
+compile malloc with (byte_lit)
+compile malloc_set with (string_lit)
+compile multiply with (byte_lit, toFloat, float64_lit, var_get)
+compile divide with (cast, byte_lit, float64_lit, var_get)
+compile lshift with (byte_lit, var_get)
+compile rshift with (byte_lit, var_get)
+compile xor with (byte_lit, lshift, rshift, var_get)
+compile function_call with (ref, deref, byte_lit, float64_lit, var_get)
+compile print with (scan, time, add, deref, modulo, subtract, string_lit, byte_lit, char_lit, var_get)
+compile modulo with (toInt, cast, byte_lit, subtract, var_get)
+compile add with (cast, byte_lit, multiply, toFloat, modulo, subtract, deref, function_call, time, var_get, char_lit)
+compile toFloat with values (var_get)
+compile toFloat with types (static_type_get)
+compile toInt with values (var_get)
+compile toInt with types (static_type_get)
+compile or with (byte_lit, subtract, time, var_get)
+compile subtract with (byte_lit, char_lit, var_get)
+compile if with conditions (greater, lesser, boolean_lit, function_call, equals, var_get)
+compile if with statements (comment, set, var_decl, print, break, if, while, function_call, debug_flag, return)
+compile equals with (cast, float64_lit, deref, char_lit, byte_lit, var_get)
+compile while with conditions (and, boolean_lit, lesser, greater)
+compile while with statements (comment, var_decl, set, print, if, while, debug_flag)
+compile and with (lesser, greater)
+compile lesser with (float64_lit, byte_lit, var_get)
+compile greater with (cast, float64_lit, byte_lit, var_get)
+compile var_decl with (ref_type_get, static_type_get)
+compile ref_type_get with (ref_type_get, static_type_get)
+compile ref with (string_lit, var_get)
+compile deref with (string_lit, var_get)
+
+type byte = (1b, 0b);
+type int32 = (4b, 0b);
+type boolean = (1b, 0b);
+type float64 = (8b, 0b);
+
+function main(): void {
+    print "Can fish live inside the pond?\nEnter the pH level of the pond to find out: ";
+
+    var pH: float64;
+    pH = scanFloat64();
+
+    print "You entered: ";
+    printFloat64(pH);
+    print " pH\n";
+
+    if (pH < 6.5f64) {
+        print "TOO ACID\n";
+    } else {
+        if (pH > 7.5f64) {
+            print "TOO ALKALINE\n";
+        } else {
+            print "NEUTRAL - FISH WILL LIVE\n";
+        }
+    }
+}
+
+function scanFloat64(): float64 {
+    var result: float64;
+    var hasDecimals: boolean;
+    var negative: boolean;
+    result = 0f64;
+    hasDecimals = false;
+    negative = false;
+    var c: byte;
+
+    while (true) {
+        c = scan;
+        if (c == '-') { negative = true; }
+        else {
+            if (c == '.') {
+                hasDecimals = true;
+                break;
+            } if (c == '\n') { break; }
+            result = result * 10f64;
+            c = c - '0';
+            result = result + c toFloat float64;
+        }
+    }
+
+    if (negative) { result = result * -1f64; }
+
+    if (hasDecimals) {
+        var digitPlaceValue: float64;
+        digitPlaceValue = 0.1f64;
+        while (true) {
+            c = scan;
+            if (c == '\n') { break; }
+            c = c - '0';
+            result = result + c toFloat float64 * digitPlaceValue;
+            digitPlaceValue = digitPlaceValue / 10f64;
+        }
+    }
+
+    return result;
+}
+
+function printFloat64(num: float64): void {
+    if (num == 0f64) {
+        print '0';
+    } else {
+        var beforeDecimalPoint: int32;
+        beforeDecimalPoint = num toInt int32;
+        printNum(beforeDecimalPoint);
+
+        print '.';
+
+        var digitIndex: byte;
+        digitIndex = 0b;
+        while (digitIndex < 17b) {
+            num = num * 10f64;
+            var digit: int32;
+            digit = num toInt int32 % 10b as int32;
+            print digit as byte + '0';
+            digitIndex = digitIndex + 1b;
+        }
+    }
+}
+
+function printNum(num: int32): void {
+    if (num == 0b as int32) {
+        print '0';
+    } else {
+        var digitCount: byte;
+        digitCount = countDigits(num);
+        var digit: byte;
+        digit = digitCount - 1b;
+        while (digit < digitCount) {
+            print getDigit(num, digit) + '0';
+            digit = digit - 1b;
+        }
+    }
+}
+
+function countDigits(num: int32): byte {
+    var digitCount: byte;
+    while (num > 0b as int32) {
+        digitCount = digitCount + 1b;
+        num = num / 10b as int32;
+    }
+    return digitCount;
+}
+
+function getDigit(num: int32, digitIndex: byte): byte {
+    while (digitIndex > 0b) {
+        num = num / 10b as int32;
+        digitIndex = digitIndex - 1b;
+    }
+    return num as byte % 10b;
+}
