@@ -6,6 +6,7 @@ import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.Compiler;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateParserErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownParserErr;
+import com.cometkaizo.util.CharPosition;
 import com.cometkaizo.util.NoPrint;
 import com.cometkaizo.util.StringUtils;
 
@@ -26,9 +27,9 @@ public final class Structure {
         public Parser<? extends R>.Result parse(ParseContext ctx) {
             ctx.enterFrame();
 
-            int startIndex = ctx.chars.cursor();
+            var startIndex = ctx.chars.position();
             var result = parseImpl(ctx);
-            int endIndex = ctx.chars.cursor();
+            var endIndex = ctx.chars.position();
 
             if (result.success()) {
                 result.value().ifPresent(raw -> {
@@ -172,7 +173,7 @@ public final class Structure {
     public abstract static class Raw<T extends Analysis> {
         public Raw<?> parent;
         private volatile T analysis;
-        public int startIndex, endIndex;
+        public CharPosition startIndex, endIndex;
         public T analyze(AnalysisContext ctx) {
             if (parent != null && parent.analysis == null) parent.analyze(ctx);
 
@@ -191,8 +192,8 @@ public final class Structure {
     public abstract static class Analysis {
         @NoPrint public final Analysis parent;
         @NoPrint public final AncestorList ancestors;
-        @NoPrint public final int startIndex;
-        @NoPrint public final int endIndex;
+        @NoPrint public final CharPosition startIndex;
+        @NoPrint public final CharPosition endIndex;
 
         protected <T extends Analysis> Analysis(Raw<T> raw, AnalysisContext ctx) {
             raw.analysis = (T)this;
@@ -241,6 +242,15 @@ public final class Structure {
             @Override
             public int size() {
                 return backer.size();
+            }
+
+            public String toHierarchyString() {
+                StringBuilder b = new StringBuilder("{");
+                for (int i = size() - 1; i >= 0; i --) {
+                    b.append(StringUtils.nameNoPkg(get(i).getClass()));
+                    if (i > 0) b.append(" > ");
+                }
+                return b.append('}').toString();
             }
         }
     }

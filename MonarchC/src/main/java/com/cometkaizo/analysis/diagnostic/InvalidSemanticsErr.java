@@ -8,7 +8,7 @@ import com.cometkaizo.util.StringUtils;
 public record InvalidSemanticsErr(Diagnostic diagnostic, Structure.Analysis reportingStructure, CharIterator chars) implements Diagnostic {
     @Override
     public String getString() {
-        int startIndex = reportingStructure.startIndex + 1;
+        int startIndex = reportingStructure.startIndex.index() + 1;
 
         String prefix = "Invalid semantics ";
         String position = "(" + (chars.getLineAt(startIndex) + 1) + ":" + (chars.getColAt(startIndex) + 1) + ")";

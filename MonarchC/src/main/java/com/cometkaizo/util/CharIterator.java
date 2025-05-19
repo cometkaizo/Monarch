@@ -195,7 +195,7 @@ public class CharIterator extends Triterator<Character> {
         return Objects.hash(super.hashCode(), line, col);
     }
 
-    public CharPosition getPosition() {
+    public CharPosition position() {
         return new CharPosition(index, line, col);
     }
 }
