@@ -6,6 +6,10 @@ import com.cometkaizo.util.Diagnostic;
 public record IncompatibleTypesErr(Type a, Type b) implements Diagnostic {
     @Override
     public String getString() {
-        return (a == null ? "void" : a.name()) + " and " + (b == null ? "void" : b.name()) + " are incompatible types";
+        boolean sameNames = a != null && b != null && a.name().equals(b.name());
+        String aFootprint = sameNames ? a.footprint().toPrettyString() : "";
+        String bFootprint = sameNames ? b.footprint().toPrettyString() : "";
+        return (a == null ? "void" : a.name() + aFootprint) + " and " +
+                (b == null ? "void" : b.name() + bFootprint) + " are incompatible types";
     }
 }
