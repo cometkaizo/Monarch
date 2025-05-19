@@ -8,9 +8,11 @@
   - [Virtual Machine](#virtual-machine-vm)
   - [Sample Source Codes](#sample-source-codes)
   - [How To](#how-to)
+    - [Use Literals](#use-literals)
     - [Declare Types](#declare-types)
     - [Declare and Use Variables](#declare-and-use-variables)
     - [Cast](#cast)
+    - [Convert](#convert)
     - [Define and Call Functions](#define-and-call-functions)
     - [Use Pointers](#use-pointers)
 - [Key Features](#key-features)
@@ -42,9 +44,10 @@ java -jar monarchc.jar
 The compiler has three commands:
 - `compile <file-location>` - compiles the source code file at `file-location` to a bytecode file with the same name (`.mnrc`)
   - e.g.: `compile main.txt`
-- `entrypoint <file-location> <function-name>` - creates an entrypoint `.mnrc` bytecode file that will call the given function in the given file.
+- `entrypoint <file-location> <function-name>` - creates an entrypoint bytecode file that will call the given function in the given file.
   - **Important: this is necessary to run a file. Directly running the file without an entrypoint file does not work.**
-  - e.g.: `entrypoint main.txt main`
+  - e.g.: `entrypoint main.mnrc main`
+  - Note: the file extension must be `.mnrc`
 - `exit` - exits the compiler
 
 Note: file paths cannot contain spaces.
@@ -68,6 +71,39 @@ The VM also supports a debug mode, which can be activated by typing `debug` inst
 Source codes for various example programs can be found in the `sample` folder in the root directory of the project.
 
 ### How To
+#### Use Literals
+Byte literals represent integers from 0 to 255. Byte literals are written as an integer followed by a `b` or `B`. They take up a single byte of space.
+```
+0b
+123b
+3000b // error, too big
+-1b // error, byte is unsigned (cannot be negative)
+```
+Character literals represent ASCII characters. Character literals are written as a single character or escape sequence surrounded by single quotes. They also take up a single byte of space, and can be saved into a `byte` variable.
+```
+'a'
+'#'
+'\''
+'\n'
+'abc' // error, cannot have multiple characters
+'' // error, cannot have no characters
+```
+String literals represent a sequence of ASCII characters. String literals are written as a sequence of zero or more characters or escape sequences surrounded by double quotes. They take up an amount of space equal to the number of characters in the string.
+```
+"abc0123"
+""
+"\n"
+"\""
+```
+Floating point literals represent real numbers as decimals. Floating point literals are written as decimal number (or an integer) followed by either `f32` for single precision, or `f64` for double precision. Floating point literals can be negative.
+```
+1.5f32
+0f32
+-35.13f32
+1000000000000f64
+123f10 // error, a float must either be f32 or f64
+```
+
 #### Declare Types
 A type is defined entirely by its name and its size. Two types with the same name and size are considered equal. To declare a type, write `type` followed by its name, then `= (byte_size, ptr_size);` where `byte_size` specifies how many bytes the type takes up and `ptr_size` specifies how many pointers the byte takes up.
 ```
@@ -86,6 +122,8 @@ num = 123b;
 print num;
 ```
 #### Cast
+Note: Casting only works correctly if the source and destination types have similar binary formats (e.g., `&byte <-> &boolean` or `byte <-> int32`). For converting types with different formats (e.g., `byte <-> float`), see [converting](#convert).
+
 An expression's type can be changed by casting. This can be done by writing the expression, followed by `as` and the target type.
 ```
 // converts expression to target_type
@@ -107,18 +145,36 @@ strPtr = &! "hello"; // error because the right side is of type '&(5,0)': a poin
 
 strPtr = &! "hello" as &byte; // this works
 ```
-Casting does not work if the source and target types have different sizes.
+Casting works regardless of the sizes of the source and destination types. Casting only adapts the size of the types by truncating/padding bytes from the left. Casting does _not_ change the "content" of the bytes, nor the format of the data. This means it only changes how the compiler reads the data (e.g., as an integer vs. as a float) but does _not_ change data from one type to equivalent data in another type (e.g., `123b as float32` does NOT equal `123f32`; the bits are not changed). As such, casting is different from [converting](#convert), which _does_ change the data in a variable to an equivalent value in a different type.
+#### Convert
+Note: Converting is different from [casting](#cast).
+
+An expression can be changed to an equivalent value in a different type by converting. Currently, there are two conversion operations:
+- float to int
+- int to float
+
+Converting a float expression to an int expression can be done by writing the expression, followed by `toInt`, followed by the type to convert to.
 ```
-type a = (1b, 0b);
-type b = (2b, 0b);
+var floatVar: float32;
+var intVar: byte;
 
-var aVar: a;
-var bVar: b;
+// ... initialize floatVar and intVar
 
-// ... initialize aVar and bVar
+intVar = floatVar; // error because float32 and byte are different types
+intVar = floatVar as byte; // no compile error, but would NOT work correctly, because casting
+                           // casting does not change the format of the bits, so the wrong value is represented.
+intVar = floatVar toInt byte; // this works
+```
+Converting an int expression to a float expression can be done by writing the expression, followed by `toFloat`, followed by the type to convert to.
+```
+var floatVar: float32;
+var intVar: byte;
 
-aVar = bVar as a; // does not work, a and b are different sizes
-bVar = aVar as b; // does not work, same reason
+// ... initialize floatVar and intVar
+
+floatVar = intVar; // error because of similar reasons
+floatVar = intVar as byte; // would not work correctly for similar reasons
+floatVar = intVar toFloat float32; // this works
 ```
 #### Define and Call Functions
 ```
@@ -127,8 +183,9 @@ function name(): return_type {
 }
 ```
 ```
-unit_name:function_name(param1, param2, ...); // call the function called function_name in the file called unit_name
-                                            // (if you specify a unit_name, it must contain the file extension)
+unit_name:function_name(param1, param2, ...); // call the function called function_name in 
+                                              // the file called unit_name (if you specify a unit_name, 
+                                              // it must contain the file extension)
 // OR
 function_name(param1, param2, ...); // call the function called function_name in the CURRENT file.
 ```
