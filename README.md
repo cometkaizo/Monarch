@@ -15,6 +15,7 @@
     - [Convert](#convert)
     - [Define and Call Functions](#define-and-call-functions)
     - [Use Pointers](#use-pointers)
+    - [Use Step-By-Step Debugger](#use-step-by-step-debugger)
 - [Key Features](#key-features)
   - [Feature List](#feature-list)
   - [Custom Syntax](#custom-syntax)
@@ -234,6 +235,10 @@ Dereferencing can be done by writing `*` followed by an expression.
 var num2: byte;
 num2 = *ptr; // dereferences ptr and sets it to num2
 ```
+#### Use Step-By-Step Debugger
+The `debug;` statement can be used in the source code as a breakpoint. To use the breakpoint, run the bytecode file in debug mode (type `debug` instead of `run`). When the VM reaches the debug instruction, it will pause. You can enter `run` to resume the program, exiting the breakpoint. You can enter anything else to step through to the next instruction, and the instruction after that, and so on.
+
+This feature is only useful if you understand the bytecode instructions, in order to inspect their effect on the stack.
 
 ## Key Features
 

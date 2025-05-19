@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Made Float64Lit accept all double values">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-    </list>
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,30 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Fixed crash if the left side of an arithmetic operation does not have a resolvable type">
-      <option name="closed" value="true" />
-      <created>1747358020581</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358020581</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Removed RefSset and VarSet">
-      <option name="closed" value="true" />
-      <created>1747358062081</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358062081</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Added a convenience Malloc operation with an initializer">
-      <option name="closed" value="true" />
-      <created>1747358091692</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358091692</updated>
     </task>
     <task id="LOCAL-00068" summary="Made reference and assignment operations use Locatable values">
       <option name="closed" value="true" />
@@ -551,12 +524,34 @@
       <option name="project" value="LOCAL" />
       <updated>1747628471022</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="Updated README to include floating point numbers">
+      <option name="closed" value="true" />
+      <created>1747628665421</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1747628665421</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Added pHLevelFloat sample programs showcasing float32 and float64">
+      <option name="closed" value="true" />
+      <created>1747628692843</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1747628692843</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Workspace update">
+      <option name="closed" value="true" />
+      <created>1747628929802</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1747628929802</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed to use type declaration syntax" />
-    <MESSAGE value="Added ability to print parameter types in the error message" />
     <MESSAGE value="Added ability to call analyze() on any nested structure. It will first analyze its parents" />
     <MESSAGE value="Added structure information to semantic errors with specific messages" />
     <MESSAGE value="Moved return type validation to Return" />
@@ -565,7 +560,6 @@
     <MESSAGE value="Previous build" />
     <MESSAGE value="Added sample program showcasing type declaration" />
     <MESSAGE value="General README update, including type declarations" />
-    <MESSAGE value="Workspace update" />
     <MESSAGE value="Built" />
     <MESSAGE value="Deprecated structure deque" />
     <MESSAGE value="Added float32 and float64 types" />
@@ -580,7 +574,10 @@
     <MESSAGE value="Added pretty string" />
     <MESSAGE value="Added more descriptive syntax error messages" />
     <MESSAGE value="Made Float64Lit accept all double values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Float64Lit accept all double values" />
+    <MESSAGE value="Updated README to include floating point numbers" />
+    <MESSAGE value="Added pHLevelFloat sample programs showcasing float32 and float64" />
+    <MESSAGE value="Workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
