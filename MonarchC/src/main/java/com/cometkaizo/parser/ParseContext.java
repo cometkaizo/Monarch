@@ -15,7 +15,8 @@ import static com.cometkaizo.util.CollectionUtils.only;
 public class ParseContext extends Context {
     private static final Pattern WORD_FMT = Pattern.compile("\\w+"),
             WHITESPACE_FMT = Pattern.compile("\\s+"),
-            INTEGER_FMT = Pattern.compile("-?\\d+");
+            INTEGER_FMT = Pattern.compile("-?\\d+"),
+            DECIMAL_FMT = Pattern.compile("-?\\d+(\\.\\d+)?");
     public final CharIterator chars;
     private final Deque<Frame> frames = new ArrayDeque<>();
     public final Map<String, CompilationUnit.Raw> compilationUnits = new HashMap<>(1);
@@ -42,6 +43,12 @@ public class ParseContext extends Context {
         String intStr = chars.checkAndAdvance(INTEGER_FMT);
         if (intStr == null) return null;
         return Integer.parseInt(intStr);
+    }
+
+    public Double decimal() {
+        String decimalStr = chars.checkAndAdvance(DECIMAL_FMT);
+        if (decimalStr == null) return null;
+        return Double.parseDouble(decimalStr);
     }
 
     public void addCompilationUnit(CompilationUnit.Raw unit) {
