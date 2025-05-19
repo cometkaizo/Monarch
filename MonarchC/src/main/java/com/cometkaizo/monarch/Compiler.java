@@ -44,6 +44,8 @@ public class Compiler {
                 Map.entry("static_type_get", new StaticTypeGet.Parser()),
                 Map.entry("ref_type_get", new RefTypeGet.Parser()),
                 Map.entry("byte_lit", new ByteLit.Parser()),
+                Map.entry("float32_lit", new Float32Lit.Parser()),
+                Map.entry("float64_lit", new Float64Lit.Parser()),
                 Map.entry("boolean_lit", new BooleanLit.Parser()),
                 Map.entry("char_lit", new CharLit.Parser()),
                 Map.entry("string_lit", new StringLit.Parser()),
@@ -73,7 +75,9 @@ public class Compiler {
                 Map.entry("ref", new Ref.Parser()),
                 Map.entry("deref", new Deref.Parser()),
                 Map.entry("set", new Set.Parser()),
-                Map.entry("cast", new Cast.Parser())
+                Map.entry("cast", new Cast.Parser()),
+                Map.entry("toFloat", new IntToFloat.Parser()),
+                Map.entry("toInt", new FloatToInt.Parser())
         );
     }
 

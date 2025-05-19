@@ -20,10 +20,12 @@ public class AnalysisContext extends Context {
         this.chars = chars;
     }
 
+    @Deprecated
     public <A extends Structure.Analysis> A pushStructure(A structure) {
         structures.addFirst(structure);
         return structure;
     }
+    @Deprecated
     public void popStructure() {
         structures.pollFirst();
     }
