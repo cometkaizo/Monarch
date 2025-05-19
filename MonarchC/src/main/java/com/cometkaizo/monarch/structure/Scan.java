@@ -2,6 +2,7 @@ package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
+import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.ParseContext;
@@ -32,12 +33,17 @@ public class Scan {
         @Override
         public void assemble(AssembleContext ctx) {
             ctx.data().opScan();
-            ctx.stackSize().add(footprint());
+            if (returnValueUsed()) ctx.stackSize().add(footprint());
+            else ctx.data().opPop();
         }
 
         @Override
         public Type type() {
             return ByteLit.Analysis.TYPE;
+        }
+
+        private boolean returnValueUsed() {
+            return parent instanceof ExprConsumer;
         }
     }
 }
