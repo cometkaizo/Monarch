@@ -1,6 +1,7 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
+import com.cometkaizo.analysis.diagnostic.LingeringStackElementsException;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
@@ -79,7 +80,7 @@ public class CompilationUnit {
         public void assemble(AssembleContext ctx) {
             members.forEach(m -> m.assemble(ctx));
             if (!ctx.stackSize().capture().isZero())
-                throw new IllegalStateException("Internal exception: lingering stack elements");
+                throw new LingeringStackElementsException(this, name, ctx.stackSize());
         }
 
     }

@@ -1,6 +1,7 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.*;
+import com.cometkaizo.analysis.diagnostic.LingeringStackElementsException;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
@@ -163,7 +164,7 @@ public class Func {
             if (!junk.isZero()) {
                 ctx.data().opPopAll(junk);
                 ctx.stackSize().subtract(junk);
-                throw new IllegalStateException("Internal exception: lingering stack elements in func '" + name + "'");
+                throw new LingeringStackElementsException(this, name, ctx.stackSize());
             }
 
             if (value != null) value.assemble(ctx);

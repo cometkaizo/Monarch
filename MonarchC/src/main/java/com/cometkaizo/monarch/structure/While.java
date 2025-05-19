@@ -4,6 +4,7 @@ import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Block;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
+import com.cometkaizo.analysis.diagnostic.LingeringStackElementsException;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
@@ -115,8 +116,13 @@ public class While {
             ctx.stackSize().subtract(condition.footprint());
             ctx.data().opJumpToIndex(endLabel);
 
+            var startStackSize = ctx.stackSize().capture();
+
             ctx.data().writeLabel(startLabel);
             statements.forEach(s -> s.assemble(ctx));
+
+            if (!ctx.stackSize().capture().equals(startStackSize))
+                throw new LingeringStackElementsException(this, ctx.stackSize().capture().minus(startStackSize));
 
             condition.assemble(ctx);
             ctx.data().opJumpIf(startLabel);

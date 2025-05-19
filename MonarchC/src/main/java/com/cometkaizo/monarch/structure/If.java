@@ -4,7 +4,9 @@ import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Block;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
+import com.cometkaizo.analysis.diagnostic.LingeringStackElementsException;
 import com.cometkaizo.bytecode.AssembleContext;
+import com.cometkaizo.bytecode.Chunk;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
@@ -154,28 +156,39 @@ public class If {
 
         @Override
         public void assemble(AssembleContext ctx) {
+            Chunk c = ctx.data();
             condition.assemble(ctx);
 
-            var ifStartLabel = ctx.data().createLabel();
-            var ifEndLabel = ctx.data().createLabel();
-            var elseStartLabel = ctx.data().createLabel();
-            var elseEndLabel = ctx.data().createLabel();
+            var ifStartLabel = c.createLabel();
+            var ifEndLabel = c.createLabel();
+            var elseStartLabel = c.createLabel();
+            var elseEndLabel = c.createLabel();
             boolean hasElse = !elseStatements.isEmpty();
 
-            ctx.data().opJumpIf(ifStartLabel);
+            c.opJumpIf(ifStartLabel);
             ctx.stackSize().subtract(condition.footprint());
-            if (hasElse) ctx.data().opJumpToIndex(elseStartLabel);
-            else ctx.data().opJumpToIndex(ifEndLabel);
+            if (hasElse) c.opJumpToIndex(elseStartLabel);
+            else c.opJumpToIndex(ifEndLabel);
 
-            ctx.data().writeLabel(ifStartLabel);
+            var ifStartStackSize = ctx.stackSize().capture();
+
+            c.writeLabel(ifStartLabel);
             statements.forEach(s -> s.assemble(ctx));
-            ctx.data().writeLabel(ifEndLabel);
+            c.writeLabel(ifEndLabel);
+
+            if (!ctx.stackSize().capture().equals(ifStartStackSize))
+                throw new LingeringStackElementsException(this, ctx.stackSize().capture().minus(ifStartStackSize));
 
             if (hasElse) {
-                ctx.data().opJumpToIndex(elseEndLabel);
-                ctx.data().writeLabel(elseStartLabel);
+                var elseStartStackSize = ctx.stackSize().capture();
+
+                c.opJumpToIndex(elseEndLabel);
+                c.writeLabel(elseStartLabel);
                 elseStatements.forEach(s -> s.assemble(ctx));
-                ctx.data().writeLabel(elseEndLabel);
+                c.writeLabel(elseEndLabel);
+
+                if (!ctx.stackSize().capture().equals(elseStartStackSize))
+                    throw new LingeringStackElementsException(this, "else", ctx.stackSize().capture().minus(elseStartStackSize));
             }
         }
 
