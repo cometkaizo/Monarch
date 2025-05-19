@@ -19,15 +19,15 @@ public class IntToFloat {
 
             // value to convert
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
 
-            if (!ctx.literal("toFloat")) return fail();
+            if (!ctx.literal("toFloat")) return failExpecting("'toFloat'");
             ctx.whitespace();
 
             // float type to convert to
             var type = typeParsers.parse(ctx);
-            if (!type.hasValue()) return fail();
+            if (!type.hasValue()) return failExpecting("target type");
             raw.type = type.valueNonNull();
 
             return success(raw);

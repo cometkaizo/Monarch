@@ -23,19 +23,19 @@ public class Set {
             var raw = ctx.pushStructure(new Raw());
 
             var ref = refParsers.parse(ctx);
-            if (!ref.hasValue()) return fail();
+            if (!ref.hasValue()) return failExpecting("target");
             raw.ref = ref.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal("=")) return fail();
+            if (!ctx.literal("=")) return failExpecting("'='");
             ctx.whitespace();
 
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal(";")) return fail();
+            if (!ctx.literal(";")) return failExpecting("';'");
             ctx.whitespace();
 
             ctx.popStructure();

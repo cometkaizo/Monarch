@@ -8,13 +8,13 @@ public class CompileSettings {
     public static class Parser extends Structure.Parser<Structure.Raw<?>> {
         @Override
         protected Structure.Parser<Structure.Raw<?>>.Result parseImpl(ParseContext ctx) {
-            if (!ctx.literal("compile")) return fail();
-            if (!ctx.whitespace()) return fail();
+            if (!ctx.literal("compile")) return failExpecting("'compile'");
+            if (!ctx.whitespace()) return failExpecting("whitespace");
             var name = ctx.word();
-            if (name == null) return fail();
-            if (!ctx.whitespace()) return fail();
-            if (!ctx.literal("with")) return fail();
-            if (!ctx.whitespace()) return fail();
+            if (name == null) return failExpecting("name");
+            if (!ctx.whitespace()) return failExpecting("whitespace");
+            if (!ctx.literal("with")) return failExpecting("'with'");
+            if (!ctx.whitespace()) return failExpecting("whitespace");
 
             var parser = ctx.getParser(name);
             if (parser.isEmpty()) {

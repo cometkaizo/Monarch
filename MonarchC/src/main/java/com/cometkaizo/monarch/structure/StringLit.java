@@ -26,14 +26,14 @@ public class StringLit {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("\"")) return fail();
+            if (!ctx.literal("\"")) return failExpecting("double quotes");
 
             while (!ctx.literal("\"")) {
                 var value = ctx.chars.checkAndAdvance(FMT);
-                if (value == null) return fail();
+                if (value == null) return failExpecting("string of characters");
                 raw.value.append(value.length() == 1 ? value.charAt(0) : ESCAPES.get(value));
 
-                if (!ctx.chars.hasNext()) return fail();
+                if (!ctx.chars.hasNext()) return failExpecting("double quotes");
             }
 
             ctx.whitespace();

@@ -14,9 +14,9 @@ public class Break {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("break")) return fail();
+            if (!ctx.literal("break")) return failExpecting("'break'");
             ctx.whitespace();
-            if (!ctx.literal(";")) return fail();
+            if (!ctx.literal(";")) return failExpecting("';'");
             ctx.whitespace();
 
             return success(raw);

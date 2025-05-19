@@ -18,12 +18,12 @@ public class Deref {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("*")) return fail();
+            if (!ctx.literal("*")) return failExpecting("'*'");
             ctx.whitespace();
 
             // ref
             var ref = refParsers.parse(ctx);
-            if (!ref.hasValue()) return fail();
+            if (!ref.hasValue()) return failExpecting("expression");
             raw.ref = ref.valueNonNull();
 
             ctx.popStructure();

@@ -10,6 +10,7 @@ import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
 
+// todo: make a version of this that accepts a type
 public class Malloc {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any sizeParsers = new Any();
@@ -17,17 +18,17 @@ public class Malloc {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("&!")) return fail();
+            if (!ctx.literal("&!")) return failExpecting("'&!'");
             ctx.whitespace();
 
             // byte size
             var byteSize = sizeParsers.parse(ctx);
-            if (!byteSize.hasValue()) return fail();
+            if (!byteSize.hasValue()) return failExpecting("byte size");
             raw.byteSize = byteSize.valueNonNull();
 
             // ptr size
             var ptrSize = sizeParsers.parse(ctx);
-            if (!ptrSize.hasValue()) return fail();
+            if (!ptrSize.hasValue()) return failExpecting("pointer size");
             raw.ptrSize = ptrSize.valueNonNull();
 
             ctx.popStructure();

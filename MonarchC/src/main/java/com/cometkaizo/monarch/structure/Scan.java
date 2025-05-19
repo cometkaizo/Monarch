@@ -13,7 +13,7 @@ public class Scan {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("scan")) return fail();
+            if (!ctx.literal("scan")) return failExpecting("'scan'");
             ctx.whitespace();
 
             return success(raw);

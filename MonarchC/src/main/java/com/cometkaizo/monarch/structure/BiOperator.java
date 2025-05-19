@@ -17,15 +17,15 @@ public class BiOperator {
             var raw = ctx.pushStructure(newRaw());
 
             var left = operandParsers.parse(ctx);
-            if (!left.hasValue()) return fail();
+            if (!left.hasValue()) return failExpecting("left operand");
             raw.left = left.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal(operationSymbol())) return fail();
+            if (!ctx.literal(operationSymbol())) return failExpecting("'" + operationSymbol() + "'");
             ctx.whitespace();
 
             var right = operandParsers.parse(ctx);
-            if (!right.hasValue()) return fail();
+            if (!right.hasValue()) return failExpecting("right operand");
             raw.right = right.valueNonNull();
             ctx.whitespace();
 

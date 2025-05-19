@@ -16,12 +16,12 @@ public class Ref {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("&")) return fail();
+            if (!ctx.literal("&")) return failExpecting("'&'");
             ctx.whitespace();
 
             // value
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
 
             ctx.popStructure();

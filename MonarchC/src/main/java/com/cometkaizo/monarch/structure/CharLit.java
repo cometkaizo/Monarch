@@ -25,13 +25,13 @@ public class CharLit {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("'")) return fail();
+            if (!ctx.literal("'")) return failExpecting("single quote");
 
             var value = ctx.chars.checkAndAdvance(FMT);
-            if (value == null) return fail();
+            if (value == null) return failExpecting("character or escape sequence");
             raw.value = value.length() == 1 ? value.charAt(0) : ESCAPES.get(value);
 
-            if (!ctx.literal("'")) return fail();
+            if (!ctx.literal("'")) return failExpecting("single quote");
 
             return success(raw);
         }

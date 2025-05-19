@@ -19,8 +19,8 @@ public class ByteLit {
             var raw = new Raw();
 
             Integer value = ctx.integer();
-            if (value == null) return fail();
-            if (!(ctx.literal("b") || ctx.literal("B"))) return fail();
+            if (value == null) return failExpecting("integer");
+            if (!(ctx.literal("b") || ctx.literal("B"))) return failExpecting("'b' or 'B'");
             if (!isByte(value)) {
                 ctx.report(new NumberFormatErr(value, "byte"));
                 return fail();

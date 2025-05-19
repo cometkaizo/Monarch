@@ -20,7 +20,7 @@ public class BooleanLit {
             var valueStr = ctx.word();
             if ("true".equals(valueStr)) raw.value = true;
             else if ("false".equals(valueStr)) raw.value = false;
-            else return fail();
+            else return failExpecting("'true' or 'false'");
 
             ctx.whitespace();
 

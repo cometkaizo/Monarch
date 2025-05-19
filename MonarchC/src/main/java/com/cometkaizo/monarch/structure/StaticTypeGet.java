@@ -14,7 +14,7 @@ public class StaticTypeGet {
             var raw = new Raw();
 
             var unitOrTypeName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);
-            if (unitOrTypeName == null) return fail();
+            if (unitOrTypeName == null) return failExpecting("type or unit name");
             ctx.whitespace();
 
             // unit name may or may not be specified
@@ -24,7 +24,7 @@ public class StaticTypeGet {
                 raw.unitName = unitOrTypeName;
 
                 raw.typeName = ctx.word();
-                if (raw.typeName == null) return fail();
+                if (raw.typeName == null) return failExpecting("type name");
                 ctx.whitespace();
             } else {
                 raw.unitName = ctx.getCurrentCompilationUnit().name;

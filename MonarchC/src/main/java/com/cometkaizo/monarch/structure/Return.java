@@ -18,15 +18,15 @@ public class Return {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("return")) return fail();
-            if (!ctx.whitespace()) return fail();
+            if (!ctx.literal("return")) return failExpecting("'return'");
+            if (!ctx.whitespace()) return failExpecting("whitespace");
 
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal(";")) return fail();
+            if (!ctx.literal(";")) return failExpecting("';'");
             ctx.whitespace();
 
             ctx.popStructure();

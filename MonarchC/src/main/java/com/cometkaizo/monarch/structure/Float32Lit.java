@@ -19,8 +19,8 @@ public class Float32Lit {
             var raw = new Raw();
 
             Double value = ctx.decimal();
-            if (value == null) return fail();
-            if (!(ctx.literal("f32") || ctx.literal("F32"))) return fail();
+            if (value == null) return failExpecting("floating point value");
+            if (!(ctx.literal("f32") || ctx.literal("F32"))) return failExpecting("'f32' or 'F32'");
             if (!isFloat(value)) {
                 ctx.report(new NumberFormatErr(value, "float32"));
                 return fail();

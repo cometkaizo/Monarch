@@ -23,7 +23,7 @@ public class ParenParamsDecl {
         @Override
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
-            if (!ctx.literal("(")) return fail();
+            if (!ctx.literal("(")) return failExpecting("'('");
 
             while (true) {
                 ctx.whitespace();
@@ -35,7 +35,7 @@ public class ParenParamsDecl {
             }
             ctx.whitespace();
 
-            if (!ctx.literal(")")) return fail();
+            if (!ctx.literal(")")) return failExpecting("')'");
             ctx.whitespace();
 
             return success(raw);

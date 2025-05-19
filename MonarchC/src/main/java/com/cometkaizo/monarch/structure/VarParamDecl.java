@@ -23,14 +23,14 @@ public class VarParamDecl {
 
             // name
             raw.name = ctx.word();
-            if (raw.name == null) return fail();
+            if (raw.name == null) return failExpecting("name");
             ctx.whitespace();
 
             // type
-            if (!ctx.literal(":")) return fail();
+            if (!ctx.literal(":")) return failExpecting("':'");
             ctx.whitespace();
             var type = typeParsers.parse(ctx);
-            if (!type.hasValue()) return fail();
+            if (!type.hasValue()) return failExpecting("type");
             raw.type = type.valueNonNull();
             ctx.whitespace();
 

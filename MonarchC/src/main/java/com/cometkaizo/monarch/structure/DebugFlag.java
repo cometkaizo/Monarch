@@ -9,9 +9,9 @@ public class DebugFlag {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
         protected Result parseImpl(ParseContext ctx) {
-            if (!ctx.literal("debugFlag")) return fail();
+            if (!ctx.literal("debugFlag")) return failExpecting("'debugFlag'");
             ctx.whitespace();
-            if (!ctx.literal(";")) return fail();
+            if (!ctx.literal(";")) return fail("';'");
             ctx.whitespace();
             return success(new Raw());
         }

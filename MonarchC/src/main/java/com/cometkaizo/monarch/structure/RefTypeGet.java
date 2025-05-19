@@ -13,11 +13,11 @@ public class RefTypeGet {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("&")) return fail();
+            if (!ctx.literal("&")) return failExpecting("'&'");
             ctx.whitespace();
 
             var target = targetParsers.parse(ctx);
-            if (!target.hasValue()) return fail();
+            if (!target.hasValue()) return failExpecting("target type");
             raw.target = target.valueNonNull();
             ctx.whitespace();
 

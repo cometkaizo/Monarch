@@ -20,15 +20,15 @@ public class Cast {
 
             // value to cast
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("value");
             raw.value = value.valueNonNull();
 
-            if (!ctx.literal("as")) return fail();
+            if (!ctx.literal("as")) return failExpecting("'as'");
             ctx.whitespace();
 
             // type to cast to
             var type = typeParsers.parse(ctx);
-            if (!type.hasValue()) return fail();
+            if (!type.hasValue()) return failExpecting("target type");
             raw.type = type.valueNonNull();
 
             return success(raw);

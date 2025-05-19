@@ -16,15 +16,15 @@ public class Print {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("print")) return fail();
-            if (!ctx.whitespace()) return fail();
+            if (!ctx.literal("print")) return failExpecting("'print'");
+            if (!ctx.whitespace()) return failExpecting("whitespace");
 
             var value = valueParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal(";")) return fail();
+            if (!ctx.literal(";")) return failExpecting("';'");
             ctx.whitespace();
 
             ctx.popStructure();

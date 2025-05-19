@@ -13,7 +13,7 @@ public class Time {
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
-            if (!ctx.literal("time")) return fail();
+            if (!ctx.literal("time")) return failExpecting("'time'");
             ctx.whitespace();
 
             return success(raw);

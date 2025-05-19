@@ -17,11 +17,11 @@ public class Not {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("!")) return fail();
+            if (!ctx.literal("!")) return failExpecting("'!'");
             ctx.whitespace();
 
             var value = operandParsers.parse(ctx);
-            if (!value.hasValue()) return fail();
+            if (!value.hasValue()) return failExpecting("expression");
             raw.value = value.valueNonNull();
             ctx.whitespace();
 

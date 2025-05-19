@@ -19,8 +19,8 @@ public class Float64Lit {
             var raw = new Raw();
 
             Double value = ctx.decimal();
-            if (value == null) return fail();
-            if (!(ctx.literal("f64") || ctx.literal("F64"))) return fail();
+            if (value == null) return failExpecting("floating point value");
+            if (!(ctx.literal("f64") || ctx.literal("F64"))) return failExpecting("'f64' or 'F64'");
             if (!isFloat(value)) {
                 ctx.report(new NumberFormatErr(value, "float64"));
                 return fail();

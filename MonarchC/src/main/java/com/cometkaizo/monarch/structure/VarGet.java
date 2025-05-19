@@ -19,7 +19,7 @@ public class VarGet {
             var raw = new Raw();
 
             raw.name = ctx.word();
-            if (raw.name == null) return fail();
+            if (raw.name == null) return failExpecting("name");
             ctx.whitespace();
 
             return success(raw);

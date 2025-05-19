@@ -34,7 +34,7 @@ public class CompilationUnit {
             while (ctx.chars.hasNext()) {
                 var member = parsers.parse(ctx);
                 if (member.success()) member.value().ifPresent(raw.members::add);
-                else return fail();
+                else return failExpecting("member");
             }
 
             ctx.popStructure();

@@ -9,9 +9,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace update">
-      <change beforePath="$PROJECT_DIR$/../out/MonarchVM.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../out/MonarchVM.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/monarchc.jar" beforeDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added pretty string">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BooleanLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BooleanLit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Break.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Break.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ByteLit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Cast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Cast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CharLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CharLit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompilationUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompileSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompileSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompileWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/CompileWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Debug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/DebugFlag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/DebugFlag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Deref.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Deref.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Float32Lit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Float32Lit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Float64Lit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Float64Lit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FloatToInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FloatToInt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Free.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Free.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/IntToFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/IntToFloat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Malloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Malloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Not.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Not.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ParenParamsDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ParenParamsDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Print.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Ref.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Ref.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefTypeGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefTypeGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Scan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Scan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StaticTypeGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StringLit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StringLit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarParamDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarParamDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/mainentry.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/mainentry.mnrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +69,9 @@
       <list>
         <option value="AnnotationType" />
         <option value="Record" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -58,26 +102,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.Test2.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last.edited.regexp": "-",
-    "last_opened_file_path": "C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.38850576",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;-&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.38850576&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="me.cometkaizo.monarch.bytecode" />
@@ -157,110 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Limited unit names to alphanumeric characters and the characters . _ -">
-      <option name="closed" value="true" />
-      <created>1747194995845</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1747194995845</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Changed to use StringUtils">
-      <option name="closed" value="true" />
-      <created>1747195010499</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195010499</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Fixed syntax error messages displaying the line after the line with the error if the error occurred on the last character of a line">
-      <option name="closed" value="true" />
-      <created>1747195094477</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195094477</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Fixed certain syntax error messages not displaying, such as &quot;unknown parser&quot;">
-      <option name="closed" value="true" />
-      <created>1747195135502</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195135502</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Fixed syntax error messages displaying the line after the line with the error if the error occurred on the last character of a line">
-      <option name="closed" value="true" />
-      <created>1747195192210</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195192210</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Fixed StringLit not consuming whitespace after itself">
-      <option name="closed" value="true" />
-      <created>1747195233244</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195233244</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Noted alternative pointer-based string literal approach">
-      <option name="closed" value="true" />
-      <created>1747195258238</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195258238</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Changed to use TypeGet structures to support all types of type names, including reference types">
-      <option name="closed" value="true" />
-      <created>1747195304576</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195304576</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Fixed empty parameter list causing a pointer-sized variable to be pushed onto the stack">
-      <option name="closed" value="true" />
-      <created>1747195358328</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195358328</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Fixed empty parameter or variable list causing a pointer-sized variable to be pushed onto the stack">
-      <option name="closed" value="true" />
-      <created>1747195394066</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195394066</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Fixed pointer-sized variables only pushing one byte onto the stack, instead of a pointer-sized block">
-      <option name="closed" value="true" />
-      <created>1747195435840</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195435840</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Renamed parser field">
-      <option name="closed" value="true" />
-      <created>1747195449971</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195449971</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Added CapitalOfCanada program that showcases tentative version of pointer manipulation">
-      <option name="closed" value="true" />
-      <created>1747195525758</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1747195525758</updated>
     </task>
     <task id="LOCAL-00063" summary="Workspace.xml change">
       <option name="closed" value="true" />
@@ -550,22 +490,114 @@
       <option name="project" value="LOCAL" />
       <updated>1747536412043</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Built">
+      <option name="closed" value="true" />
+      <created>1747537303953</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1747537303953</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Added float32 and float64 types">
+      <option name="closed" value="true" />
+      <created>1747624595164</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624595164</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Deprecated structure deque">
+      <option name="closed" value="true" />
+      <created>1747624609963</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624609963</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Added float32 and float64 types">
+      <option name="closed" value="true" />
+      <created>1747624676524</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624676524</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Renamed BiOperator parameters">
+      <option name="closed" value="true" />
+      <created>1747624724635</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624724635</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Added convenience method to check whether an Expr is a specific builtin type">
+      <option name="closed" value="true" />
+      <created>1747624770982</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624770982</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Changed startIndex and endIndex from ints to CharPositions that include line and col data">
+      <option name="closed" value="true" />
+      <created>1747624847013</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624847013</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Allowed cast to cast any type to any other type by adapting type sizes">
+      <option name="closed" value="true" />
+      <created>1747624867330</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624867330</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Added floating point operations">
+      <option name="closed" value="true" />
+      <created>1747624880634</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1747624880635</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Standardized stack size balancing checks, added checks to if statement and while loop">
+      <option name="closed" value="true" />
+      <created>1747625038288</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1747625038288</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Disambiguated types with the same name in &quot;incompatible types&quot; error message by displaying their sizes as well">
+      <option name="closed" value="true" />
+      <created>1747625072323</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1747625072323</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Added double parsing capabilities">
+      <option name="closed" value="true" />
+      <created>1747625106911</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1747625106911</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Added pretty string">
+      <option name="closed" value="true" />
+      <created>1747625114155</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1747625114155</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made reference and assignment operations use Locatable values" />
-    <MESSAGE value="Fixed some syntax errors not showing the line or the line number" />
-    <MESSAGE value="Changed &quot;lingering stack elements in func&quot; error message to print the name of the function" />
-    <MESSAGE value="Added success feedback message for EntrypointCommand" />
-    <MESSAGE value="Changed Capital Of Canada sample program to use updated pointer syntax" />
-    <MESSAGE value="Updated README to include pointers" />
-    <MESSAGE value="Clarified what files to download from the latest release" />
-    <MESSAGE value="Fixed equivalent types being reported as incompatible" />
-    <MESSAGE value="Removed extra type existence check" />
-    <MESSAGE value="AnalysisContext no longer keeps track of a list of types" />
-    <MESSAGE value="Moved the adding of compilations units to ParseContext" />
-    <MESSAGE value="Fixed crash sometimes when certain expressions' types cannot be resolved" />
     <MESSAGE value="Added type declaration syntax" />
     <MESSAGE value="Fixed compilation unit name being set too late" />
     <MESSAGE value="Changed to use type declaration syntax" />
@@ -579,7 +611,19 @@
     <MESSAGE value="Added sample program showcasing type declaration" />
     <MESSAGE value="General README update, including type declarations" />
     <MESSAGE value="Workspace update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
+    <MESSAGE value="Built" />
+    <MESSAGE value="Deprecated structure deque" />
+    <MESSAGE value="Added float32 and float64 types" />
+    <MESSAGE value="Renamed BiOperator parameters" />
+    <MESSAGE value="Added convenience method to check whether an Expr is a specific builtin type" />
+    <MESSAGE value="Changed startIndex and endIndex from ints to CharPositions that include line and col data" />
+    <MESSAGE value="Allowed cast to cast any type to any other type by adapting type sizes" />
+    <MESSAGE value="Added floating point operations" />
+    <MESSAGE value="Standardized stack size balancing checks, added checks to if statement and while loop" />
+    <MESSAGE value="Disambiguated types with the same name in &quot;incompatible types&quot; error message by displaying their sizes as well" />
+    <MESSAGE value="Added double parsing capabilities" />
+    <MESSAGE value="Added pretty string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pretty string" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

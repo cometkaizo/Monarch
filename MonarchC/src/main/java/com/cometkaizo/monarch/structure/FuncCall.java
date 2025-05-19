@@ -28,7 +28,7 @@ public class FuncCall {
             var raw = ctx.pushStructure(new Raw());
 
             var unitOrFuncName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);
-            if (unitOrFuncName == null) return fail();
+            if (unitOrFuncName == null) return failExpecting("function or unit name");
             ctx.whitespace();
 
             // unit name may or may not be specified
@@ -38,7 +38,7 @@ public class FuncCall {
                 raw.unitName = unitOrFuncName;
 
                 raw.funcName = ctx.word();
-                if (raw.funcName == null) return fail();
+                if (raw.funcName == null) return failExpecting("function name");
                 ctx.whitespace();
             } else {
                 raw.unitName = ctx.getCurrentCompilationUnit().name;
@@ -46,7 +46,7 @@ public class FuncCall {
             }
 
             // params
-            if (!ctx.literal("(")) return fail();
+            if (!ctx.literal("(")) return failExpecting("'('");
             while (true) {
                 ctx.whitespace();
                 var param = argsParsers.parse(ctx);
@@ -57,12 +57,12 @@ public class FuncCall {
             }
             ctx.whitespace();
 
-            if (!ctx.literal(")")) return fail();
+            if (!ctx.literal(")")) return failExpecting("')'");
             ctx.whitespace();
 
             // only require ; if this is not used as an expression
             if (!(parent instanceof ExprConsumer)) {
-                if (!ctx.literal(";")) return fail();
+                if (!ctx.literal(";")) return failExpecting("';'");
                 ctx.whitespace();
             }
 

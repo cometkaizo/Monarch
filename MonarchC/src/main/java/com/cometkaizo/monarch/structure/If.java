@@ -23,28 +23,28 @@ public class If {
         protected Result parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
-            if (!ctx.literal("if")) return fail();
+            if (!ctx.literal("if")) return failExpecting("'if'");
             ctx.whitespace();
-            if (!ctx.literal("(")) return fail();
+            if (!ctx.literal("(")) return failExpecting("'('");
             ctx.whitespace();
 
             var condition = conditionParsers.parse(ctx);
-            if (!condition.hasValue()) return fail();
+            if (!condition.hasValue()) return failExpecting("expression");
             raw.condition = condition.valueNonNull();
             ctx.whitespace();
 
-            if (!ctx.literal(")")) return fail();
+            if (!ctx.literal(")")) return failExpecting("')'");
             ctx.whitespace();
-            if (!ctx.literal("{")) return fail();
+            if (!ctx.literal("{")) return failExpecting("'{'");
             ctx.whitespace();
 
             while (!ctx.literal("}")) {
                 var statement = statementParsers.parse(ctx);
-                if (!statement.success()) return fail();
+                if (!statement.success()) return failExpecting("statement");
                 statement.value().ifPresent(raw.statements::add);
 
                 ctx.whitespace();
-                if (!ctx.chars.hasNext()) return fail();
+                if (!ctx.chars.hasNext()) return failExpecting("'}'");
             }
             ctx.whitespace();
 
@@ -98,18 +98,18 @@ public class If {
             protected Result parseImpl(ParseContext ctx) {
                 var raw = ctx.pushStructure(new Raw());
 
-                if (!ctx.literal("else")) return fail();
+                if (!ctx.literal("else")) return failExpecting("'else'");
                 ctx.whitespace();
-                if (!ctx.literal("{")) return fail();
+                if (!ctx.literal("{")) return failExpecting("'{'");
                 ctx.whitespace();
 
                 while (!ctx.literal("}")) {
                     var statement = statementParsers.parse(ctx);
-                    if (!statement.success()) return fail();
+                    if (!statement.success()) return failExpecting("statement");
                     statement.value().ifPresent(raw.statements::add);
 
                     ctx.whitespace();
-                    if (!ctx.chars.hasNext()) return fail();
+                    if (!ctx.chars.hasNext()) return failExpecting("'}'");
                 }
                 ctx.whitespace();
 

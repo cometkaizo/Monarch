@@ -17,7 +17,7 @@ public class TypeDecl {
             var raw = new Raw();
 
             if (!ctx.literal("type")) return failExpecting("'type'");
-            if (!ctx.whitespace()) return fail();
+            if (!ctx.whitespace()) return failExpecting("whitespace");
 
             raw.name = ctx.word();
             if (raw.name == null) return failExpecting("name");
