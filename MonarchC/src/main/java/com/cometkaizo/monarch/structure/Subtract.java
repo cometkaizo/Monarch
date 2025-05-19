@@ -4,7 +4,6 @@ import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.IncompatibleTypesErr;
-import com.cometkaizo.monarch.structure.diagnostic.WrongSizeErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
 import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.util.Diagnostic;
@@ -27,25 +26,28 @@ public class Subtract {
         }
     }
     public static class Analysis extends BiOperator.Analysis implements Expr {
+        public final boolean isFloat;
         protected Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
-
-            if (footprint().ptrAmt() != 0) {
-                ctx.report(new WrongSizeErr("operand cannot have pointer size"), this);
-            }
+            var left = raw.left.analyze(ctx);
+            isFloat = left instanceof Expr expr && isFloat(expr);
+        }
+        private boolean isFloat(Expr expr) {
+            return Float32Lit.isTypeOf(expr) || Float64Lit.isTypeOf(expr);
         }
 
         @Override
-        protected Diagnostic validateLeft(Expr expr) {
-            return expr.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
+        protected Diagnostic validateLeft(Expr left) {
+            return left.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
         }
         @Override
-        protected Diagnostic validateRight(Expr expr) {
-            if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
+        protected Diagnostic validateRight(Expr right) {
+            if (right.isVoid()) return new WrongTypeErr("right operand", "expression");
             if (left != null) {
-                if (expr.type().equals(left.type())) return null;
-                if (expr.type() instanceof Type.Ref || left.type() instanceof Type.Ref) return null;
-                return new IncompatibleTypesErr(expr.type(), left.type());
+                if (right.type().equals(left.type())) return null;
+                if (isFloat && isFloat(right)) return null;
+                if (right.type() instanceof Type.Ref || left.type() instanceof Type.Ref) return null;
+                return new IncompatibleTypesErr(right.type(), left.type());
             }
             return null;
         }
@@ -54,7 +56,8 @@ public class Subtract {
             right.assemble(ctx);
             left.assemble(ctx);
 
-            ctx.data().opSubtract(left.footprint(), right.footprint());
+            if (isFloat) ctx.data().opSubtractFloat(left.footprint(), right.footprint());
+            else ctx.data().opSubtract(left.footprint(), right.footprint());
             ctx.stackSize().subtract(right.footprint());
 
 //            Old method, using add operation:

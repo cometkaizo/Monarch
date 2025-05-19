@@ -26,19 +26,27 @@ public class Greater {
         }
     }
     public static class Analysis extends BiOperator.Analysis implements Expr {
+        public final boolean isFloat;
         protected Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
+            var left = raw.left.analyze(ctx);
+            isFloat = left instanceof Expr expr && isFloat(expr);
+        }
+        private boolean isFloat(Expr expr) {
+            return Float32Lit.isTypeOf(expr) || Float64Lit.isTypeOf(expr);
         }
 
         @Override
-        protected Diagnostic validateLeft(Expr expr) {
-            return expr.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
+        protected Diagnostic validateLeft(Expr left) {
+            return left.isVoid() ? new WrongTypeErr("left operand", "expression") : null;
         }
         @Override
-        protected Diagnostic validateRight(Expr expr) {
-            if (expr.isVoid()) return new WrongTypeErr("right operand", "expression");
-            if (left != null && !expr.type().equals(left.type())) return new IncompatibleTypesErr(expr.type(), left.type());
-            return null;
+        protected Diagnostic validateRight(Expr right) {
+            if (right.isVoid()) return new WrongTypeErr("right operand", "expression");
+            if (left == null) return null;
+            if (right.type().equals(left.type())) return null;
+            if (isFloat && isFloat(right)) return null;
+            return new IncompatibleTypesErr(right.type(), left.type());
         }
 
         @Override
@@ -46,7 +54,8 @@ public class Greater {
             right.assemble(ctx);
             left.assemble(ctx);
 
-            ctx.data().opGreater(left.footprint(), right.footprint());
+            if (isFloat) ctx.data().opGreaterFloat(left.footprint(), right.footprint());
+            else ctx.data().opGreater(left.footprint(), right.footprint());
             ctx.stackSize().subtract(left.footprint());
             ctx.stackSize().subtract(right.footprint());
             ctx.stackSize().add(footprint());
