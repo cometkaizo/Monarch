@@ -65,6 +65,16 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 		return sizeAndSizeInstruction("DIVIDE", chunk, offset);
 	case OP_MODULO:
 		return sizeAndSizeInstruction("MODULO", chunk, offset);
+	case OP_ADD_FLOAT:
+		return sizeAndSizeInstruction("ADD_FLOAT", chunk, offset);
+	case OP_SUBTRACT_FLOAT:
+		return sizeAndSizeInstruction("SUBTRACT_FLOAT", chunk, offset);
+	case OP_MULTIPLY_FLOAT:
+		return sizeAndSizeInstruction("MULTIPLY_FLOAT", chunk, offset);
+	case OP_DIVIDE_FLOAT:
+		return sizeAndSizeInstruction("DIVIDE_FLOAT", chunk, offset);
+	case OP_MODULO_FLOAT:
+		return sizeAndSizeInstruction("MODULO_FLOAT", chunk, offset);
 	case OP_OR:
 		return sizeAndSizeInstruction("OR", chunk, offset);
 	case OP_AND:
@@ -75,9 +85,17 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 		return sizeInstruction("LSHIFT", chunk, offset);
 	case OP_RSHIFT:
 		return sizeInstruction("RSHIFT", chunk, offset);
+	case OP_INT_TO_FLOAT:
+		return sizeAndSizeInstruction("INT_TO_FLOAT", chunk, offset);
+	case OP_FLOAT_TO_INT:
+		return sizeAndSizeInstruction("FLOAT_TO_INT", chunk, offset);
 	case OP_EQUALS:
 		return sizeAndSizeInstruction("EQUALS", chunk, offset);
 	case OP_GREATER:
+		return sizeAndSizeInstruction("GREATER", chunk, offset);
+	case OP_EQUALS_FLOAT:
+		return sizeAndSizeInstruction("EQUALS", chunk, offset);
+	case OP_GREATER_FLOAT:
 		return sizeAndSizeInstruction("GREATER", chunk, offset);
 	case OP_MALLOC:
 		return simpleInstruction("MALLOC", offset);

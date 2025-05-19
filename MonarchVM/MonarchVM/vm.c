@@ -1,14 +1,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 
 #include "common.h"
 #include "vm.h"
 #include "debug.h"
+#include "input.h"
 
 VM vm;
 size_t ptrSize = sizeof(void*);
 int bigEndian;
+static size_t FLOAT_SIZE = sizeof(float);
+static size_t DOUBLE_SIZE = sizeof(double);
+static_assert(sizeof(float) == 4 && sizeof(double) == 8, "Need IEEE-754 32/64-bit floats and doubles");
 
 static void resetStack(void) {
 	vm.stackTop = vm.stack;
@@ -366,10 +371,99 @@ static InterpretResult calculateDivision(Value* a, size_t aLen, Value* b, size_t
 	return INTERPRET_OK;
 }
 
+static int isWrongFloatingPointLen(size_t len) {
+	return len != DOUBLE_SIZE && len != FLOAT_SIZE;
+}
+
+static double readAsDouble(Value* ptr, size_t len) {
+	uint8_t* dblPtr = malloc(len);
+	if (!dblPtr) return 0;
+	memcpyWithSystem(dblPtr, ptr, len);
+	double dbl = 0;
+	if (len == DOUBLE_SIZE) dbl = *((double*)dblPtr);
+	else if (len == FLOAT_SIZE) dbl = (double)(*((float*)dblPtr));
+	free(dblPtr);
+	return dbl;
+}
+static void writeAsDoubleOrFloat(double value, Value* dest, size_t len) {
+	if (len == DOUBLE_SIZE) {
+		memcpyWithSystem(dest, &value, len);
+	} else if (len == FLOAT_SIZE) {
+		float floatValue = (float)value;
+		memcpyWithSystem(dest, &floatValue, len);
+	}
+}
+
+static InterpretResult calculateFloatAddition(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = readAsDouble(a, aLen) + readAsDouble(b, bLen);
+	writeAsDoubleOrFloat(result, c, aLen);
+	return INTERPRET_OK;
+}
+
+static InterpretResult calculateFloatSubtraction(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = readAsDouble(a, aLen) - readAsDouble(b, bLen);
+	writeAsDoubleOrFloat(result, c, aLen);
+	return INTERPRET_OK;
+}
+
+static InterpretResult calculateFloatMultiplication(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = readAsDouble(a, aLen) * readAsDouble(b, bLen);
+	writeAsDoubleOrFloat(result, c, aLen);
+	//printf("    multiply result: %f * %f = %f\n", readAsDouble(a, aLen), readAsDouble(b, bLen), result);
+	return INTERPRET_OK;
+}
+
+static InterpretResult calculateFloatDivision(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = readAsDouble(a, aLen) / readAsDouble(b, bLen);
+	writeAsDoubleOrFloat(result, c, aLen);
+	return INTERPRET_OK;
+}
+
+static InterpretResult calculateFloatModulo(Value* a, size_t aLen, Value* b, size_t bLen, Value* c) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = fmod(readAsDouble(a, aLen), readAsDouble(b, bLen));
+	writeAsDoubleOrFloat(result, c, aLen);
+	return INTERPRET_OK;
+}
+
+static InterpretResult calculateIntToFloat(Value* a, size_t aLen, Value* b, size_t bLen) {
+	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+	double result = 0;
+	for (size_t i = 0; i < aLen; i++) {
+		result *= 0x100; // "left shift" result by 1 byte
+		result += (double)a[i];
+	}
+	writeAsDoubleOrFloat(result, b, bLen);
+	return INTERPRET_OK;
+}
+static InterpretResult calculateFloatToInt(Value* a, size_t aLen, Value* b, size_t bLen) {
+	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+	uint64_t result = (uint64_t)(readAsDouble(a, aLen));
+	for (size_t i = 0; i < bLen; i++) {
+		size_t bIndex = bLen - i - 1;
+		b[bIndex] = (uint8_t)(result & 0xFF); // get last byte of result
+		//printf("        i: %02x\n", b[bIndex]);
+		result >>= 8; // right shift result by 1 byte
+	}
+	uint64_t origResult = (uint64_t)(readAsDouble(a, aLen));
+	//printf("    f->i: %f -> %lld : %02x%02x%02x%02x\n", readAsDouble(a, aLen), origResult, (uint8_t)(origResult >> 8 * 3), (uint8_t)(origResult >> 8 * 2), (uint8_t)(origResult >> 8), (uint8_t)(origResult));
+	return INTERPRET_OK;
+}
+
 static InterpretResult run() {
 #define READ_BYTE() (*(vm.ip++))
 	Chunk* chunk = getCurrentChunk();
 	uint8_t* instructionEnd = chunk->code + chunk->count;
+	int stepByStep = 0;
 
 	while (vm.ip < instructionEnd) {
 		if (vm.debugTrace) {
@@ -380,6 +474,14 @@ static InterpretResult run() {
 			}
 			printf(" ] top\n");
 			disassembleInstruction(chunk, (int)(vm.ip - chunk->code));
+
+			if (stepByStep) {
+				char* debugCommand = readString(stdin, 5);
+				if (strcmp(debugCommand, "run") == 0) {
+					stepByStep = false;
+				}
+				free(debugCommand);
+			}
 		}
 
 		uint8_t instruction;
@@ -387,7 +489,12 @@ static InterpretResult run() {
 		case OP_RETURN: 
 			return INTERPRET_OK;
 		case OP_DEBUG:
-			printf("debug\n");
+			if (vm.debugTrace) {
+				printf("Debug mode on. Press enter to step through. Type 'run' to exit debug mode\n");
+				stepByStep = 1;
+			}
+			break;
+		case OP_DEBUG_FLAG:
 			break;
 		case OP_PRINT: {
 			uint8_t byteLen = READ_BYTE();
@@ -642,6 +749,128 @@ static InterpretResult run() {
 			free(a);
 			free(b);
 			free(quotient);
+			free(remultiplied);
+			free(remainder);
+			break;
+		}
+		case OP_ADD_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			if (calculateFloatAddition(a, aLen, b, bLen, c) == INTERPRET_ERROR) 
+				return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
+			break;
+		}
+		case OP_SUBTRACT_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			if (calculateFloatSubtraction(a, aLen, b, bLen, c) == INTERPRET_ERROR) 
+				return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
+			break;
+		}
+		case OP_MULTIPLY_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			if (calculateFloatMultiplication(a, aLen, b, bLen, c) == INTERPRET_ERROR) 
+				return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
+			break;
+		}
+		case OP_DIVIDE_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			if (calculateFloatDivision(a, aLen, b, bLen, c) == INTERPRET_ERROR) 
+				return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
+			break;
+		}
+		case OP_MODULO_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
+
+			if (calculateFloatModulo(a, aLen, b, bLen, c) == INTERPRET_ERROR)
+				return INTERPRET_ERROR;
+
+			pushArr(c, aLen);
+
+			free(a);
+			free(b);
+			free(c);
 			break;
 		}
 		case OP_OR: {
@@ -655,13 +884,16 @@ static InterpretResult run() {
 
 			Value* a = popArr(aLen);
 			Value* b = popArr(bLen);
-			if (!a || !b) return INTERPRET_ERROR;
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
 
 			for (uint8_t index = 0; index < aLen; index++) {
 				uint8_t buffer = a[aLen - 1 - index];
 				if (index < bLen) buffer |= b[bLen - 1 - index];
-				push((Value)buffer);
+				c[aLen - 1 - index] = buffer;
 			}
+
+			pushArr(c, aLen);
 
 			free(a);
 			free(b);
@@ -678,13 +910,16 @@ static InterpretResult run() {
 
 			Value* a = popArr(aLen);
 			Value* b = popArr(bLen);
-			if (!a || !b) return INTERPRET_ERROR;
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
 
 			for (uint8_t index = 0; index < aLen; index++) {
 				uint8_t buffer = a[aLen - 1 - index];
 				if (index < bLen) buffer &= b[bLen - 1 - index];
-				push((Value)buffer);
+				c[aLen - 1 - index] = buffer;
 			}
+
+			pushArr(c, aLen);
 
 			free(a);
 			free(b);
@@ -701,13 +936,16 @@ static InterpretResult run() {
 
 			Value* a = popArr(aLen);
 			Value* b = popArr(bLen);
-			if (!a || !b) return INTERPRET_ERROR;
+			Value* c = malloc(aLen);
+			if (!a || !b || !c) return INTERPRET_ERROR;
 
 			for (uint8_t index = 0; index < aLen; index++) {
 				uint8_t buffer = a[aLen - 1 - index];
 				if (index < bLen) buffer ^= b[bLen - 1 - index];
-				push((Value)buffer);
+				c[aLen - 1 - index] = buffer;
 			}
+
+			pushArr(c, aLen);
 
 			free(a);
 			free(b);
@@ -752,6 +990,50 @@ static InterpretResult run() {
 			}
 
 			free(a);
+			break;
+		}
+		case OP_INT_TO_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = malloc(bLen);
+			if (!a || !b) return INTERPRET_ERROR;
+
+			if (calculateIntToFloat(a, aLen, b, bLen) == INTERPRET_ERROR)
+				return INTERPRET_ERROR;
+
+			pushArr(b, bLen);
+
+			free(a);
+			free(b);
+			break;
+		}
+		case OP_FLOAT_TO_INT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = malloc(bLen);
+			if (!a || !b) return INTERPRET_ERROR;
+
+			if (calculateFloatToInt(a, aLen, b, bLen) == INTERPRET_ERROR)
+				return INTERPRET_ERROR;
+
+			pushArr(b, bLen);
+
+			free(a);
+			free(b);
 			break;
 		}
 		case OP_EQUALS: {
@@ -816,6 +1098,54 @@ static InterpretResult run() {
 					if (!result) break;
 				}
 			}
+
+			push((Value)result);
+			free(a);
+			free(b);
+			break;
+		}
+		case OP_EQUALS_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			if (!a || !b) return INTERPRET_ERROR;
+			if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+			if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+			double aDouble = readAsDouble(a, aLen);
+			double bDouble = readAsDouble(b, bLen);
+
+			uint8_t result = aDouble == bDouble;
+
+			push((Value)result);
+			free(a);
+			free(b);
+			break;
+		}
+		case OP_GREATER_FLOAT: {
+			uint8_t aByteLen = READ_BYTE();
+			uint8_t aPtrLen = READ_BYTE();
+			uint8_t bByteLen = READ_BYTE();
+			uint8_t bPtrLen = READ_BYTE();
+
+			size_t aLen = footprint(aByteLen, aPtrLen);
+			size_t bLen = footprint(bByteLen, bPtrLen);
+
+			Value* a = popArr(aLen);
+			Value* b = popArr(bLen);
+			if (!a || !b) return INTERPRET_ERROR;
+			if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
+			if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
+			double aDouble = readAsDouble(a, aLen);
+			double bDouble = readAsDouble(b, bLen);
+
+			uint8_t result = aDouble > bDouble;
 
 			push((Value)result);
 			free(a);
@@ -1079,7 +1409,8 @@ static InterpretResult run() {
 			break;
 		}
 		default:
-			break;
+			printf("Encountered unknown opcode 0x%02x | %d\n", instruction, instruction);
+			return INTERPRET_ERROR;
 		}
 
 		chunk = getCurrentChunk();
