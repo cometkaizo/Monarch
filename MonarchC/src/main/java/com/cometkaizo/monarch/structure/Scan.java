@@ -12,10 +12,17 @@ public class Scan {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
         protected Result parseImpl(ParseContext ctx) {
+            var parent = ctx.topStructure();
             var raw = new Raw();
 
             if (!ctx.literal("scan")) return failExpecting("'scan'");
             ctx.whitespace();
+
+            // only require ; if this is not used as an expression
+            if (!(parent instanceof ExprConsumer)) {
+                if (!ctx.literal(";")) return failExpecting("';'");
+                ctx.whitespace();
+            }
 
             return success(raw);
         }
