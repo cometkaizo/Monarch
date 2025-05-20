@@ -30,7 +30,7 @@ public class While {
 
             var condition = conditionParsers.parse(ctx);
             if (!condition.hasValue()) return failExpecting("expression");
-            raw.condition = condition.valueNonNull();
+            raw.condition = new Condition.Raw(condition.valueNonNull());
             ctx.whitespace();
 
             if (!ctx.literal(")")) return failExpecting("')'");
@@ -78,29 +78,53 @@ public class While {
         }
 
     }
-    public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {
-        public Structure.Raw<?> condition;
+
+    public static class Condition {
+        public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {
+            public Structure.Raw<?> value;
+            public Raw(Structure.Raw<?> value) {
+                this.value = value;
+            }
+            @Override
+            protected Analysis analyzeImpl(AnalysisContext ctx) {
+                return new Analysis(this, ctx);
+            }
+        }
+        public static class Analysis extends Structure.Analysis implements ExprConsumer {
+            public final Expr value;
+            protected Analysis(Raw raw, AnalysisContext ctx) {
+                super(raw, ctx);
+                Expr value = null;
+                if (raw.value.analyze(ctx) instanceof Expr expr) {
+                    if (BooleanLit.Analysis.TYPE.equals(expr.type())) value = expr;
+                    else ctx.report(new WrongTypeErr("condition", "boolean expression"), this);
+                } else ctx.report(new WrongTypeErr("condition", "expression"), this);
+                this.value = value;
+            }
+            @Override
+            public void assemble(AssembleContext ctx) {
+                value.assemble(ctx);
+            }
+        }
+    }
+
+    public static class Raw extends Structure.Raw<Analysis> {
+        public Condition.Raw condition;
         public List<Structure.Raw<?>> statements = new ArrayList<>();
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
             return new Analysis(this, ctx);
         }
     }
-    public static class Analysis extends Structure.Analysis implements ExprConsumer, Breakable, Block {
-        public final Expr condition;
+    public static class Analysis extends Structure.Analysis implements Breakable, Block {
+        public final Condition.Analysis condition;
         public final List<Structure.Analysis> statements;
         @NoPrint private Chunk.Info.Label endLabel;
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
             ctx.pushStructure(this);
 
-            Expr condition = null;
-            if (raw.condition.analyze(ctx) instanceof Expr expr) {
-                if (BooleanLit.Analysis.TYPE.equals(expr.type())) condition = expr;
-                else ctx.report(new WrongTypeErr("condition", "boolean expression"), this);
-            } else ctx.report(new WrongTypeErr("condition", "expression"), this);
-            this.condition = condition;
-
+            this.condition = raw.condition.analyze(ctx);
             this.statements = ctx.analyze(raw.statements);
 
             ctx.popStructure();
@@ -113,7 +137,7 @@ public class While {
 
             condition.assemble(ctx);
             ctx.data().opJumpIf(startLabel);
-            ctx.stackSize().subtract(condition.footprint());
+            ctx.stackSize().subtract(condition.value.footprint());
             ctx.data().opJumpToIndex(endLabel);
 
             var startStackSize = ctx.stackSize().capture();
@@ -126,7 +150,7 @@ public class While {
 
             condition.assemble(ctx);
             ctx.data().opJumpIf(startLabel);
-            ctx.stackSize().subtract(condition.footprint());
+            ctx.stackSize().subtract(condition.value.footprint());
 
             ctx.data().writeLabel(endLabel);
         }
