@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Workspace update" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Allowed scan to be used as a standalone statement">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,26 +60,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last.edited.regexp&quot;: &quot;-&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.38850576&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.Test2.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last.edited.regexp": "-",
+    "last_opened_file_path": "C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.38850576",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="me.cometkaizo.monarch.bytecode" />
@@ -155,46 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Made reference and assignment operations use Locatable values">
-      <option name="closed" value="true" />
-      <created>1747358129734</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358129734</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Fixed some syntax errors not showing the line or the line number">
-      <option name="closed" value="true" />
-      <created>1747358160959</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358160959</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Changed &quot;lingering stack elements in func&quot; error message to print the name of the function">
-      <option name="closed" value="true" />
-      <created>1747358200137</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358200137</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Added success feedback message for EntrypointCommand">
-      <option name="closed" value="true" />
-      <created>1747358224584</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358224584</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Changed Capital Of Canada sample program to use updated pointer syntax">
-      <option name="closed" value="true" />
-      <created>1747358411822</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1747358411822</updated>
     </task>
     <task id="LOCAL-00073" summary="Updated README to include pointers">
       <option name="closed" value="true" />
@@ -548,15 +512,50 @@
       <option name="project" value="LOCAL" />
       <updated>1747628929802</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="Added step-by-step debugger to the README">
+      <option name="closed" value="true" />
+      <created>1747629299467</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1747629299467</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Allowed Scan to be used as a statement">
+      <option name="closed" value="true" />
+      <created>1747692817998</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1747692817998</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Allowed functions to contain statements that do not generate code (e.g., comments)">
+      <option name="closed" value="true" />
+      <created>1747703423927</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1747703423927</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Fixed structures that can be both structures and expressions (e.g., function calls) always acting like an expression in if statement and while loops">
+      <option name="closed" value="true" />
+      <created>1747703492381</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1747703492381</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Allowed scan to be used as a standalone statement">
+      <option name="closed" value="true" />
+      <created>1747703507623</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1747703507623</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added ability to call analyze() on any nested structure. It will first analyze its parents" />
-    <MESSAGE value="Added structure information to semantic errors with specific messages" />
-    <MESSAGE value="Moved return type validation to Return" />
-    <MESSAGE value="Made unit name optional. If not specified, it implies the current unit" />
-    <MESSAGE value="Fixed error message not printing line and line number" />
     <MESSAGE value="Previous build" />
     <MESSAGE value="Added sample program showcasing type declaration" />
     <MESSAGE value="General README update, including type declarations" />
@@ -577,7 +576,12 @@
     <MESSAGE value="Updated README to include floating point numbers" />
     <MESSAGE value="Added pHLevelFloat sample programs showcasing float32 and float64" />
     <MESSAGE value="Workspace update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
+    <MESSAGE value="Added step-by-step debugger to the README" />
+    <MESSAGE value="Allowed Scan to be used as a statement" />
+    <MESSAGE value="Allowed functions to contain statements that do not generate code (e.g., comments)" />
+    <MESSAGE value="Fixed structures that can be both structures and expressions (e.g., function calls) always acting like an expression in if statement and while loops" />
+    <MESSAGE value="Allowed scan to be used as a standalone statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Allowed scan to be used as a standalone statement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -588,17 +592,13 @@
           <line>45</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="ctx.chars.getFullLineAt(ctx.chars.cursor())" language="JAVA" />
         <watch expression="ctx.stackSize()" language="JAVA" />
+        <watch expression="(char)ctx.chars.current()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
