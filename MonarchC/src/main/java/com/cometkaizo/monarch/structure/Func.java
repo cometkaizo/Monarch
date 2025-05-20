@@ -55,7 +55,7 @@ public class Func {
 
             while (!ctx.literal("}")) {
                 var statement = statementParsers.parse(ctx);
-                if (!statement.hasValue()) return failExpecting("statement");
+                if (!statement.success()) return failExpecting("statement");
                 statement.value().ifPresent(raw.statements::add);
 
                 ctx.whitespace();
