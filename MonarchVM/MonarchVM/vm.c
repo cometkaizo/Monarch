@@ -7,22 +7,15 @@
 #include "vm.h"
 #include "debug.h"
 #include "input.h"
+#include "memory.h"
 
 VM vm;
-size_t ptrSize = sizeof(void*);
-int bigEndian;
 static size_t FLOAT_SIZE = sizeof(float);
 static size_t DOUBLE_SIZE = sizeof(double);
 static_assert(sizeof(float) == 4 && sizeof(double) == 8, "Need IEEE-754 32/64-bit floats and doubles");
 
 static void resetStack(void) {
 	vm.stackTop = vm.stack;
-}
-
-static int isBigEndian(void) {
-	int num = 1;
-	uint8_t* ptr = (uint8_t*) & num;
-	return *ptr == 0;
 }
 
 void initVM(char* basePath) {
@@ -37,7 +30,6 @@ void initVM(char* basePath) {
 	vm.inputCursor = NULL;
 	resetStack();
 	setVMDebugTrace(0);
-	bigEndian = isBigEndian();
 }
 
 void setVMDebugTrace(int debugTrace) {
@@ -131,18 +123,6 @@ int setCurrentChunkByPtr(void* ptr) {
 Chunk* getCurrentChunk(void) {
 	return getChunkByIndex(vm.currentChunkIndex);
 }
-
-static void reverseMemcpy(uint8_t* dst, uint8_t* src, size_t len) {
-	for (size_t i = 0; i < len; i++) {
-		dst[len - 1 - i] = src[i];
-	}
-}
-static void memcpyWithSystem(uint8_t* dst, uint8_t* src, size_t len) {
-	// Monarch does arithmetic etc. in Big-Endian, but OS might be Little-Endian
-	if (bigEndian) memcpy(dst, src, len);
-	else reverseMemcpy(dst, src, len);
-}
-static void* bytesToPointer(uint8_t* bytes);
 
 void push(Value value) {
 	if (vm.stackTop >= vm.stack + STACK_MAX) return; // stack overflow error?
@@ -1419,10 +1399,4 @@ static InterpretResult run() {
 	return INTERPRET_OK;
 
 #undef READ_BYTE
-}
-
-static void* bytesToPointer(uint8_t* bytes) {
-	void* ptr;
-	memcpy(&ptr, bytes, ptrSize);
-	return ptr;
 }

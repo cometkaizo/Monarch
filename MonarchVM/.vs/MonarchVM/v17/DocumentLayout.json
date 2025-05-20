@@ -7,16 +7,24 @@
       "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\vm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\debug.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\debug.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\memory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\memory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\chunk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|solutionrelative:MonarchVM\\chunk.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3E2E0A7E-D4C7-403D-A007-54A7C752FEA9}|MonarchVM\\MonarchVM.vcxproj|C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\vm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -30,15 +38,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "chunk.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.c",
+              "RelativeDocumentMoniker": "MonarchVM\\chunk.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.c",
+              "RelativeToolTip": "MonarchVM\\chunk.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-20T00:35:31.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "memory.c",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.c",
+              "RelativeDocumentMoniker": "MonarchVM\\memory.c",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.c",
+              "RelativeToolTip": "MonarchVM\\memory.c",
+              "ViewState": "AgIAABwAAAAAAAAAAAAqwDAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-19T23:57:29.969Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
+              "Title": "memory.h",
+              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.h",
+              "RelativeDocumentMoniker": "MonarchVM\\memory.h",
+              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\memory.h",
+              "RelativeToolTip": "MonarchVM\\memory.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-19T23:56:07.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "vm.h",
               "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\vm.h",
               "RelativeDocumentMoniker": "MonarchVM\\vm.h",
@@ -46,21 +93,7 @@
               "RelativeToolTip": "MonarchVM\\vm.h",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-11T19:56:32.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "debug.c",
-              "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\debug.c",
-              "RelativeDocumentMoniker": "MonarchVM\\debug.c",
-              "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\debug.c",
-              "RelativeToolTip": "MonarchVM\\debug.c",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAqwIUAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-03T23:43:02.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-11T19:56:32.842Z"
             },
             {
               "$type": "Document",
@@ -70,33 +103,33 @@
               "RelativeDocumentMoniker": "MonarchVM\\vm.c",
               "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\vm.c",
               "RelativeToolTip": "MonarchVM\\vm.c",
-              "ViewState": "AgIAAJEBAAAAAAAAAAAiwKEBAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAAAC4BAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-03T22:28:10.633Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "chunk.h",
               "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.h",
               "RelativeDocumentMoniker": "MonarchVM\\chunk.h",
               "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\chunk.h",
               "RelativeToolTip": "MonarchVM\\chunk.h",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-03T22:27:32.368Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "main.c",
               "DocumentMoniker": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\main.c",
               "RelativeDocumentMoniker": "MonarchVM\\main.c",
               "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\main.c",
               "RelativeToolTip": "MonarchVM\\main.c",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAABYAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAABYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-03T21:48:12.452Z",
               "EditorCaption": ""
