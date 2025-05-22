@@ -9,6 +9,7 @@ import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.monarch.structure.resource.Vars;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
+import com.cometkaizo.util.NoPrint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,7 @@ public class Func {
         public final List<Structure.Analysis> statements;
         public final ParenParamsDecl.Analysis params;
         public final Type returnType; // null = void
+        @NoPrint private Chunk.Info.Label returnLabel;
 
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
@@ -147,10 +149,11 @@ public class Func {
             ctx.data().writeLabel(funcLoc);
             interpreter.addFunction(name, funcLoc);
 
+            returnLabel = ctx.data().createLabel();
             resources.assembleSetup(ctx);
             params.assemble(ctx);
             statements.forEach(s -> s.assemble(ctx));
-            if (statements.isEmpty() || !(statements.getLast() instanceof Return.Analysis)) assembleReturn(null, ctx); // temp failsafe return
+            assembleFinalReturn(ctx);
         }
 
         @Override
@@ -167,9 +170,27 @@ public class Func {
                 throw new LingeringStackElementsException(this, name, ctx.stackSize());
             }
 
-            if (value != null) value.assemble(ctx);
-            ctx.data().opMove(resources.offset(ctx), resources.footprint().plus(Size.ONE_PTR));
-            if (value != null) ctx.stackSize().subtract(value.footprint());
+            if (value != null) {
+                value.assemble(ctx);
+                ctx.stackSize().subtract(value.footprint());
+                ctx.data().opJumpToIndex(returnLabel);
+            }
+        }
+
+        public void assembleFinalReturn(AssembleContext ctx) {
+            ctx.data().writeLabel(returnLabel);
+
+            var junk = resources.offset(ctx);
+            if (!junk.isZero()) {
+                ctx.data().opPopAll(junk);
+                ctx.stackSize().subtract(junk);
+                throw new LingeringStackElementsException(this, name, ctx.stackSize());
+            }
+
+            // move resources + return pointer to the top of the stack
+            // at this point, the return value should be on top of the stack (but it is not included in stackSize)
+            Size resourcesOffset = resources.offset(ctx).plus(returnType == null ? Size.ZERO : returnType.footprint());
+            ctx.data().opMove(resourcesOffset, resources.footprint().plus(Size.ONE_PTR));
 
             resources.assembleCleanup(ctx);
             ctx.data().opJumpToPtr();
