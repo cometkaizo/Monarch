@@ -19,7 +19,10 @@ public class Float32Lit {
             var raw = new Raw();
 
             Double value = ctx.decimal();
-            if (value == null) return failExpecting("floating point value");
+            if (value == null) {
+                if (ctx.literal("NaN")) value = Double.NaN;
+                else return failExpecting("floating point value");
+            }
             if (!(ctx.literal("f32") || ctx.literal("F32"))) return failExpecting("'f32' or 'F32'");
             if (!isFloat(value)) {
                 ctx.report(new NumberFormatErr(value, "float32"));
@@ -32,7 +35,7 @@ public class Float32Lit {
         }
 
         private boolean isFloat(Double value) {
-            return -Float.MAX_VALUE <= value && value <= Float.MAX_VALUE;
+            return value.isNaN() || -Float.MAX_VALUE <= value && value <= Float.MAX_VALUE;
         }
     }
     public static class Raw extends Structure.Raw<Analysis> {

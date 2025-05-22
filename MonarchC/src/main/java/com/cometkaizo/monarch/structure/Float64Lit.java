@@ -18,7 +18,10 @@ public class Float64Lit {
             var raw = new Raw();
 
             Double value = ctx.decimal();
-            if (value == null) return failExpecting("floating point value");
+            if (value == null) {
+                if (ctx.literal("NaN")) value = Double.NaN;
+                else return failExpecting("floating point value");
+            }
             if (!(ctx.literal("f64") || ctx.literal("F64"))) return failExpecting("'f64' or 'F64'");
             raw.value = value;
             ctx.whitespace();
