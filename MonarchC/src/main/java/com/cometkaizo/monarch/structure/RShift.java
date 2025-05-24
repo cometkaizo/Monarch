@@ -45,12 +45,12 @@ public class RShift {
             left.assemble(ctx);
 
             ctx.data().opRShift(left.footprint());
-            ctx.stackSize().subtract(1, 0);
+            ctx.stackSize().subtract(right.footprint());
         }
 
         @Override
         public Type type() {
-            return left.type();
+            return left == null ? null : left.type();
         }
     }
 }
