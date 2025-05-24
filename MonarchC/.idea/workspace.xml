@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added Calculator sample program showcasing scanning, printing, and performing arithmetic with both integers and floats">
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added NaN to the Float32 and Float64 literals">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,22 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Clarified what files to download from the latest release">
-      <option name="closed" value="true" />
-      <created>1747361807943</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1747361807943</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Fixed equivalent types being reported as incompatible">
-      <option name="closed" value="true" />
-      <created>1747524800582</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1747524800583</updated>
     </task>
     <task id="LOCAL-00076" summary="Removed extra type existence check">
       <option name="closed" value="true" />
@@ -552,12 +535,37 @@
       <option name="project" value="LOCAL" />
       <updated>1747703603364</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Added TemperatureConverter sample program showcasing scanning, printing, and performing arithmetic with floats">
+      <option name="closed" value="true" />
+      <created>1747790413089</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1747790413089</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Added NaN to the Float32 and Float64 literals">
+      <option name="closed" value="true" />
+      <created>1747881466255</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1747881466255</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added sample program showcasing type declaration" />
-    <MESSAGE value="General README update, including type declarations" />
     <MESSAGE value="Built" />
     <MESSAGE value="Deprecated structure deque" />
     <MESSAGE value="Added float32 and float64 types" />
@@ -581,7 +589,9 @@
     <MESSAGE value="Fixed structures that can be both structures and expressions (e.g., function calls) always acting like an expression in if statement and while loops" />
     <MESSAGE value="Allowed scan to be used as a standalone statement" />
     <MESSAGE value="Added Calculator sample program showcasing scanning, printing, and performing arithmetic with both integers and floats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Calculator sample program showcasing scanning, printing, and performing arithmetic with both integers and floats" />
+    <MESSAGE value="Added TemperatureConverter sample program showcasing scanning, printing, and performing arithmetic with floats" />
+    <MESSAGE value="Added NaN to the Float32 and Float64 literals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added NaN to the Float32 and Float64 literals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
