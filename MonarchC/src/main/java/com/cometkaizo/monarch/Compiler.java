@@ -46,6 +46,8 @@ public class Compiler {
                 Map.entry("byte_lit", new ByteLit.Parser()),
                 Map.entry("float32_lit", new Float32Lit.Parser()),
                 Map.entry("float64_lit", new Float64Lit.Parser()),
+                Map.entry("int32_lit", new Int32Lit.Parser()),
+                Map.entry("int64_lit", new Int64Lit.Parser()),
                 Map.entry("boolean_lit", new BooleanLit.Parser()),
                 Map.entry("char_lit", new CharLit.Parser()),
                 Map.entry("string_lit", new StringLit.Parser()),
