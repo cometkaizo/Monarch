@@ -42,13 +42,23 @@ public class ParseContext extends Context {
     public Integer integer() {
         String intStr = chars.checkAndAdvance(INTEGER_FMT);
         if (intStr == null) return null;
-        return Integer.parseInt(intStr);
+        try {
+            return Integer.parseInt(intStr);
+        } catch (NumberFormatException e) { return null; }
     }
-
+    public Long longInteger() {
+        String intStr = chars.checkAndAdvance(INTEGER_FMT);
+        if (intStr == null) return null;
+        try {
+            return Long.parseLong(intStr);
+        } catch (NumberFormatException e) { return null; }
+    }
     public Double decimal() {
         String decimalStr = chars.checkAndAdvance(DECIMAL_FMT);
         if (decimalStr == null) return null;
-        return Double.parseDouble(decimalStr);
+        try {
+            return Double.parseDouble(decimalStr);
+        } catch (NumberFormatException e) { return null; }
     }
 
     public void addCompilationUnit(CompilationUnit.Raw unit) {
