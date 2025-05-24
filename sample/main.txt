@@ -10,7 +10,7 @@ compile function with statements (scan, debug, debug_flag, comment, free, print,
 compile return with (cast, modulo, byte_lit, boolean_lit, var_get)
 compile free with (var_get)
 compile set with targets (var_get, deref)
-compile set with values (modulo, toInt, cast, function_call, boolean_lit, float32_lit, divide, add, subtract, or, xor, lshift, rshift, multiply, byte_lit, time, scan, var_get)
+compile set with values (function_call, boolean_lit, divide, add, subtract, modulo, toInt, cast, or, xor, lshift, rshift, multiply, float32_lit, byte_lit, time, scan, var_get)
 compile cast with values (byte_lit, malloc, malloc_set, ref, var_get)
 compile cast with types (ref_type_get, static_type_get)
 compile malloc with (byte_lit)
@@ -23,13 +23,13 @@ compile xor with (byte_lit, lshift, rshift, var_get)
 compile function_call with (add, subtract, multiply, divide, ref, deref, byte_lit, float32_lit, var_get)
 compile print with (scan, time, add, deref, modulo, subtract, string_lit, byte_lit, char_lit, var_get)
 compile modulo with (toInt, cast, byte_lit, subtract, var_get)
-compile add with (float32_lit, cast, byte_lit, multiply, toFloat, modulo, subtract, deref, function_call, time, var_get, char_lit)
+compile add with (cast, byte_lit, multiply, divide, toFloat, modulo, subtract, deref, function_call, time, var_get, char_lit)
 compile toFloat with values (var_get)
 compile toFloat with types (static_type_get)
 compile toInt with values (var_get)
 compile toInt with types (static_type_get)
 compile or with (byte_lit, subtract, time, var_get)
-compile subtract with (float32_lit, byte_lit, char_lit, var_get)
+compile subtract with (float32_lit, multiply, divide, byte_lit, char_lit, var_get)
 compile if with conditions (greater, lesser, boolean_lit, function_call, equals, var_get)
 compile if with statements (comment, set, var_decl, print, break, if, while, function_call, debug_flag, return)
 compile equals with (cast, float32_lit, deref, char_lit, byte_lit, var_get)
@@ -37,7 +37,7 @@ compile while with conditions (and, boolean_lit, lesser, greater)
 compile while with statements (comment, var_decl, set, print, if, while, debug_flag)
 compile and with (lesser, greater)
 compile lesser with (float32_lit, byte_lit, var_get)
-compile greater with (cast, float32_lit, byte_lit, var_get)
+compile greater with (function_call, cast, float32_lit, byte_lit, var_get)
 compile var_decl with (ref_type_get, static_type_get)
 compile ref_type_get with (ref_type_get, static_type_get)
 compile ref with (string_lit, var_get)
@@ -49,44 +49,49 @@ type boolean = (1b, 0b);
 type float32 = (4b, 0b);
 
 function main(): void {
-    print "Enter 1 for F to C conversion\nEnter 2 for C to F conversion\nWhat is your choice? ";
-    var temp: float32;
-    var choice: byte;
+    print "Square Root Calculator\nEnter a number: ";
 
-    choice = scan;
-    scan; // scan the \n character
+    var num: float32;
+    var sqrt: float32;
+    num = scanFloat32();
+    sqrt = sqrt(num);
 
-    if (choice == '1') {
-        print "Enter the temperature in degrees Fahrenheit: ";
-        temp = scanFloat32();
-        printFloat32(temp);
-        print " degrees Fahrenheit is equal to ";
+    print "sqrt(";
+    printFloat32(num);
+    print ") = ";
+    printFloat32(sqrt);
+    print "\n";
+}
 
-        temp = temp - 32f32;
-        temp = temp * 5f32;
-        temp = temp / 9f32;
-
-        printFloat32(temp);
-        print " degrees Celsius\n";
+function sqrt(num: float32): float32 {
+    var result: float32;
+    if (num < 0f32) {
+        result = 0f32;
     } else {
-        if (choice == '2') {
-            print "Enter the temperature in degrees Celsius: ";
-            temp = scanFloat32();
-            printFloat32(temp);
-            print " degrees Celsius is equal to ";
-
-            temp = temp * 9f32;
-            temp = temp / 5f32;
-            temp = temp + 32f32;
-
-            printFloat32(temp);
-            print " degrees Fahrenheit\n";
+        if (num == 0f32) {
+            result = 0f32;
         } else {
-            print choice;
-            print " is not an option!\n";
+            var guess: float32;
+            guess = num;
+            var precision: float32;
+            precision = 0.001f32;
+
+            while (absF(guess * guess - num) > precision) {
+                guess = guess + num / guess;
+                guess = guess / 2f32;
+            }
+
+            result = guess;
         }
     }
+    return result;
+}
 
+function absF(num: float32): float32 {
+    var result: float32;
+    if (num < 0f32) { result = 0f32 - num; }
+    else { result = num; }
+    return result;
 }
 
 function scanInt32(): int32 {
