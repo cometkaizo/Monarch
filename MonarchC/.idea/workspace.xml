@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added NaN to the Float32 and Float64 literals">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,46 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Removed extra type existence check">
-      <option name="closed" value="true" />
-      <created>1747524940335</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1747524940335</updated>
-    </task>
-    <task id="LOCAL-00077" summary="AnalysisContext no longer keeps track of a list of types">
-      <option name="closed" value="true" />
-      <created>1747525094808</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525094808</updated>
-    </task>
-    <task id="LOCAL-00078" summary="AnalysisContext no longer keeps track of a list of types">
-      <option name="closed" value="true" />
-      <created>1747525159374</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525159374</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Moved the adding of compilations units to ParseContext">
-      <option name="closed" value="true" />
-      <created>1747525233748</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525233748</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Fixed compilation unit name being set too late">
-      <option name="closed" value="true" />
-      <created>1747525255580</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525255580</updated>
     </task>
     <task id="LOCAL-00081" summary="Added type declaration syntax">
       <option name="closed" value="true" />
@@ -551,7 +508,47 @@
       <option name="project" value="LOCAL" />
       <updated>1747881466255</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Rewrote sqrt sample program with multiple returns per fun">
+      <option name="closed" value="true" />
+      <created>1748048813132</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1748048813132</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Rewrote sqrt sample program with multiple returns per function">
+      <option name="closed" value="true" />
+      <created>1748048823908</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1748048823908</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Added Int32 and Int64 literals">
+      <option name="closed" value="true" />
+      <created>1748050583812</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1748050583812</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Fixed crash if left operand of shift operators cannot be resolved to a type">
+      <option name="closed" value="true" />
+      <created>1748050617157</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1748050617157</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Added longInteger convenience parsing method. Fixed crash if integer literal is too big">
+      <option name="closed" value="true" />
+      <created>1748050666542</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1748050666543</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -566,11 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Built" />
-    <MESSAGE value="Deprecated structure deque" />
-    <MESSAGE value="Added float32 and float64 types" />
-    <MESSAGE value="Renamed BiOperator parameters" />
-    <MESSAGE value="Added convenience method to check whether an Expr is a specific builtin type" />
     <MESSAGE value="Changed startIndex and endIndex from ints to CharPositions that include line and col data" />
     <MESSAGE value="Allowed cast to cast any type to any other type by adapting type sizes" />
     <MESSAGE value="Added floating point operations" />
@@ -591,7 +583,12 @@
     <MESSAGE value="Added Calculator sample program showcasing scanning, printing, and performing arithmetic with both integers and floats" />
     <MESSAGE value="Added TemperatureConverter sample program showcasing scanning, printing, and performing arithmetic with floats" />
     <MESSAGE value="Added NaN to the Float32 and Float64 literals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added NaN to the Float32 and Float64 literals" />
+    <MESSAGE value="Rewrote sqrt sample program with multiple returns per fun" />
+    <MESSAGE value="Rewrote sqrt sample program with multiple returns per function" />
+    <MESSAGE value="Added Int32 and Int64 literals" />
+    <MESSAGE value="Fixed crash if left operand of shift operators cannot be resolved to a type" />
+    <MESSAGE value="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
