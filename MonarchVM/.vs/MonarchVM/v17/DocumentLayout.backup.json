@@ -41,6 +41,10 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "chunk.c",
@@ -50,8 +54,7 @@
               "RelativeToolTip": "MonarchVM\\chunk.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-20T00:35:31.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T00:35:31.767Z"
             },
             {
               "$type": "Document",
@@ -63,12 +66,7 @@
               "RelativeToolTip": "MonarchVM\\memory.c",
               "ViewState": "AgIAABwAAAAAAAAAAAAqwDAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-19T23:57:29.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "WhenOpened": "2025-05-19T23:57:29.969Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "MonarchVM\\memory.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-19T23:56:07.155Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-19T23:56:07.155Z"
             },
             {
               "$type": "Document",
@@ -103,7 +100,7 @@
               "RelativeDocumentMoniker": "MonarchVM\\vm.c",
               "ToolTip": "C:\\Users\\andyw\\Documents\\Dev\\Monarch\\MonarchVM\\MonarchVM\\vm.c",
               "RelativeToolTip": "MonarchVM\\vm.c",
-              "ViewState": "AgIAAA4BAAAAAAAAAAAAAC4BAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAJoBAAAAAAAAAAAiwLUBAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-03T22:28:10.633Z",
               "EditorCaption": ""
@@ -118,8 +115,7 @@
               "RelativeToolTip": "MonarchVM\\chunk.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-03T22:27:32.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T22:27:32.368Z"
             },
             {
               "$type": "Document",
@@ -131,8 +127,7 @@
               "RelativeToolTip": "MonarchVM\\main.c",
               "ViewState": "AgIAADMAAAAAAAAAAAAAABYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-03T21:48:12.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T21:48:12.452Z"
             }
           ]
         }

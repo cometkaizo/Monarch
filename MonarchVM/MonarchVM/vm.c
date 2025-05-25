@@ -418,7 +418,8 @@ static InterpretResult calculateFloatModulo(Value* a, size_t aLen, Value* b, siz
 static InterpretResult calculateIntToFloat(Value* a, size_t aLen, Value* b, size_t bLen) {
 	if (isWrongFloatingPointLen(bLen)) return INTERPRET_ERROR;
 	double result = 0;
-	for (size_t i = 0; i < aLen; i++) {
+	if (aLen > 0) result = (double)((int8_t*)a)[0];
+	for (size_t i = 1; i < aLen; i++) {
 		result *= 0x100; // "left shift" result by 1 byte
 		result += (double)a[i];
 	}
@@ -427,15 +428,17 @@ static InterpretResult calculateIntToFloat(Value* a, size_t aLen, Value* b, size
 }
 static InterpretResult calculateFloatToInt(Value* a, size_t aLen, Value* b, size_t bLen) {
 	if (isWrongFloatingPointLen(aLen)) return INTERPRET_ERROR;
-	uint64_t result = (uint64_t)(readAsDouble(a, aLen));
+	int64_t result = (int64_t)(readAsDouble(a, aLen));
 	for (size_t i = 0; i < bLen; i++) {
 		size_t bIndex = bLen - i - 1;
 		b[bIndex] = (uint8_t)(result & 0xFF); // get last byte of result
 		//printf("        i: %02x\n", b[bIndex]);
 		result >>= 8; // right shift result by 1 byte
 	}
-	uint64_t origResult = (uint64_t)(readAsDouble(a, aLen));
-	//printf("    f->i: %f -> %lld : %02x%02x%02x%02x\n", readAsDouble(a, aLen), origResult, (uint8_t)(origResult >> 8 * 3), (uint8_t)(origResult >> 8 * 2), (uint8_t)(origResult >> 8), (uint8_t)(origResult));
+	//double origResult = (readAsDouble(a, aLen));
+	//printf("    f->i: %f -> ", readAsDouble(a, aLen));
+	//printHexBigEndian(*(uint32_t*)&result);
+	//printf("\n");
 	return INTERPRET_OK;
 }
 
@@ -938,13 +941,21 @@ static InterpretResult run() {
 			size_t aLen = footprint(aByteLen, aPtrLen);
 
 			Value* a = popArr(aLen);
-			Value b = pop();
+			uint8_t b = (uint8_t)pop();
 			if (!a || !b) return INTERPRET_ERROR;
 
-			for (uint8_t index = 0; index < aLen; index++) {
+			uint8_t bBytes = b / 8;
+			uint8_t bExcessBits = b % 8;
+
+			for (size_t index = 0; index < aLen; index++) {
+				if (index + bBytes >= aLen) a[index] = 0;
+				else a[index] = a[index + bBytes];
+			}
+
+			if (bExcessBits > 0) for (size_t index = 0; index < aLen; index++) {
 				uint16_t buffer = (uint16_t)a[index] << 8;
 				if (index < aLen - 1) buffer += a[index + 1];
-				buffer <<= b;
+				buffer <<= bExcessBits;
 				buffer >>= 8;
 				push((Value)(buffer & 0xFF));
 			}
@@ -962,10 +973,19 @@ static InterpretResult run() {
 			Value b = pop();
 			if (!a || !b) return INTERPRET_ERROR;
 
-			for (uint8_t index = 0; index < aLen; index++) {
+			uint8_t bBytes = b / 8;
+			uint8_t bExcessBits = b % 8;
+
+			// iterate backwards like this because size_t is unsigned
+			for (size_t index = aLen - 1; index < aLen; index--) {
+				if (index - bBytes > index) a[index] = 0;
+				else a[index] = a[index - bBytes];
+			}
+
+			if (bExcessBits > 0) for (size_t index = 0; index < aLen; index++) {
 				uint16_t buffer = (uint16_t)a[index];
 				if (index > 0) buffer += a[index - 1] << 8;
-				buffer >>= b;
+				buffer >>= bExcessBits;
 				push((Value)(buffer & 0xFF));
 			}
 
@@ -1064,19 +1084,18 @@ static InterpretResult run() {
 
 			uint8_t result = 0;
 
-			size_t aOff = max(0, bLen - aLen);
+			size_t aOff = max(0, bLen - aLen); // might be bad because aLen and bLen are unsigned
 			size_t bOff = max(0, aLen - bLen);
 
 			// this comparison is unsigned, so the cases where 0's are prepended can be ignored
 			for (uint8_t index = 0; index < aLen || index < bLen; index++) {
-				if (index >= aOff && index >= bOff) {
-					Value aByte = a[index - aOff];
-					Value bByte = b[index - bOff];
+				Value aByte = index >= aOff ? a[index - aOff] : 0;
+				Value bByte = index >= bOff ? b[index - bOff] : 0;
 
-					if (index < aLen - 1) result = aByte >= bByte; // >= is okay for every byte before the last
-					else result = aByte > bByte;
-					if (!result) break;
-				}
+				if (aByte == bByte) continue;
+				if (aByte > bByte) result = 1;
+				if (aByte < bByte) result = 0;
+				break;
 			}
 
 			push((Value)result);
