@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added Quadratic Calculator sample program showcasing operations with floating point numbers, including square roots, printing negative numbers, and absolute value">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,26 +64,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last.edited.regexp&quot;: &quot;-&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.38850576&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.Test2.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last.edited.regexp": "-",
+    "last_opened_file_path": "C:/Users/andyw/Documents/Dev/Monarch/MonarchC/src/main/resources/sample",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.38850576",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="me.cometkaizo.monarch.bytecode" />
@@ -155,14 +163,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Added type declaration syntax">
-      <option name="closed" value="true" />
-      <created>1747525320264</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525320264</updated>
     </task>
     <task id="LOCAL-00082" summary="Fixed crash sometimes when certain expressions' types cannot be resolved">
       <option name="closed" value="true" />
@@ -548,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748050666543</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="Added Quadratic Calculator sample program showcasing operations with floating point numbers, including square roots, printing negative numbers, and absolute value">
+      <option name="closed" value="true" />
+      <created>1748138588893</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1748138588894</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +571,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed startIndex and endIndex from ints to CharPositions that include line and col data" />
     <MESSAGE value="Allowed cast to cast any type to any other type by adapting type sizes" />
     <MESSAGE value="Added floating point operations" />
     <MESSAGE value="Standardized stack size balancing checks, added checks to if statement and while loop" />
@@ -588,16 +595,20 @@
     <MESSAGE value="Added Int32 and Int64 literals" />
     <MESSAGE value="Fixed crash if left operand of shift operators cannot be resolved to a type" />
     <MESSAGE value="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added longInteger convenience parsing method. Fixed crash if integer literal is too big" />
+    <MESSAGE value="Added Quadratic Calculator sample program showcasing operations with floating point numbers, including square roots, printing negative numbers, and absolute value" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Quadratic Calculator sample program showcasing operations with floating point numbers, including square roots, printing negative numbers, and absolute value" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="32" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <condition expression="name.equals(&quot;isCorrect&quot;)" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarGet.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/UnknownFuncErr.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
