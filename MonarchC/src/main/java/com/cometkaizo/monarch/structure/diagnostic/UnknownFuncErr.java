@@ -14,7 +14,7 @@ public record UnknownFuncErr(String funcName, String unitName, Type... paramType
     @Override
     public String getString() {
         String paramTypesStr = paramTypes == null ? "" :
-                "(" + Arrays.stream(paramTypes).map(Type::name).collect(Collectors.joining(", ")) + ")";
+                "(" + Arrays.stream(paramTypes).map(t -> t == null ? "void" : t.name()).collect(Collectors.joining(", ")) + ")";
         return "Unknown function '" + funcName + paramTypesStr + "' in unit '" + unitName + "'";
     }
 }

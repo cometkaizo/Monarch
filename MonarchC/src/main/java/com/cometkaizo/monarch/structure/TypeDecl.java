@@ -102,7 +102,7 @@ public class TypeDecl {
         }
 
         public Type.Static toType() {
-            return new Type.Static(name, size);
+            return new Type.Static(name == null ? "void" : name, size);
         }
     }
 }
