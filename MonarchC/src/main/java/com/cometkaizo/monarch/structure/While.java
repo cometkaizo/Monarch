@@ -18,6 +18,7 @@ import java.util.List;
 public class While {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any conditionParsers = new Any(), statementParsers = new Any();
+        private final Condition.Parser conditionParser = new Condition.Parser(conditionParsers);
 
         @Override
         protected Result parseImpl(ParseContext ctx) {
@@ -28,9 +29,9 @@ public class While {
             if (!ctx.literal("(")) return failExpecting("'('");
             ctx.whitespace();
 
-            var condition = conditionParsers.parse(ctx);
+            var condition = conditionParser.parse(ctx);
             if (!condition.hasValue()) return failExpecting("expression");
-            raw.condition = new Condition.Raw(condition.valueNonNull());
+            raw.condition = condition.valueNonNull();
             ctx.whitespace();
 
             if (!ctx.literal(")")) return failExpecting("')'");
@@ -80,11 +81,25 @@ public class While {
     }
 
     public static class Condition {
+        public static class Parser extends Structure.Parser<Raw> {
+            private final Any conditionParsers;
+            public Parser(Any conditionParsers) {
+                this.conditionParsers = conditionParsers;
+            }
+            @Override
+            protected Result parseImpl(ParseContext ctx) {
+                var raw = ctx.pushStructure(new Raw());
+
+                var value = conditionParsers.parse(ctx);
+                if (!value.hasValue()) return failExpecting("expression");
+                raw.value = value.valueNonNull();
+
+                ctx.popStructure();
+                return success(raw);
+            }
+        }
         public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {
             public Structure.Raw<?> value;
-            public Raw(Structure.Raw<?> value) {
-                this.value = value;
-            }
             @Override
             protected Analysis analyzeImpl(AnalysisContext ctx) {
                 return new Analysis(this, ctx);
