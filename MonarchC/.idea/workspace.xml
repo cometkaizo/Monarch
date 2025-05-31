@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added Temperature Converter sample program with a loop">
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added Inflation sample program showcasing loops">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
@@ -159,30 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Fixed compilation unit name being set too late">
-      <option name="closed" value="true" />
-      <created>1747525504033</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525504033</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Changed to use type declaration syntax">
-      <option name="closed" value="true" />
-      <created>1747525624034</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525624034</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Added ability to print parameter types in the error message">
-      <option name="closed" value="true" />
-      <created>1747525685659</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525685659</updated>
     </task>
     <task id="LOCAL-00089" summary="Added ability to call analyze() on any nested structure. It will first analyze its parents">
       <option name="closed" value="true" />
@@ -552,7 +528,31 @@
       <option name="project" value="LOCAL" />
       <updated>1748305705882</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Added StarPyramid sample program showcasing loops">
+      <option name="closed" value="true" />
+      <created>1748306957325</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1748306957325</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Added Inflation sample program showcasing loops">
+      <option name="closed" value="true" />
+      <created>1748727722959</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1748727722960</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Added Inflation sample program showcasing loops">
+      <option name="closed" value="true" />
+      <created>1748727728708</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1748727728708</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -567,8 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Disambiguated types with the same name in &quot;incompatible types&quot; error message by displaying their sizes as well" />
-    <MESSAGE value="Added double parsing capabilities" />
     <MESSAGE value="Added pretty string" />
     <MESSAGE value="Added more descriptive syntax error messages" />
     <MESSAGE value="Made Float64Lit accept all double values" />
@@ -592,7 +590,9 @@
     <MESSAGE value="Fixed If and While conditions not acting as expression consumers" />
     <MESSAGE value="Fixed crash if some argument types cannot be resolved in a function call" />
     <MESSAGE value="Added Temperature Converter sample program with a loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Temperature Converter sample program with a loop" />
+    <MESSAGE value="Added StarPyramid sample program showcasing loops" />
+    <MESSAGE value="Added Inflation sample program showcasing loops" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Inflation sample program showcasing loops" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
