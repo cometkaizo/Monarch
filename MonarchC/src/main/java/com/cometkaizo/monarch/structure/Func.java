@@ -69,10 +69,10 @@ public class Func {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parser;
-            if (ctx.literal("statements")) parser = statementParsers;
-            else if (ctx.literal("parameters")) parser = paramsParsers;
-            else if (ctx.literal("return") && ctx.whitespace() && ctx.literal("types")) parser = returnTypeParsers;
+            Any parsers;
+            if (ctx.literal("statements")) parsers = statementParsers;
+            else if (ctx.literal("parameters")) parsers = paramsParsers;
+            else if (ctx.literal("return") && ctx.whitespace() && ctx.literal("types")) parsers = returnTypeParsers;
             else return false;
 
             ctx.whitespace();
@@ -83,7 +83,7 @@ public class Func {
 
                 var parserName = ctx.word();
                 if (parserName == null) return false;
-                parser.add(parserName, ctx);
+                parsers.add(parserName, ctx);
 
                 ctx.whitespace();
             } while (ctx.literal(","));
