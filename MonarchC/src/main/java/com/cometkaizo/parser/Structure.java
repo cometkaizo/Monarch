@@ -3,7 +3,6 @@ package com.cometkaizo.parser;
 import com.cometkaizo.analysis.AnalysisContext;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.bytecode.Chunk;
-import com.cometkaizo.monarch.Compiler;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateParserErr;
 import com.cometkaizo.monarch.structure.diagnostic.UnknownParserErr;
 import com.cometkaizo.util.CharPosition;
@@ -14,6 +13,8 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static com.cometkaizo.util.CollectionUtils.prepend;
@@ -24,11 +25,17 @@ public final class Structure {
     // TODO: 2024-04-26 refactor subclasses of this into each structure (like Raw, Analysis, and Runtime)
     public abstract static class Parser<R extends Raw<?>> {
 
-        public Parser<? extends R>.Result parse(ParseContext ctx) {
+        public Result<? extends R> parse(ParseContext ctx) {
+            return parse(ctx, this::parseImpl);
+        }
+        public <V extends Raw<?>> V createRaw(ParseContext ctx, Supplier<V> constructor) {
+            return parse(ctx, _ctx -> success(constructor.get())).valueNonNull();
+        }
+        protected <V extends Raw<?>> Result<V> parse(ParseContext ctx, Function<ParseContext, ? extends Result<V>> parser) {
             ctx.enterFrame();
 
             var startIndex = ctx.chars.position();
-            var result = parseImpl(ctx);
+            var result = parser.apply(ctx);
             var endIndex = ctx.chars.position();
 
             if (result.success()) {
@@ -44,7 +51,7 @@ public final class Structure {
             return result;
         }
 
-        protected abstract Parser<? extends R>.Result parseImpl(ParseContext ctx);
+        protected abstract Result<? extends R> parseImpl(ParseContext ctx);
 
         public boolean parseSettings(ParseContext ctx) {
             ctx.enterFrame();
@@ -58,29 +65,29 @@ public final class Structure {
             return false;
         }
 
-        protected Result success(R value) {
-            return new Result(true, value, null);
+        protected <V extends Raw<?>> Result<V> success(V value) {
+            return new Result<>(true, value, null);
         }
-        protected Result success() {
-            return new Result(true, null, null);
+        protected <V extends Raw<?>> Result<V> success() {
+            return new Result<>(true, null, null);
         }
-        protected Result fail() {
+        protected <V extends Raw<?>> Result<V> fail() {
             return fail(defaultFailMessage());
         }
-        protected Result failExpecting(String expected) {
+        protected <V extends Raw<?>> Result<V> failExpecting(String expected) {
             return fail(defaultFailMessage() + ": " + expected + " expected here");
         }
-        protected Result fail(String message) {
-            return new Result(false, null, message);
+        protected <V extends Raw<?>> Result<V> fail(String message) {
+            return new Result<>(false, null, message);
         }
         private String defaultFailMessage() {
             return StringUtils.nameNoPkg(getClass());
         }
-        public class Result {
+        public static class Result<V extends Raw<?>> {
             private final boolean success;
-            private final R value;
+            private final V value;
             private final String failMessage;
-            private Result(boolean success, R value, String failMessage) {
+            private Result(boolean success, V value, String failMessage) {
                 this.success = success;
                 this.value = value;
                 this.failMessage = failMessage;
@@ -91,14 +98,14 @@ public final class Structure {
             public boolean hasValue() {
                 return success && value != null;
             }
-            public Optional<R> value() {
+            public Optional<V> value() {
                 return Optional.ofNullable(valueOrNull());
             }
-            public R valueOrNull() {
+            public V valueOrNull() {
                 if (!success) throw new IllegalStateException("Failed result has no value");
                 return value;
             }
-            public R valueNonNull() {
+            public V valueNonNull() {
                 return value().orElseThrow();
             }
             public String failMessage() {
@@ -111,11 +118,12 @@ public final class Structure {
             private final List<Parser<?>> parsers = new ArrayList<>();
 
             @Override
-            protected Parser<? extends Raw<?>>.Result parseImpl(ParseContext ctx) {
+            @SuppressWarnings("RedundantCast")
+            protected Result<?> parseImpl(ParseContext ctx) {
                 for (var parser : parsers) {
                     var member = parser.parse(ctx);
                     if (member.success()) {
-                        return member;
+                        return (Result<?>) member; // this cast is actually necessary, but IntelliJ does not see that
                     }
                 }
                 return fail();
@@ -146,26 +154,6 @@ public final class Structure {
 
             public void clear() {
                 parsers.clear();
-            }
-        }
-        public static class One extends Parser<Raw<?>> {
-            private final Compiler compiler;
-            private Structure.Parser<?> parser;
-
-            public One(Compiler compiler) {
-                this.compiler = compiler;
-            }
-
-            @Override
-            protected Parser<? extends Raw<?>>.Result parseImpl(ParseContext ctx) {
-                if (parser == null) return fail();
-                return parser.parse(ctx);
-            }
-
-            public void set(String name, ParseContext ctx) {
-                var parser = compiler.getParser(name);
-                if (parser.isEmpty()) ctx.report(new UnknownParserErr(name));
-                else this.parser = parser.get();
             }
         }
     }

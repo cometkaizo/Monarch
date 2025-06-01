@@ -110,7 +110,7 @@ public class Compiler {
         return result; 
     }
 
-    protected Structure.Parser<? extends CompilationUnit.Raw>.Result parse(String name, CharIterator chars, Result result) {
+    protected Structure.Parser.Result<? extends CompilationUnit.Raw> parse(String name, CharIterator chars, Result result) {
         resetParsers(name);
         result.syntaxCxt = new ParseContext(chars, new DiagnosticList(), parsers);
         var unitRes = unitStx.parse(result.syntaxCxt);

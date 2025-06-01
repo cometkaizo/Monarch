@@ -13,7 +13,7 @@ public class Print {
         private final Any valueParsers = new Any();
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("print")) return failExpecting("'print'");

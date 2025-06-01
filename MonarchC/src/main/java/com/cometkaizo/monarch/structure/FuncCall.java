@@ -23,7 +23,7 @@ public class FuncCall {
         private final Any argsParsers = new Any();
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var parent = ctx.topStructure();
             var raw = ctx.pushStructure(new Raw());
 

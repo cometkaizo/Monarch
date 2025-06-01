@@ -13,7 +13,7 @@ public class TypeDecl {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any sizeParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             if (!ctx.literal("type")) return failExpecting("'type'");

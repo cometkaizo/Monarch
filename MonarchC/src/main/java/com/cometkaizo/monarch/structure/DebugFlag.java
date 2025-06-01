@@ -8,7 +8,7 @@ import com.cometkaizo.parser.Structure;
 public class DebugFlag {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             if (!ctx.literal("debugFlag")) return failExpecting("'debugFlag'");
             ctx.whitespace();
             if (!ctx.literal(";")) return fail("';'");

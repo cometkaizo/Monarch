@@ -7,7 +7,7 @@ import com.cometkaizo.util.StringUtils;
 public class Comment {
     public static class Parser extends Structure.Parser<Structure.Raw<?>> {
         @Override
-        protected Structure.Parser<Structure.Raw<?>>.Result parseImpl(ParseContext ctx) {
+        protected Result<?> parseImpl(ParseContext ctx) {
             if (!ctx.literal("//")) return failExpecting("'//'");
             ctx.chars.checkAndAdvance(c -> !StringUtils.isNewline(c));
             ctx.whitespace();

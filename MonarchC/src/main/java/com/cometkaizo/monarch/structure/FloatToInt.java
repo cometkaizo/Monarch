@@ -14,7 +14,7 @@ public class FloatToInt {
         private final Any valueParsers = new Any();
         private final Any typeParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             // value to convert

@@ -15,7 +15,7 @@ public class Free {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any refParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("*!")) return failExpecting("'*!'");

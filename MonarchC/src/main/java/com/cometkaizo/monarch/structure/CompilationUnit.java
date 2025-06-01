@@ -25,7 +25,7 @@ public class CompilationUnit {
         }
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             if (parsers.isEmpty()) parsers.add("compile_with", ctx);
 
             var raw = ctx.pushStructure(new Raw(name));

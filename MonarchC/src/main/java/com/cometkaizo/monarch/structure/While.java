@@ -21,7 +21,7 @@ public class While {
         private final Condition.Parser conditionParser = new Condition.Parser(conditionParsers);
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("while")) return failExpecting("'while'");
@@ -87,7 +87,7 @@ public class While {
                 this.conditionParsers = conditionParsers;
             }
             @Override
-            protected Result parseImpl(ParseContext ctx) {
+            protected Result<Raw> parseImpl(ParseContext ctx) {
                 var raw = ctx.pushStructure(new Raw());
 
                 var value = conditionParsers.parse(ctx);

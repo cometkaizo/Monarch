@@ -11,15 +11,13 @@ import com.cometkaizo.monarch.structure.resource.Type;
 import com.cometkaizo.parser.ParseContext;
 import com.cometkaizo.parser.Structure;
 
-// consider generalizing this to turn the left side of the equals into a reference parameter
-// (correct the reference level on L.S. by 1)
 public class Set {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any refParsers = new Any();
         private final Any valueParsers = new Any();
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             var ref = refParsers.parse(ctx);

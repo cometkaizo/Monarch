@@ -21,7 +21,7 @@ public class ParenParamsDecl {
         }
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
             if (!ctx.literal("(")) return failExpecting("'('");
 

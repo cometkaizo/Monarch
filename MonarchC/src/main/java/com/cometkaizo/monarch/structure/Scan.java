@@ -11,7 +11,7 @@ import com.cometkaizo.parser.Structure;
 public class Scan {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var parent = ctx.topStructure();
             var raw = new Raw();
 

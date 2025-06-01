@@ -10,7 +10,7 @@ import static com.cometkaizo.monarch.structure.CompilationUnit.Parser.UNIT_NAME_
 public class StaticTypeGet {
     public static class Parser extends TypeGet.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             var unitOrTypeName = ctx.chars.checkAndAdvance(UNIT_NAME_FMT);

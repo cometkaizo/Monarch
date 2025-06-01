@@ -15,7 +15,7 @@ public class Float32Lit {
     }
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             Double value = ctx.decimal();

@@ -11,7 +11,7 @@ public class CompileWith {
         }
 
         @Override
-        protected Structure.Parser<Structure.Raw<?>>.Result parseImpl(ParseContext ctx) {
+        protected Result<?> parseImpl(ParseContext ctx) {
             if (!ctx.literal("compile")) return failExpecting("'compile'");
             if (!ctx.whitespace()) return failExpecting("whitespace");
             if (!ctx.literal("with")) return failExpecting("'with'");

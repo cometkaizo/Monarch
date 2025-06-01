@@ -13,7 +13,7 @@ public class BiOperator {
         private final Any operandParsers = new Any();
         
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<R> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(newRaw());
 
             var left = operandParsers.parse(ctx);

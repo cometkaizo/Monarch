@@ -23,7 +23,7 @@ public class StringLit {
         );
         private static final Pattern FMT = Pattern.compile("^(" + Matcher.quoteReplacement(String.join("|", ESCAPES.keySet())) + "|[^\"])");
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             if (!ctx.literal("\"")) return failExpecting("double quotes");

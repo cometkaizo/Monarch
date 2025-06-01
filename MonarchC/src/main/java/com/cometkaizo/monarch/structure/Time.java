@@ -10,7 +10,7 @@ import com.cometkaizo.parser.Structure;
 public class Time {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             if (!ctx.literal("time")) return failExpecting("'time'");

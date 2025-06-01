@@ -15,7 +15,7 @@ public class Malloc {
     public static class Parser extends Structure.Parser<Raw> {
         private final Any sizeParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("&!")) return failExpecting("'&!'");

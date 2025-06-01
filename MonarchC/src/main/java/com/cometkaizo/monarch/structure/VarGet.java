@@ -15,7 +15,7 @@ import com.cometkaizo.util.NoPrint;
 public class VarGet {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             raw.name = ctx.word();

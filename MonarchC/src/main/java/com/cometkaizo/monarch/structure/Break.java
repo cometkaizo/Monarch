@@ -11,7 +11,7 @@ import com.cometkaizo.util.NoPrint;
 public class Break {
     public static class Parser extends Structure.Parser<Raw> {
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             if (!ctx.literal("break")) return failExpecting("'break'");

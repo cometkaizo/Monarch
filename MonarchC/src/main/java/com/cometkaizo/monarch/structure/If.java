@@ -21,7 +21,7 @@ public class If {
         private final Else.Parser elseParser = new Else.Parser(statementParsers);
 
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("if")) return failExpecting("'if'");
@@ -95,7 +95,7 @@ public class If {
                 this.conditionParsers = conditionParsers;
             }
             @Override
-            protected Result parseImpl(ParseContext ctx) {
+            protected Result<Raw> parseImpl(ParseContext ctx) {
                 var raw = ctx.pushStructure(new Raw());
 
                 var value = conditionParsers.parse(ctx);
@@ -139,7 +139,7 @@ public class If {
             }
 
             @Override
-            protected Result parseImpl(ParseContext ctx) {
+            protected Result<Raw> parseImpl(ParseContext ctx) {
                 var raw = ctx.pushStructure(new Raw());
 
                 if (!ctx.literal("else")) return failExpecting("'else'");

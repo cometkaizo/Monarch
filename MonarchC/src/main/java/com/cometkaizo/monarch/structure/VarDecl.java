@@ -18,6 +18,7 @@ public class VarDecl {
         @Override
         protected Result parseImpl(ParseContext ctx) {
             var raw = new Raw();
+        protected Result<Raw> parseImpl(ParseContext ctx) {
 
             if (!ctx.literal("var")) return failExpecting("'var'");
             if (!ctx.whitespace()) return failExpecting("whitespace");

@@ -7,7 +7,7 @@ import com.cometkaizo.parser.Structure;
 public class CompileSettings {
     public static class Parser extends Structure.Parser<Structure.Raw<?>> {
         @Override
-        protected Structure.Parser<Structure.Raw<?>>.Result parseImpl(ParseContext ctx) {
+        protected Result<Structure.Raw<?>> parseImpl(ParseContext ctx) {
             if (!ctx.literal("compile")) return failExpecting("'compile'");
             if (!ctx.whitespace()) return failExpecting("whitespace");
             var name = ctx.word();

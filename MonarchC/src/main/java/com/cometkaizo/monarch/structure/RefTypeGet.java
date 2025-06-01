@@ -10,7 +10,7 @@ public class RefTypeGet {
     public static class Parser extends TypeGet.Parser<Raw> {
         private final Any targetParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
+        protected Result<Raw> parseImpl(ParseContext ctx) {
             var raw = new Raw();
 
             if (!ctx.literal("&")) return failExpecting("'&'");
