@@ -38,7 +38,8 @@ compile while with statements (comment, var_decl, set, print, if, while, debug_f
 compile and with (lesser, greater)
 compile lesser with (float32_lit, int32_lit, byte_lit, function_call, var_get)
 compile greater with (subtract, cast, float32_lit, int32_lit, byte_lit, function_call, var_get)
-compile var_decl with (ref_type_get, static_type_get)
+compile var_decl with types (ref_type_get, static_type_get)
+compile var_decl with initializers (add, cast, malloc, scan, byte_lit, float32_lit, int32_lit, var_get)
 compile ref_type_get with (ref_type_get, static_type_get)
 compile ref with (string_lit, var_get)
 compile deref with (string_lit, var_get)
@@ -49,14 +50,14 @@ type boolean = (1b, 0b);
 type float32 = (4b, 0b);
 
 function main(): void {
-    var word: &byte; word = &! 30b 0b as &byte;
+    var word: &byte = &! 30b 0b as &byte;
     var wordLen: byte;
 
     print "Enter a word: ";
     scanString(word, &wordLen);
     print "\n";
 
-    var line: byte; line = 0b;
+    var line: byte = 0b;
     while (line < wordLen) {
         printString(word, wordLen); print "\n";
         line = line + 1b;
@@ -66,17 +67,14 @@ function main(): void {
 }
 
 function scanString(buffer: &byte, len: &byte): void {
-    var cIndex: byte;
-    cIndex = 0b;
+    var cIndex: byte = 0b;
 
     while (cIndex < 30b) {
-        var c: byte;
-        c = scan;
+        var c: byte = scan;
         if (c == '\n') {
             break;
         }
-        var cPtr: &byte;
-        cPtr = buffer + cIndex;
+        var cPtr: &byte = buffer + cIndex;
         *cPtr = c;
         cIndex = cIndex + 1b;
     }
@@ -85,9 +83,9 @@ function scanString(buffer: &byte, len: &byte): void {
 }
 
 function printString(str: &byte, len: byte): void {
-    var cIndex: byte; cIndex = 0b;
+    var cIndex: byte = 0b;
     while (cIndex < len) {
-        var cPtr: &byte; cPtr = str + cIndex;
+        var cPtr: &byte = str + cIndex;
         print *cPtr;
         cIndex = cIndex + 1b;
     }

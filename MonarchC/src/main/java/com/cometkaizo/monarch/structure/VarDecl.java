@@ -1,6 +1,7 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
+import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
@@ -14,11 +15,10 @@ import com.cometkaizo.parser.Structure;
 
 public class VarDecl {
     public static class Parser extends Structure.Parser<Raw> {
-        private final Any typeParsers = new Any();
+        private final Any typeParsers = new Any(), initializerParsers = new Any();
         @Override
-        protected Result parseImpl(ParseContext ctx) {
-            var raw = new Raw();
         protected Result<Raw> parseImpl(ParseContext ctx) {
+            var raw = ctx.pushStructure(new Raw());
 
             if (!ctx.literal("var")) return failExpecting("'var'");
             if (!ctx.whitespace()) return failExpecting("whitespace");
@@ -36,21 +36,51 @@ public class VarDecl {
             raw.type = type.valueNonNull();
             ctx.whitespace();
 
+            if (ctx.literal("=")) {
+                ctx.whitespace();
+
+                var initializer = parse(ctx, _ctx -> {
+                    var initializerRaw = new Set.Raw();
+
+                    // expr
+                    var initializerExpr = initializerParsers.parse(ctx);
+                    if (!initializerExpr.hasValue()) return failExpecting("expression");
+                    initializerRaw.value = initializerExpr.valueNonNull();
+                    ctx.whitespace();
+
+                    // target
+                    var refRaw = createRaw(ctx, VarGet.Raw::new);
+                    refRaw.name = raw.name;
+                    initializerRaw.ref = refRaw;
+
+                    return success(initializerRaw);
+                });
+
+                if (!initializer.hasValue()) return fail();
+                raw.initializer = initializer.valueNonNull();
+            }
             if (!ctx.literal(";")) return failExpecting("';'");
             ctx.whitespace();
 
+            ctx.popStructure();
             return success(raw);
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
+            Any parsers;
+            if (ctx.literal("types")) parsers = typeParsers;
+            else if (ctx.literal("initializers")) parsers = initializerParsers;
+            else return false;
+
+            ctx.whitespace();
             if (!ctx.literal("(")) return false;
 
             do {
                 ctx.whitespace();
 
-                var typeParserName = ctx.word();
-                if (typeParserName == null) return false;
-                typeParsers.add(typeParserName, ctx);
+                var parserName = ctx.word();
+                if (parserName == null) return false;
+                parsers.add(parserName, ctx);
 
                 ctx.whitespace();
             } while (ctx.literal(","));
@@ -60,17 +90,19 @@ public class VarDecl {
             return false;
         }
     }
-    public static class Raw extends Structure.Raw<Analysis> {
+    public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {
         public String name;
         public Structure.Raw<?> type;
+        public Set.Raw initializer;
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
             return new Analysis(this, ctx);
         }
     }
-    public static class Analysis extends Structure.Analysis {
+    public static class Analysis extends Structure.Analysis implements ExprConsumer {
         public final String name;
         public final Type type;
+        public final Set.Analysis initializer;
 
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);
@@ -87,11 +119,14 @@ public class VarDecl {
                 boolean success = m.get().getOrCreate(Vars.class, Vars::new).addVar(new Var(name, this.type));
                 if (!success) ctx.report(new DuplicateVarErr(name), this);
             } else ctx.report(new NoResourcesErr("var_decl"), this);
+
+            if (raw.initializer == null) initializer = null;
+            else initializer = raw.initializer.analyze(ctx);
         }
 
         @Override
         public void assemble(AssembleContext ctx) {
-
+            if (initializer != null) initializer.assemble(ctx);
         }
     }
 }
