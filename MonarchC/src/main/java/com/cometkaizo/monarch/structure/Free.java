@@ -28,6 +28,7 @@ public class Free {
             ctx.whitespace();
 
             if (!ctx.literal(";")) return failExpecting("';'");
+            ctx.whitespace();
 
             ctx.popStructure();
             return success(raw);
