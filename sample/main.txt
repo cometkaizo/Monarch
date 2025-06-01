@@ -6,7 +6,7 @@ compile function with parameters (paren_params_decl)
 compile function with return types (ref_type_get, static_type_get)
 compile paren_params_decl with (var_param_decl)
 compile var_param_decl with (ref_type_get, static_type_get)
-compile function with statements (scan, debug, debug_flag, comment, free, print, function_call, var_decl, set, return, if, while)
+compile function with statements (scan, debug, debug_flag, comment, free, print, function_call, var_decl, increment, set, return, if, while)
 compile return with (subtract, float32_lit, int32_lit, cast, modulo, byte_lit, boolean_lit, var_get)
 compile free with (var_get)
 compile set with targets (var_get, deref)
@@ -31,10 +31,11 @@ compile toInt with types (static_type_get)
 compile or with (byte_lit, subtract, time, var_get)
 compile subtract with (multiply, divide, function_call, int32_lit, float32_lit, byte_lit, char_lit, var_get)
 compile if with conditions (greater, lesser, boolean_lit, function_call, equals, var_get)
-compile if with statements (comment, set, var_decl, print, break, if, while, function_call, debug_flag, return, debug)
+compile if with statements (comment, increment, set, var_decl, print, break, if, while, function_call, debug_flag, return, debug)
 compile equals with (cast, float32_lit, int32_lit, deref, char_lit, byte_lit, var_get)
 compile while with conditions (and, boolean_lit, lesser, greater)
-compile while with statements (comment, var_decl, set, print, if, while, debug_flag, function_call, free, debug)
+compile while with statements (comment, var_decl, increment, set, print, if, while, debug_flag, function_call, free, debug)
+compile increment with (var_get)
 compile and with (lesser, greater)
 compile lesser with (float32_lit, int32_lit, byte_lit, function_call, var_get)
 compile greater with (subtract, cast, float32_lit, int32_lit, byte_lit, function_call, var_get)
@@ -60,7 +61,7 @@ function main(): void {
     var line = 0b;
     while (line < wordLen) {
         printString(word, wordLen); print "\n";
-        line = line + 1b;
+        line ++;
     }
 
     *! word;
@@ -76,7 +77,7 @@ function scanString(buffer: &byte, len: &byte): void {
         }
         var cPtr = buffer + cIndex;
         *cPtr = c;
-        cIndex = cIndex + 1b;
+        cIndex ++;
     }
 
     *len = cIndex;
@@ -87,6 +88,6 @@ function printString(str: &byte, len: byte): void {
     while (cIndex < len) {
         var cPtr = str + cIndex;
         print *cPtr;
-        cIndex = cIndex + 1b;
+        cIndex++;
     }
 }

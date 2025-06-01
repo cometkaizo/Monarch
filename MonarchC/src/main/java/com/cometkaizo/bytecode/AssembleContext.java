@@ -27,7 +27,7 @@ public class AssembleContext extends Context {
         return data;
     }
 
-
+    // todo: move this to be automatically recorded in chunk.op...()
     public Size.Mutable stackSize() {
         return stackSize;
     }

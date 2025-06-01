@@ -77,6 +77,8 @@ public class Compiler {
                 Map.entry("ref", new Ref.Parser()),
                 Map.entry("deref", new Deref.Parser()),
                 Map.entry("set", new Set.Parser()),
+                Map.entry("increment", new Increment.Parser()),
+                Map.entry("decrement", new Decrement.Parser()),
                 Map.entry("cast", new Cast.Parser()),
                 Map.entry("toFloat", new IntToFloat.Parser()),
                 Map.entry("toInt", new FloatToInt.Parser())

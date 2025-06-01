@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added variable initializers in declaration statements">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/diagnostic/CannotInferVarTypeErr.java" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added variable type inference at declaration">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Decrement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Increment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/Structure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/AssembleContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/AssembleContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,22 +163,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Previous build">
-      <option name="closed" value="true" />
-      <created>1747525991942</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1747525991942</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Added sample program showcasing type declaration">
-      <option name="closed" value="true" />
-      <created>1747526020205</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1747526020205</updated>
     </task>
     <task id="LOCAL-00096" summary="Workspace update">
       <option name="closed" value="true" />
@@ -554,7 +540,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748740001310</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Added variable type inference at declaration">
+      <option name="closed" value="true" />
+      <created>1748741470535</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1748741470536</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Added whitespace consumer after Free">
+      <option name="closed" value="true" />
+      <created>1748741832367</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1748741832367</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -569,8 +571,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated README to include floating point numbers" />
-    <MESSAGE value="Added pHLevelFloat sample programs showcasing float32 and float64" />
     <MESSAGE value="Workspace update" />
     <MESSAGE value="Added step-by-step debugger to the README" />
     <MESSAGE value="Allowed Scan to be used as a statement" />
@@ -594,7 +594,9 @@
     <MESSAGE value="Added WordRepeater sample program showcasing loops" />
     <MESSAGE value="Changed Parser.Result to be able to hold a Raw of any type, not just that of the containing Parser" />
     <MESSAGE value="Added variable initializers in declaration statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added variable initializers in declaration statements" />
+    <MESSAGE value="Added variable type inference at declaration" />
+    <MESSAGE value="Added whitespace consumer after Free" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added whitespace consumer after Free" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
