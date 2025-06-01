@@ -9,12 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added variable type inference at declaration">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Decrement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Increment.java" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Added Increment and Decrement operators">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperatorSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/AssembleContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/bytecode/AssembleContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/And.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Divide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/LShift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/LShift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Locatable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Locatable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Modulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Multiply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Or.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RShift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RShift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Subtract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Subtract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Xor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.mnrc" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.mnrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
@@ -163,38 +174,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Workspace update">
-      <option name="closed" value="true" />
-      <created>1747526039678</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1747526039678</updated>
-    </task>
-    <task id="LOCAL-00097" summary="General README update, including type declarations">
-      <option name="closed" value="true" />
-      <created>1747536404388</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1747536404388</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Workspace update">
-      <option name="closed" value="true" />
-      <created>1747536412043</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1747536412043</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Built">
-      <option name="closed" value="true" />
-      <created>1747537303953</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1747537303953</updated>
     </task>
     <task id="LOCAL-00100" summary="Added float32 and float64 types">
       <option name="closed" value="true" />
@@ -556,7 +535,39 @@
       <option name="project" value="LOCAL" />
       <updated>1748741832367</updated>
     </task>
-    <option name="localTasksCounter" value="145" />
+    <task id="LOCAL-00145" summary="Added Increment and Decrement operators">
+      <option name="closed" value="true" />
+      <created>1748807162256</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1748807162256</updated>
+    </task>
+    <task id="LOCAL-00146" summary="Generalized BiOperator#parseImpl return type">
+      <option name="closed" value="true" />
+      <created>1748811913937</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1748811913939</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Renamed variable">
+      <option name="closed" value="true" />
+      <created>1748812310582</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1748812310582</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Renamed variable">
+      <option name="closed" value="true" />
+      <created>1748812318855</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1748812318855</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -571,9 +582,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Workspace update" />
-    <MESSAGE value="Added step-by-step debugger to the README" />
-    <MESSAGE value="Allowed Scan to be used as a statement" />
     <MESSAGE value="Allowed functions to contain statements that do not generate code (e.g., comments)" />
     <MESSAGE value="Fixed structures that can be both structures and expressions (e.g., function calls) always acting like an expression in if statement and while loops" />
     <MESSAGE value="Allowed scan to be used as a standalone statement" />
@@ -596,7 +604,10 @@
     <MESSAGE value="Added variable initializers in declaration statements" />
     <MESSAGE value="Added variable type inference at declaration" />
     <MESSAGE value="Added whitespace consumer after Free" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added whitespace consumer after Free" />
+    <MESSAGE value="Added Increment and Decrement operators" />
+    <MESSAGE value="Generalized BiOperator#parseImpl return type" />
+    <MESSAGE value="Renamed variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed variable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

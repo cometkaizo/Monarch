@@ -43,7 +43,7 @@ public class VarDecl {
                 ctx.whitespace();
 
                 var initializer = parse(ctx, _ctx -> {
-                    var initializerRaw = new Set.Raw();
+                    var initializerRaw = new Locatable.Set.Raw();
 
                     // expr
                     var initializerExpr = initializerParsers.parse(ctx);
@@ -96,7 +96,7 @@ public class VarDecl {
     public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {
         public String name;
         public Structure.Raw<?> type;
-        public Set.Raw initializer;
+        public Locatable.Set.Raw initializer;
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
             return new Analysis(this, ctx);
@@ -105,7 +105,7 @@ public class VarDecl {
     public static class Analysis extends Structure.Analysis implements ExprConsumer {
         public final String name;
         public final Type type;
-        public final Set.Analysis initializer;
+        public final Locatable.Set.Analysis initializer;
 
         public Analysis(Raw raw, AnalysisContext ctx) {
             super(raw, ctx);

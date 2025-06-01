@@ -18,6 +18,16 @@ public class LShift {
             return "<<";
         }
     }
+    public static class SetParser extends BiOperatorSet.Parser<Raw> {
+        @Override
+        protected Raw newRaw() {
+            return new Raw();
+        }
+        @Override
+        protected String operationSymbol() {
+            return "<<=";
+        }
+    }
     public static class Raw extends BiOperator.Raw<Analysis> {
         @Override
         protected Analysis analyzeImpl(AnalysisContext ctx) {
