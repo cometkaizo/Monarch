@@ -1,9 +1,11 @@
 package com.cometkaizo.monarch.structure;
 
 import com.cometkaizo.analysis.AnalysisContext;
+import com.cometkaizo.analysis.Expr;
 import com.cometkaizo.analysis.ExprConsumer;
 import com.cometkaizo.analysis.StackResource;
 import com.cometkaizo.bytecode.AssembleContext;
+import com.cometkaizo.monarch.structure.diagnostic.CannotInferVarTypeErr;
 import com.cometkaizo.monarch.structure.diagnostic.DuplicateVarErr;
 import com.cometkaizo.monarch.structure.diagnostic.NoResourcesErr;
 import com.cometkaizo.monarch.structure.diagnostic.WrongTypeErr;
@@ -29,12 +31,13 @@ public class VarDecl {
             ctx.whitespace();
 
             // type
-            if (!ctx.literal(":")) return failExpecting("':'");
-            ctx.whitespace();
-            var type = typeParsers.parse(ctx);
-            if (!type.hasValue()) return failExpecting("type");
-            raw.type = type.valueNonNull();
-            ctx.whitespace();
+            if (ctx.literal(":")) {
+                ctx.whitespace();
+                var type = typeParsers.parse(ctx);
+                if (!type.hasValue()) return failExpecting("type");
+                raw.type = type.valueNonNull();
+                ctx.whitespace();
+            }
 
             if (ctx.literal("=")) {
                 ctx.whitespace();
@@ -109,9 +112,16 @@ public class VarDecl {
             this.name = raw.name;
 
             Type type = null;
-            if (raw.type.analyze(ctx) instanceof TypeGet.Analysis typeGet) {
-                if (typeGet.type() != null) type = typeGet.type();
-            } else ctx.report(new WrongTypeErr("variable type", "valid type"), this);
+            if (raw.type != null) {
+                if (raw.type.analyze(ctx) instanceof TypeGet.Analysis typeGet) {
+                    if (typeGet.type() != null) type = typeGet.type();
+                } else ctx.report(new WrongTypeErr("variable type", "valid type"), this);
+            } else if (raw.initializer != null) {
+                if (raw.initializer.value.analyzeInIsolation(ctx) instanceof Expr expr) {
+                    if (!expr.isVoid()) type = expr.type();
+                    else ctx.report(new CannotInferVarTypeErr(), this);
+                } else ctx.report(new CannotInferVarTypeErr(), this);
+            } else ctx.report(new CannotInferVarTypeErr(), this);
             this.type = type;
 
             var m = ancestors.ofType(StackResource.Manager.class);

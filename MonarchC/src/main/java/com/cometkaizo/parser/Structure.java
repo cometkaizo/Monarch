@@ -164,7 +164,9 @@ public final class Structure {
         public CharPosition startIndex, endIndex;
         public T analyze(AnalysisContext ctx) {
             if (parent != null && parent.analysis == null) parent.analyze(ctx);
-
+            return analyzeInIsolation(ctx);
+        }
+        public T analyzeInIsolation(AnalysisContext ctx) {
             if (analysis == null) {
                 synchronized (this) {
                     if (analysis == null) {
