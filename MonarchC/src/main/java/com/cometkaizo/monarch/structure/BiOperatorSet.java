@@ -45,28 +45,9 @@ public class BiOperatorSet {
         protected abstract String operationSymbol();
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parsers;
-            if (ctx.literal("targets")) parsers = refParsers;
-            else if (ctx.literal("values")) parsers = operandParsers;
+            if (ctx.literal("targets")) return parseParserList(refParsers, ctx);
+            else if (ctx.literal("values")) return parseParserList(operandParsers, ctx);
             else return false;
-
-            ctx.whitespace();
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var statementParserName = ctx.word();
-                if (statementParserName == null) return false;
-                parsers.add(statementParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-
-            return false;
         }
     }
 }

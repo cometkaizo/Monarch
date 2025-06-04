@@ -25,21 +25,7 @@ public class RefTypeGet {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var targetParserName = ctx.word();
-                if (targetParserName == null) return false;
-                targetParsers.add(targetParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
+            return parseParserList(targetParsers, ctx);
         }
     }
     public static class Raw extends TypeGet.Raw<Analysis> {

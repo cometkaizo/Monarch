@@ -29,22 +29,7 @@ public class Not {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var statementParserName = ctx.word();
-                if (statementParserName == null) return false;
-                operandParsers.add(statementParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-
-            return false;
+            return parseParserList(operandParsers, ctx);
         }
     }
     public static class Raw extends Structure.Raw<Analysis> {

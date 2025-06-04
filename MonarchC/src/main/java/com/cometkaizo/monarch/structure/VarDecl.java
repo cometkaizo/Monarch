@@ -70,27 +70,9 @@ public class VarDecl {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parsers;
-            if (ctx.literal("types")) parsers = typeParsers;
-            else if (ctx.literal("initializers")) parsers = initializerParsers;
+            if (ctx.literal("types")) return parseParserList(typeParsers, ctx);
+            else if (ctx.literal("initializers")) return parseParserList(initializerParsers, ctx);
             else return false;
-
-            ctx.whitespace();
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var parserName = ctx.word();
-                if (parserName == null) return false;
-                parsers.add(parserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
         }
     }
     public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {

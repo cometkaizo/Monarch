@@ -46,27 +46,9 @@ public class RefSet {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parser;
-            if (ctx.literal("targets")) parser = refParsers;
-            else if (ctx.literal("values")) parser = valueParsers;
+            if (ctx.literal("targets")) return parseParserList(refParsers, ctx);
+            else if (ctx.literal("values")) return parseParserList(valueParsers, ctx);
             else return false;
-            ctx.whitespace();
-
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var valueParserName = ctx.word();
-                if (valueParserName == null) return false;
-                parser.add(valueParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
         }
 
     }

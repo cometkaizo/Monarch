@@ -36,21 +36,7 @@ public class Malloc {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var sizeParserName = ctx.word();
-                if (sizeParserName == null) return false;
-                sizeParsers.add(sizeParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
+            return parseParserList(sizeParsers, ctx);
         }
     }
     public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {

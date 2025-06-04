@@ -29,21 +29,7 @@ public class Ref {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var valueParserName = ctx.word();
-                if (valueParserName == null) return false;
-                valueParsers.add(valueParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
+            return parseParserList(valueParsers, ctx);
         }
     }
     public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {

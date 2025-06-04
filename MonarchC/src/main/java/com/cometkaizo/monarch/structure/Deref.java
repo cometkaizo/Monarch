@@ -31,21 +31,7 @@ public class Deref {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var refParserName = ctx.word();
-                if (refParserName == null) return false;
-                refParsers.add(refParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
+            return parseParserList(refParsers, ctx);
         }
     }
     public static class Raw extends Structure.Raw<Analysis> implements ExprConsumer {

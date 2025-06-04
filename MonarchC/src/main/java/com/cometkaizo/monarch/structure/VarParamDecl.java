@@ -38,21 +38,7 @@ public class VarParamDecl {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var typeParserName = ctx.word();
-                if (typeParserName == null) return false;
-                typeParsers.add(typeParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
+            return parseParserList(typeParsers, ctx);
         }
     }
     public static class Raw extends Structure.Raw<Analysis> {

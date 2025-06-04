@@ -54,28 +54,9 @@ public class While {
 
         @Override
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parser;
-            if (ctx.literal("statements")) parser = statementParsers;
-            else if (ctx.literal("conditions")) parser = conditionParsers;
+            if (ctx.literal("statements")) return parseParserList(statementParsers, ctx);
+            else if (ctx.literal("conditions")) return parseParserList(conditionParsers, ctx);
             else return false;
-
-            ctx.whitespace();
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var parserName = ctx.word();
-                if (parserName == null) return false;
-                parser.add(parserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (!ctx.literal(")")) return false;
-            ctx.whitespace();
-
-            return true;
         }
 
     }

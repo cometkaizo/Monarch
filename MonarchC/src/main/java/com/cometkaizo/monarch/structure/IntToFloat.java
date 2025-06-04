@@ -34,27 +34,9 @@ public class IntToFloat {
         }
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
-            Any parser;
-            if (ctx.literal("values")) parser = valueParsers;
-            else if (ctx.literal("types")) parser = typeParsers;
+            if (ctx.literal("values")) return parseParserList(valueParsers, ctx);
+            else if (ctx.literal("types")) return parseParserList(typeParsers, ctx);
             else return false;
-            ctx.whitespace();
-
-            if (!ctx.literal("(")) return false;
-
-            do {
-                ctx.whitespace();
-
-                var typeParserName = ctx.word();
-                if (typeParserName == null) return false;
-                parser.add(typeParserName, ctx);
-
-                ctx.whitespace();
-            } while (ctx.literal(","));
-
-            if (ctx.literal(")")) return true;
-            ctx.whitespace();
-            return false;
         }
     }
     public static class Raw extends Structure.Raw<Analysis> {
