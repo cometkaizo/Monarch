@@ -22,8 +22,8 @@ public class BiOperatorSet {
             ctx.whitespace();
 
             { // expr
-                var exprRaw = ctx.pushStructure(createRaw(ctx, this::newRaw));
-                exprRaw.left = createRaw(ctx, () -> new Locatable.Get.Raw(setRaw.ref));
+                var exprRaw = ctx.pushStructure(createRaw(this::newRaw, ctx));
+                exprRaw.left = createRaw(() -> new Locatable.Get.Raw(setRaw.ref), ctx);
 
                 var value = operandParsers.parse(ctx);
                 if (!value.hasValue()) return failExpecting("expression");

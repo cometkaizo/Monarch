@@ -26,12 +26,12 @@ public final class Structure {
     public abstract static class Parser<R extends Raw<?>> {
 
         public Result<? extends R> parse(ParseContext ctx) {
-            return parse(ctx, this::parseImpl);
+            return parse(this::parseImpl, ctx);
         }
-        public <V extends Raw<?>> V createRaw(ParseContext ctx, Supplier<V> constructor) {
-            return parse(ctx, _ctx -> success(constructor.get())).valueNonNull();
+        protected  <V extends Raw<?>> V createRaw(Supplier<V> constructor, ParseContext ctx) {
+            return parse(_ctx -> success(constructor.get()), ctx).valueNonNull();
         }
-        protected <V extends Raw<?>> Result<V> parse(ParseContext ctx, Function<ParseContext, ? extends Result<V>> parser) {
+        protected <V extends Raw<?>> Result<V> parse(Function<ParseContext, ? extends Result<V>> parser, ParseContext ctx) {
             ctx.enterFrame();
 
             var startIndex = ctx.chars.position();
@@ -63,6 +63,26 @@ public final class Structure {
 
         protected boolean parseSettingsImpl(ParseContext ctx) {
             return false;
+        }
+
+        protected boolean parseParserList(Any parsers, ParseContext ctx) {
+            ctx.whitespace();
+            if (!ctx.literal("(")) return false;
+
+            do {
+                ctx.whitespace();
+
+                var parserName = ctx.word();
+                if (parserName == null) return false;
+                parsers.add(parserName, ctx);
+
+                ctx.whitespace();
+            } while (ctx.literal(","));
+
+            if (!ctx.literal(")")) return false;
+            ctx.whitespace();
+
+            return true;
         }
 
         protected <V extends Raw<?>> Result<V> success(V value) {

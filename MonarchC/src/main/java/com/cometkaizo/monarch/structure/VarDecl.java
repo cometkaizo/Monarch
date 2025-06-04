@@ -42,7 +42,7 @@ public class VarDecl {
             if (ctx.literal("=")) {
                 ctx.whitespace();
 
-                var initializer = parse(ctx, _ctx -> {
+                var initializer = parse(_ctx -> {
                     var initializerRaw = new Locatable.Set.Raw();
 
                     // expr
@@ -52,12 +52,12 @@ public class VarDecl {
                     ctx.whitespace();
 
                     // target
-                    var refRaw = createRaw(ctx, VarGet.Raw::new);
+                    var refRaw = createRaw(VarGet.Raw::new, ctx);
                     refRaw.name = raw.name;
                     initializerRaw.ref = refRaw;
 
                     return success(initializerRaw);
-                });
+                }, ctx);
 
                 if (!initializer.hasValue()) return fail();
                 raw.initializer = initializer.valueNonNull();
