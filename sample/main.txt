@@ -9,8 +9,10 @@ compile var_param_decl with (ref_type_get, static_type_get)
 compile function with statements (scan, debug, debug_flag, comment, free, print, function_call, var_decl, increment, set, add_set, return, if, while)
 compile return with (subtract, float32_lit, int32_lit, cast, modulo, byte_lit, boolean_lit, var_get)
 compile free with (var_get)
-compile set with targets (var_get, deref)
+compile set with targets (array_deref, deref, var_get)
 compile set with values (add, subtract, divide, modulo, toInt, cast, function_call, boolean_lit, float32_lit, int32_lit, or, xor, lshift, rshift, multiply, byte_lit, time, scan, var_get)
+compile array_deref with targets (var_get)
+compile array_deref with values (byte_lit)
 compile cast with values (byte_lit, malloc, malloc_set, ref, var_get)
 compile cast with types (ref_type_get, static_type_get)
 compile malloc with (byte_lit)
@@ -21,7 +23,7 @@ compile lshift with (int32_lit, byte_lit, var_get)
 compile rshift with (int32_lit, byte_lit, var_get)
 compile xor with (byte_lit, lshift, rshift, var_get)
 compile function_call with (add, subtract, multiply, divide, ref, deref, byte_lit, char_lit, float32_lit, int32_lit, function_call, var_get)
-compile print with (scan, time, add, deref, modulo, subtract, string_lit, byte_lit, char_lit, var_get)
+compile print with (scan, time, add, deref, array_deref, modulo, subtract, string_lit, byte_lit, char_lit, var_get)
 compile modulo with (toInt, cast, byte_lit, subtract, var_get)
 compile add with (cast, byte_lit, divide, multiply, toFloat, modulo, subtract, deref, function_call, time, float32_lit, int32_lit, char_lit, var_get)
 compile toFloat with values (var_get)
@@ -78,7 +80,7 @@ function scanString(buffer: &byte, len: &byte): void {
             break;
         }
         var cPtr = buffer + cIndex;
-        *cPtr = c;
+        cPtr[0b] = c;
         cIndex += 1b;
     }
 
@@ -89,7 +91,7 @@ function printString(str: &byte, len: byte): void {
     var cIndex = 0b;
     while (cIndex < len) {
         var cPtr = str + cIndex;
-        print *cPtr;
+        print cPtr[0b];
         cIndex += 1b;
     }
 }

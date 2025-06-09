@@ -89,6 +89,7 @@ public class ParseContext extends Context {
         structures.addFirst(raw);
         return raw;
     }
+    @Deprecated
     public void popStructure() {
         structures.pollFirst();
     }
@@ -100,7 +101,8 @@ public class ParseContext extends Context {
         frames.addFirst(new Frame(chars.cursor(), structures.size()));
     }
     public void exitFrameSuccess() {
-        frames.removeFirst();
+        var frame = frames.removeFirst();
+        reverseStructuresTo(frame.rawCount);
     }
     public void exitFrameFail(String message) {
         var frame = frames.removeFirst();
@@ -109,7 +111,8 @@ public class ParseContext extends Context {
         reverseStructuresTo(frame.rawCount);
     }
     private void reverseStructuresTo(int count) {
-        for (int i = 0; i < structures.size() - count; i++) popStructure();
+        int removeAmt = structures.size() - count;
+        for (int i = 0; i < removeAmt; i++) structures.pollFirst();
     }
 
     private record Frame(int cursor, int rawCount) {}

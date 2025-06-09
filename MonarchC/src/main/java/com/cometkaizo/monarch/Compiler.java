@@ -86,6 +86,7 @@ public class Compiler {
                 Map.entry("free", new Free.Parser()),
                 Map.entry("ref", new Ref.Parser()),
                 Map.entry("deref", new Deref.Parser()),
+                Map.entry("array_deref", new ArrayDeref.Parser()),
                 Map.entry("set", new Set.Parser()),
                 Map.entry("increment", new Increment.Parser()),
                 Map.entry("decrement", new Decrement.Parser()),

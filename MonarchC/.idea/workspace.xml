@@ -9,36 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Changed helper parser method parameter orders">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ArrayGet.java" afterDir="false" />
+    <list default="true" id="d4b331f1-0f79-4b9c-af9a-9fad8818c237" name="Changes" comment="Created helper parser method for parsing settings consisting of parser names">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ArrayDeref.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperatorSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/BiOperatorSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Cast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Cast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Decrement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Decrement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Deref.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Deref.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FloatToInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FloatToInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Free.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Free.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Func.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/FuncCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/If.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Increment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Increment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/IntToFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/IntToFloat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Malloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Malloc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/MallocSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Not.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Not.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ParenParamsDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ParenParamsDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Print.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Ref.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Ref.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefTypeGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/RefTypeGet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Return.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Set.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/TypeDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarParamDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarParamDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/VarSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cometkaizo/parser/ParseContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sample/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sample/main.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +64,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
     &quot;Application.Test.executor&quot;: &quot;Run&quot;,
     &quot;Application.Test2.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -185,14 +161,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714242826972</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Added float32 and float64 types">
-      <option name="closed" value="true" />
-      <created>1747624676524</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1747624676524</updated>
     </task>
     <task id="LOCAL-00103" summary="Renamed BiOperator parameters">
       <option name="closed" value="true" />
@@ -578,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748999064656</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="Created helper parser method for parsing settings consisting of parser names">
+      <option name="closed" value="true" />
+      <created>1748999755705</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1748999755705</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -593,7 +569,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Allowed scan to be used as a standalone statement" />
     <MESSAGE value="Added Calculator sample program showcasing scanning, printing, and performing arithmetic with both integers and floats" />
     <MESSAGE value="Added TemperatureConverter sample program showcasing scanning, printing, and performing arithmetic with floats" />
     <MESSAGE value="Added NaN to the Float32 and Float64 literals" />
@@ -618,7 +593,8 @@
     <MESSAGE value="Renamed variable" />
     <MESSAGE value="Added compound assignment operators (e.g., +=, -=, *=)" />
     <MESSAGE value="Changed helper parser method parameter orders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed helper parser method parameter orders" />
+    <MESSAGE value="Created helper parser method for parsing settings consisting of parser names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created helper parser method for parsing settings consisting of parser names" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -638,6 +614,25 @@
           <line>10</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="raw.ref == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/Deref.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/StringLit.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cometkaizo/monarch/structure/ArrayDeref.java</url>
+          <line>14</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -645,6 +640,8 @@
         <watch expression="ctx.chars.getFullLineAt(ctx.chars.cursor())" language="JAVA" />
         <watch expression="ctx.stackSize()" language="JAVA" />
         <watch expression="(char)ctx.chars.current()" language="JAVA" />
+        <watch expression="chars.getFullLineAt(chars.cursor())" language="JAVA" />
+        <watch expression="ctx.structures" />
       </configuration>
     </watches-manager>
   </component>
